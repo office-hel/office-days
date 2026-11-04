@@ -388,6 +388,100 @@ textarea{width:100%;min-height:120px;margin-top:8px;padding:12px;border-radius:1
 .wx-src{font-size:13px;line-height:1.45}
 .wx-src a{color:var(--link);font-weight:600}
 
+/* welcome + what's new */
+.wiz-art.short{height:min(30vh,240px)}
+.wiz-kicker{font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--green-strong);margin:6px 0 0}
+@media (prefers-color-scheme:dark){.wiz-kicker{color:var(--link)}}
+.wiz .wiz-kicker + h2{margin-top:2px}
+.feat{list-style:none;padding:0;margin:16px 0 4px;display:flex;flex-direction:column;gap:16px}
+.feat li{display:flex;gap:14px;align-items:flex-start}
+.feat .fi{flex:none;width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:var(--green-soft);color:var(--green-strong)}
+@media (prefers-color-scheme:dark){.feat .fi{color:var(--link)}}
+.feat b{display:block;font-size:16.5px;font-weight:650;line-height:1.3}
+.feat span.ft{display:block;font-size:15px;line-height:1.4;color:var(--ink-2);margin-top:1px}
+
+/* step-by-step guides */
+.seg.three{grid-template-columns:1fr 1fr 1fr}
+.vhint{font-size:13.5px;color:var(--ink-3);margin:8px 2px 0}
+.gd{margin-top:14px}
+.gd-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 2px 8px;font-size:14px;font-weight:650;color:var(--ink-2)}
+.gd-head .link{padding:4px 2px;font-size:14px}
+.gd-bar{display:flex;gap:4px;margin:0 2px 12px}
+.gd-bar i{flex:1;height:4px;border-radius:2px;background:var(--line)}
+.gd-bar i.done{background:var(--green-track)}
+.gd-bar i.on{background:var(--green)}
+.gd-card{position:relative;background:var(--surface);border-radius:20px;box-shadow:var(--shadow);padding:17px 16px 18px 60px;min-height:120px;animation:gdIn .22s ease-out}
+@keyframes gdIn{from{opacity:.35;transform:translateX(10px)}to{opacity:1;transform:none}}
+.gd-num{position:absolute;left:15px;top:15px;width:31px;height:31px;border-radius:50%;background:var(--green);color:var(--on-green);display:grid;place-items:center;font-weight:700;font-size:15px}
+.gd-t{font-size:19px;line-height:1.3;font-weight:650;letter-spacing:-.01em}
+.gd-d{font-size:15.5px;line-height:1.5;color:var(--ink-2);margin-top:6px}
+.gd-x{margin-top:10px}
+.gd-x .btn.wide:first-child{margin-top:0}
+.gd-all .steps li{font-size:15.5px}
+.gd-note{margin:12px 0 0;padding:12px 14px;border-radius:14px;background:var(--surface-2);font-size:14.5px;line-height:1.45;color:var(--ink-2)}
+.gd-note .link{padding:2px 0;font-size:14.5px}
+.tip{display:flex;gap:8px;align-items:flex-start;margin:12px 2px 0;font-size:14px;line-height:1.4;color:var(--ink-2)}
+.tip svg{flex:none;margin-top:1px;color:var(--green)}
+
+/* quick visits */
+.quick{margin:12px 0 0;padding:14px 14px 8px;border-radius:16px;background:var(--amber-soft)}
+.quick-t{display:flex;align-items:center;gap:8px;font-weight:650;font-size:16px;line-height:1.3}
+.quick-t svg{flex:none;color:var(--amber)}
+.quick-s{margin:6px 0 12px;font-size:14.5px;line-height:1.4;color:var(--ink-2)}
+.quick-b{display:flex;gap:8px}
+.qbtn{flex:1;min-height:46px;border-radius:13px;background:var(--surface);font-weight:650;font-size:15.5px;box-shadow:var(--shadow)}
+.qbtn.yes{background:var(--green);color:var(--on-green);box-shadow:none}
+.quick .link{display:block;margin:4px auto 0;font-size:14px}
+.set-sub{display:block;font-size:13px;line-height:1.35;color:var(--ink-3);margin-top:2px;font-weight:400}
+
+/* leave for a date range */
+.cal-tools.idle{justify-content:flex-start;flex-wrap:wrap;gap:8px}
+.cal-hint{flex:1 1 100%}
+.cal-tools.idle .pill{display:inline-flex;align-items:center;gap:6px}
+.pill svg{width:18px;height:18px;margin-left:-3px;color:var(--leave);flex:none}
+.lv-dates{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.lv-dates label{display:block;font-size:13.5px;font-weight:600;color:var(--ink-2);min-width:0}
+.lv-dates label > span{display:block;margin:0 2px 6px}
+.field.date{min-height:52px;height:52px;font-size:17px;padding:0 12px;line-height:48px;min-width:0}
+.field.date::-webkit-date-and-time-value{text-align:left}
+.lv-sum{margin:12px 2px 0;font-size:15px;line-height:1.45;color:var(--ink-2);min-height:22px}
+.lv-sum.bad{color:var(--danger);font-weight:600}
+.primary:disabled{opacity:.45}
+.spot.lv-new{box-shadow:inset 0 0 0 2px var(--leave)}
+.lv-more{display:block;margin:12px auto 0;white-space:normal;text-align:center}
+.wiz-top .wiz-skip{margin-left:auto}
+
+/* everything the app can do */
+.feat-title{font-size:20px;font-weight:700;letter-spacing:-.015em;margin:24px 0 0}
+.feat-h{margin:20px 0 0;font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--green-strong)}
+@media (prefers-color-scheme:dark){.feat-h{color:var(--link)}}
+.feat.feat-all{margin-top:10px;gap:14px}
+
+/* first-visit tour */
+.tour{position:fixed;inset:0;z-index:58;touch-action:none;opacity:0;transition:opacity .25s}
+.tour.on{opacity:1}
+.tour-block{position:absolute;inset:0}
+.tour-probe{position:absolute;width:0;height:0;margin:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px);visibility:hidden}
+.tour-spot{position:fixed;left:0;top:0;width:0;height:0;border-radius:16px;pointer-events:none;box-shadow:0 0 0 2px rgba(255,255,255,.88),0 0 0 5000px rgba(6,12,22,.66)}
+.tour-tip{position:fixed;left:12px;top:0;width:min(340px,calc(100vw - 24px));background:var(--surface);color:var(--ink);border-radius:20px;padding:16px 16px 12px;box-shadow:0 0 0 1px var(--line),0 22px 46px -14px rgba(0,0,0,.55);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .22s,transform .22s}
+.tour-tip.above{transform:translateY(-6px)}
+.tour-tip.show{opacity:1;visibility:visible;transform:none}
+.tour-tip:focus{outline:none}
+.tour-tip::before{content:"";position:absolute;left:var(--ax,50%);width:16px;height:16px;margin-left:-8px;background:var(--surface);transform:rotate(45deg);border-radius:3px}
+.tour-tip.below::before{top:-7px;box-shadow:-1px -1px 0 var(--line)}
+.tour-tip.above::before{bottom:-7px;box-shadow:1px 1px 0 var(--line)}
+.tour-tip.free::before{display:none}
+.tour-x{position:absolute;top:6px;right:6px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:var(--ink-3)}
+.tour-t{margin:0 36px 6px 0;font-size:19px;line-height:1.22;font-weight:700;letter-spacing:-.01em}
+.tour-d{margin:0;color:var(--ink-2);font-size:15.5px;line-height:1.45}
+.tour-f{display:flex;align-items:center;gap:4px;margin-top:14px}
+.tour-n{flex:1;font-size:14px;font-weight:600;color:var(--ink-3);font-variant-numeric:tabular-nums}
+.tour-back{min-height:42px;padding:0 14px;border-radius:999px;color:var(--ink-2);font-weight:600;font-size:15.5px}
+.tour-next{min-height:42px;min-width:84px;padding:0 20px;border-radius:999px;background:var(--green);color:var(--on-green);font-weight:650;font-size:15.5px}
+.tour-cta{display:flex;align-items:center;gap:12px;width:100%;margin:8px 0 2px;padding:13px 14px;border-radius:16px;background:var(--green-soft);text-align:left;font-size:16px;line-height:1.3}
+.tour-cta > svg{flex:none;color:var(--green)}
+.tour-cta b{font-weight:650}
+
 /* toast */
 .toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translate(-50%,16px);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:16px;font-weight:600;font-size:15px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:60;max-width:calc(100vw - 32px);text-align:center}
 .toast.show{opacity:1;transform:translate(-50%,0)}
@@ -444,7 +538,7 @@ textarea{width:100%;min-height:120px;margin-top:8px;padding:12px;border-radius:1
 
 <div class="wiz" id="wiz" role="dialog" aria-modal="true" aria-labelledby="wizTitle" hidden></div>
 <script type="text/plain" id="gsCode">/**
- * Office Days: your private check-in link.
+ * Office Days: your private check-in link. Version 2.
  *
  * Set up once (about 5 minutes, easiest on a computer):
  *  1. Go to script.new, delete everything there, and paste this whole file.
@@ -453,14 +547,25 @@ textarea{width:100%;min-height:120px;margin-top:8px;padding:12px;border-radius:1
  *     If Google asks for permission, allow it. It is your own script.
  *  4. Copy the Web app URL and paste it into Office Days.
  *
+ * Updating from version 1: paste this file over the old code and click Save. Then click
+ * Deploy > Manage deployments > the pencil > Version: New version > Deploy. Your URL stays the same.
+ *
  * How it is used:
- *  - Your phone opens  URL?a=in     when you arrive at the office. That logs the day.
+ *  - Your phone opens  URL?a=in  when you arrive at the office and  URL?a=out  when you leave.
+ *    A day counts once you have been there for 5 minutes, so walking past doesn't count
+ *    (unless you turned on "Count quick visits too" in the app).
+ *  - With "Just remind me", your phone opens  URL?a=hi  when you arrive. That only answers.
+ *  - Arrivals answer with a notification text at most once a day. After that they answer
+ *    with a quiet line, and your phone only shows answers that mention the office.
  *  - A morning reminder opens  URL?a=today  and shows the answer as a notification.
  *  - The Office Days app reads  URL?a=list  and saves your plan with  URL?a=plan.
  *
  * Only someone with your exact URL can use it, so keep it private.
  */
+var VERSION = 2;
 var KEEP_DAYS = 400;
+var STAY_MIN = 5;
+var QUIET = '✓ Already noted today';
 
 function doGet(e) {
   var p = (e && e.parameter) || {};
@@ -470,32 +575,69 @@ function doGet(e) {
     case 'in':
       store.setProperty('t' + now, '1');
       prune_(store, now);
-      return text_(('Office day logged ✅ ' + progress_(store)).trim());
+      return text_(hello_(store, now, false));
+    case 'out':
+      store.setProperty('o' + now, '1');
+      prune_(store, now);
+      return text_('ok');
+    case 'hi':
+      return text_(hello_(store, now, true));
     case 'today':
       return text_(today_(store, now));
     case 'list':
-      return json_(p, { ok: true, checkins: checkins_(store) });
+      return json_(p, { ok: true, v: VERSION, checkins: stamps_(store, 't'), outs: stamps_(store, 'o') });
     case 'plan':
       store.setProperty('plan', JSON.stringify({
         p: dates_(p.p), o: dates_(p.o), t: Math.max(0, Number(p.t) || 0),
         tz: p.tz || Session.getScriptTimeZone(), pn: String(p.pn || 'this month').slice(0, 30),
-        ps: p.ps || '', pe: p.pe || '', n: String(p.n || '').slice(0, 40), at: now
+        ps: p.ps || '', pe: p.pe || '', n: String(p.n || '').slice(0, 40), q: String(p.q) === '1' ? 1 : 0, at: now
       }));
-      return json_(p, { ok: true });
+      return json_(p, { ok: true, v: VERSION });
     default:
-      return json_(p, { ok: true, app: 'office-days', v: 1 });
+      return json_(p, { ok: true, app: 'office-days', v: VERSION });
   }
 }
 
-function checkins_(store) {
-  var all = store.getProperties(), list = [];
-  Object.keys(all).forEach(function (k) { if (/^t\d+$/.test(k)) list.push(Number(k.slice(1))); });
+// What your phone shows when you arrive: a message at most once a day.
+// (If that first arrival was only walking past, the next real one gets a message again.)
+function hello_(store, now, remindOnly) {
+  var plan = plan_(store), tz = plan ? plan.tz : Session.getScriptTimeZone(), day = day_(now, tz);
+  if (plan && plan.o.indexOf(day) >= 0) return QUIET;   // today already counts
+  var said = Number(store.getProperty('said')) || 0;
+  if (said && day_(said, tz) === day && !passedBy_(store, said)) return QUIET;
+  store.setProperty('said', String(now));
+  if (remindOnly) return 'You’re at the office 🏢 Open Office Days and it marks today for you.';
+  if (plan && plan.q) return 'You’re at the office 🏢 Today counts as an office day.';
+  return 'You’re at the office 🏢 Today counts after ' + STAY_MIN + ' minutes here. Open Office Days to count it now.';
+}
+
+// True if you left again within STAY_MIN minutes of arriving at time t.
+function passedBy_(store, t) {
+  return stamps_(store, 'o').some(function (o) { return o > t && o - t < STAY_MIN * 60000; });
+}
+
+function stamps_(store, prefix) {
+  var all = store.getProperties(), list = [], re = new RegExp('^' + prefix + '\\d+$');
+  Object.keys(all).forEach(function (k) { if (re.test(k)) list.push(Number(k.slice(1))); });
   return list.sort(function (a, b) { return a - b; });
 }
 
+// Arrivals that count: the first departure after them is at least STAY_MIN minutes later
+// (or you haven't left yet, and it's been that long). With "count quick visits" every arrival counts.
+function stays_(store, now, min) {
+  var outs = stamps_(store, 'o');
+  return stamps_(store, 't').filter(function (t) {
+    var end = now;
+    for (var i = 0; i < outs.length; i++) if (outs[i] > t) { end = outs[i]; break; }
+    return end - t >= (min === undefined ? STAY_MIN : min) * 60000;
+  });
+}
+
 function prune_(store, now) {
-  checkins_(store).forEach(function (ts) {
-    if (ts < now - KEEP_DAYS * 864e5) store.deleteProperty('t' + ts);
+  ['t', 'o'].forEach(function (prefix) {
+    stamps_(store, prefix).forEach(function (ts) {
+      if (ts < now - KEEP_DAYS * 864e5) store.deleteProperty(prefix + ts);
+    });
   });
 }
 
@@ -506,11 +648,11 @@ function plan_(store) {
 function day_(ts, tz) { return Utilities.formatDate(new Date(ts), tz, 'yyyy-MM-dd'); }
 
 // Office days still needed: the app's count when it last saved the plan,
-// plus weekday check-ins that arrived after that.
-function need_(store, plan) {
+// plus weekday stays that came after that.
+function need_(store, plan, now) {
   var seen = {}, count = 0;
   plan.o.forEach(function (d) { if (!seen[d]) { seen[d] = true; count++; } });
-  checkins_(store).forEach(function (ts) {
+  stays_(store, now, plan.q ? 0 : STAY_MIN).forEach(function (ts) {
     if (ts <= plan.at) return;
     var d = day_(ts, plan.tz), wd = Number(Utilities.formatDate(new Date(ts), plan.tz, 'u'));
     if (seen[d] || wd > 5 || (plan.ps && d < plan.ps) || (plan.pe && d > plan.pe)) return;
@@ -519,20 +661,13 @@ function need_(store, plan) {
   return Math.max(0, plan.t - count);
 }
 
-function progress_(store) {
-  var plan = plan_(store);
-  if (!plan || !plan.t) return '';
-  var need = need_(store, plan);
-  return need ? need + ' more to go in ' + plan.pn + '.' : 'Target reached for ' + plan.pn + ' 🎉';
-}
-
 function today_(store, now) {
   var plan = plan_(store);
   if (!plan) return 'Open Office Days once so your reminder knows your plan.';
   var hi = plan.n ? 'Hi ' + plan.n + '! ' : '';
   var day = day_(now, plan.tz);
   if (plan.pe && day > plan.pe) return hi + 'Your plan for ' + plan.pn + ' has ended. Open Office Days to plan the next one.';
-  var need = need_(store, plan);
+  var need = need_(store, plan, now);
   if (!need) return hi + 'Target reached for ' + plan.pn + ' 🎉 The office is optional today.';
   if (plan.p.indexOf(day) >= 0) return hi + 'Office day today 🏢 ' + need + ' more to go in ' + plan.pn + '.';
   return hi + 'No office planned today. ' + need + ' more to go in ' + plan.pn + '.';
@@ -554,6 +689,7 @@ function json_(p, obj) {
 </script>
 <div class="backdrop" id="backdrop" data-act="close" hidden></div>
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" hidden></div>
+<div class="tour" id="tour" hidden><div class="tour-block"></div><i class="tour-probe" aria-hidden="true"></i><div class="tour-spot" id="tourSpot"></div><div class="tour-tip" id="tourTip" role="dialog" aria-modal="true" aria-labelledby="tourT" aria-describedby="tourD" tabindex="-1"></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <input type="file" id="photoInput" accept="image/*" hidden>
 
@@ -568,18 +704,26 @@ var MONTHS = ['January','February','March','April','May','June','July','August',
 var MON3 = MONTHS.map(function (m) { return m.slice(0, 3); });
 var WD_LONG = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 var WD_1 = ['M','T','W','T','F','S','S'];
-var APP_VERSION = '7';
+var APP_VERSION = '1';
+var WIZ_STEPS = ['hello', 'install', 'opennow', 'name', 'office', 'target', 'auto', 'link', 'phone', 'fix', 'leave', 'remind', 'news', 'script', 'area', 'features', 'done'];
 var CUTOFF_HOUR = 17;          // after this, an unlogged today no longer counts as "left"
 var OFFICE_LAT = 60.1898, OFFICE_LNG = 24.9575;
+// Nordea's Vallila campus is one city block between Fleminginkatu, Aleksis Kiven katu, Kustaankatu and
+// Satamaradankatu. Its buildings have their own street addresses and entrances, so each one is a spot:
+// a day counts near any of them.
 var DEFAULT_SPOTS = [
   { name: 'Satamaradankatu 5', lat: 60.190023, lng: 24.956509 },
-  { name: 'Aleksis Kiven katu 3–9', lat: 60.18957, lng: 24.958471 }
+  { name: 'Aleksis Kiven katu 3–5', lat: 60.18957, lng: 24.958471 },
+  { name: 'Aleksis Kiven katu 7', lat: 60.189455, lng: 24.95506 },
+  { name: 'Aleksis Kiven katu 9 / Fleminginkatu 27', lat: 60.189696, lng: 24.953099 }
 ];
+var OLD_SPOTS = [{ lat: 60.190023, lng: 24.956509 }, { lat: 60.18957, lng: 24.958471 }];   // the campus before version 1
+var CAMPUS_ADDR = 'Satamaradankatu 5, Aleksis Kiven katu 3–5, 7 and 9, Fleminginkatu 27';
 function defaults() {
   return {
-    v: 1, days: {}, noAuto: null, setup: false, wiz: 0, remoteAfter: 0,
-    settings: { target: 60, period: 'month', radius: 200, eves: true, prefer: [2, 3, 4], spots: DEFAULT_SPOTS.map(function (s) { return { name: s.name, lat: s.lat, lng: s.lng }; }), autoLoc: false, name: '', link: '' },
-    ui: { simMode: 'wfh', hideInstall: false, wxGps: false }
+    v: 1, days: {}, noAuto: null, setup: false, wiz: 0, remoteAfter: 0, short: {}, shortNo: {},
+    settings: { target: 60, period: 'month', radius: 200, eves: true, prefer: [2, 3, 4], spots: DEFAULT_SPOTS.map(function (s) { return { name: s.name, lat: s.lat, lng: s.lng }; }), autoLoc: false, name: '', link: '', phoneMode: 'auto', quick: false },
+    ui: { simMode: 'wfh', hideInstall: false, wxGps: false, iosv: '', phoneV: 0, news: 0, resume: null, tour: 0, area: 0 }
   };
 }
 
@@ -665,7 +809,7 @@ function normalize(s) {
       var v = s.days[k];
       if (!/^\d{4}-\d{2}-\d{2}$/.test(k) || !v || ['office', 'leave', 'plan'].indexOf(v.s) < 0) return;
       var r = { s: v.s };
-      if (v.src === 'auto' || v.src === 'manual') r.src = v.src;
+      if (['auto', 'manual', 'phone'].indexOf(v.src) >= 0) r.src = v.src;
       if (typeof v.t === 'string' && /^\d{2}:\d{2}$/.test(v.t)) r.t = v.t;
       out.days[k] = r;
     });
@@ -680,20 +824,36 @@ function normalize(s) {
     if (Array.isArray(t.spots)) {
       var sp = t.spots.filter(function (x) { return x && isFinite(x.lat) && isFinite(x.lng) && Math.abs(x.lat) <= 90 && Math.abs(x.lng) <= 180; })
         .slice(0, 12).map(function (x) { return { name: String(x.name || 'Office').slice(0, 60), lat: +x.lat, lng: +x.lng }; });
-      out.settings.spots = sp;
+      out.settings.spots = sameSpots(sp, OLD_SPOTS) ? campusSpots() : sp;
     }
     if (typeof t.autoLoc === 'boolean') out.settings.autoLoc = t.autoLoc;
     if (typeof t.name === 'string') out.settings.name = t.name.replace(/[<>]/g, '').trim().slice(0, 40);
     if (typeof t.link === 'string') out.settings.link = cleanLink(t.link);
+    if (t.phoneMode === 'notify' || t.phoneMode === 'auto') out.settings.phoneMode = t.phoneMode;
+    if (typeof t.quick === 'boolean') out.settings.quick = t.quick;
   }
   if (typeof s.noAuto === 'string') out.noAuto = s.noAuto;
   out.setup = s.setup === true || Object.keys(out.days).length > 0;
   if (isFinite(s.remoteAfter)) out.remoteAfter = Math.max(0, +s.remoteAfter);
+  var cut = K(addD(new Date(), -60));   // quick visits the phone saw, and the ones you said no to
+  ['short', 'shortNo'].forEach(function (f) {
+    if (s[f] && typeof s[f] === 'object') Object.keys(s[f]).forEach(function (k) {
+      var v = s[f][k];
+      if (/^\d{4}-\d{2}-\d{2}$/.test(k) && k >= cut && (f === 'shortNo' ? !!v : /^\d{2}:\d{2}$/.test(v))) out[f][k] = f === 'shortNo' ? 1 : v;
+    });
+  });
   if (isFinite(s.wiz)) out.wiz = +s.wiz;
   if (s.ui && typeof s.ui === 'object') {
     out.ui.simMode = s.ui.simMode === 'leave' ? 'leave' : 'wfh';
     out.ui.hideInstall = !!s.ui.hideInstall;
     out.ui.wxGps = !!s.ui.wxGps;
+    out.ui.iosv = s.ui.iosv === '26' || s.ui.iosv === '27' ? s.ui.iosv : '';
+    out.ui.phoneV = Math.max(0, Math.min(9, Math.round(+s.ui.phoneV) || 0));
+    out.ui.news = Math.max(0, Math.round(+s.ui.news) || 0);
+    out.ui.tour = s.ui.tour ? 1 : 0;
+    out.ui.area = s.ui.area ? 1 : 0;
+    var rs = s.ui.resume;
+    if (rs && typeof rs === 'object' && WIZ_STEPS.indexOf(rs.s) >= 0 && isFinite(rs.at)) out.ui.resume = { f: ['setup', 'phone', 'upgrade', 'area'].indexOf(rs.f) >= 0 ? rs.f : 'setup', s: rs.s, i: Math.max(0, Math.round(+rs.i) || 0), a: rs.a ? 1 : 0, m: rs.m === 'notify' ? 'notify' : 'auto', o: rs.o === 'android' ? 'android' : 'ios', x: !!rs.x, at: +rs.at };
   }
   return out;
 }
@@ -1053,7 +1213,8 @@ function jsonp(url, ms) {
     document.head.appendChild(el);
   });
 }
-var remote = { state: 'off', at: 0, last: null };
+var remote = { state: 'off', at: 0, last: null, pending: 0, ver: 0 };
+var DWELL = 5 * 6e4, pendTimer = null;   // walking past doesn't count: a day needs 5 minutes at the office
 var syncing = null;
 function syncRemote(manual) {
   var link = S().link;
@@ -1063,19 +1224,29 @@ function syncRemote(manual) {
   if (manual) renderToday(new Date());
   syncing = jsonp(link + '?a=list', 15000).then(function (data) {
     if (!data || data.ok !== true || !Array.isArray(data.checkins)) throw new Error('bad');
-    var after = state.remoteAfter || 0, newest = after, added = 0;
-    data.checkins.forEach(function (ts) {
-      ts = Number(ts);
-      if (!isFinite(ts) || ts <= after) return;
-      newest = Math.max(newest, ts);
-      var d = new Date(ts), i = info(d), h = d.getHours();
-      if (!i.working || i.st === 'office' || h < 6 || h >= 21) return;   // weekends, holidays, leave, night
+    remote.ver = Number(data.v) || 1;
+    // An arrival counts when the first departure after it is 5+ minutes later (or you haven't left yet).
+    var after = state.remoteAfter || 0, mark = after, added = 0, now = Date.now(), ins = [], outs = [];
+    var num = function (list, into) { (Array.isArray(list) ? list : []).forEach(function (t) { t = Number(t); if (isFinite(t) && t > after) into.push(t); }); into.sort(function (a, b) { return a - b; }); };
+    num(data.checkins, ins); num(data.outs, outs);
+    remote.pending = 0;
+    for (var j = 0; j < ins.length; j++) {
+      var t0 = ins[j], left = null;
+      for (var q = 0; q < outs.length; q++) if (outs[q] > t0) { left = outs[q]; break; }
+      var stay = (left !== null ? left : now) - t0, need = S().quick ? 0 : DWELL;
+      if (left === null && stay < need) { if (!remote.pending) remote.pending = t0; continue; }   // still there: decide later
+      mark = Math.max(mark, t0);
+      var d = new Date(t0), i = info(d), h = d.getHours();
+      if (!i.working || i.st === 'office' || h < 6 || h >= 21) continue;   // weekends, holidays, leave, night
+      if (stay < need) { if (!i.st || i.st === 'plan') state.short[i.k] = hhmm(d); continue; }   // a quick visit, or walking past: ask
       state.days[i.k] = { s: 'office', src: 'phone', t: hhmm(d) };
       added++;
-    });
+    }
+    clearTimeout(pendTimer);
+    if (remote.pending) pendTimer = setTimeout(function () { syncRemote(); }, clamp(remote.pending + DWELL - now + 20000, 5000, 20 * 6e4));
     remote.last = data.checkins.length ? Number(data.checkins[data.checkins.length - 1]) : null;
     remote.state = 'ok'; remote.at = Date.now();
-    if (newest > after) { state.remoteAfter = newest; save(); }
+    if (mark > after) { state.remoteAfter = mark; save(); }
     if (added) { renderAll(); toast(added === 1 ? 'Your phone logged an office day.' : 'Your phone logged ' + added + ' office days.'); }
     else { renderToday(new Date()); if (manual) toast('Up to date.'); }
     schedulePlanUpload(300);
@@ -1096,7 +1267,7 @@ function uploadPlan() {
   for (var d = p.start; d <= p.end; d = addD(d, 1)) { var i = info(d); if (i.office) office.push(i.k); }
   var tz = ''; try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
   var payload = { a: 'plan', p: st.left.filter(function (x) { return x.plan || sug[x.k]; }).map(function (x) { return x.k; }).join(','),
-    o: office.join(','), t: st.T, tz: tz, pn: p.type === 'month' ? MONTHS[p.start.getMonth()] : p.name, ps: K(p.start), pe: K(p.end), n: S().name.trim() };
+    o: office.join(','), t: st.T, q: S().quick ? 1 : 0, tz: tz, pn: p.type === 'month' ? MONTHS[p.start.getMonth()] : p.name, ps: K(p.start), pe: K(p.end), n: S().name.trim() };
   var sig = link + JSON.stringify(payload);
   if (sig === planSig) return;
   jsonp(link + '?' + qs(payload), 15000).then(function (r) { if (r && r.ok) planSig = sig; }, function () {});
@@ -1132,7 +1303,7 @@ var Cloud = {
           if (snap.exists && !self.dirty && !self.writing) {
             var incoming = normalize(snap.data());
             incoming.settings.autoLoc = state.settings.autoLoc;
-            incoming.ui = state.ui;
+            incoming.ui = state.ui; incoming.short = state.short; incoming.shortNo = state.shortNo;
             if (JSON.stringify(incoming) !== JSON.stringify(state)) {
               state = incoming;
               try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {}
@@ -1530,6 +1701,7 @@ function renderAll() {
   renderHolidays();
   renderFoot();
   renderInstall();
+  if (tour && tour.on) tourRefresh();
 }
 
 function renderHero(st, now) {
@@ -1627,17 +1799,52 @@ function renderToday(now) {
   else if (i.st === 'leave') btn = '<button class="primary leave" data-act="day" data-k="' + i.k + '">' + ICON.sun + 'Today is marked as leave</button>';
   else if (i.st === 'office') btn = '<button class="primary soft" data-act="day" data-k="' + i.k + '">' + ICON.check + 'Today is counted</button>';
   else btn = '<button class="primary" data-act="checkin">' + ICON.building + 'I’m at the office today</button>';
-  el.innerHTML = rows + btn;
+  var tip = '';
+  if (!FRAMED && GEO_OK && S().autoLoc && S().spots.length && i.working && (!i.st || i.st === 'plan') && loc.state !== 'inside' && loc.state !== 'denied')
+    tip = '<p class="tip">' + FI.phoneSm + '<span>At the office? Just open Office Days. It marks today by itself.</span></p>';
+  el.innerHTML = rows + quickHtml(now) + btn + tip;
+}
+function shortPick(now) {
+  var best = null, tK = K(now), lim = K(addD(now, -14));
+  Object.keys(state.short).forEach(function (k) {
+    if (k > tK || k < lim || state.shortNo[k]) return;
+    var i = info(fromK(k));
+    if (!i.working || (i.st && i.st !== 'plan')) return;
+    if (!best || k > best) best = k;
+  });
+  return best;
+}
+function quickHtml(now) {
+  var k = shortPick(now);
+  if (!k || FRAMED) return '';
+  var when = k === K(now) ? '' : k === K(addD(now, -1)) ? 'yesterday ' : 'on ' + fmtDate(fromK(k)) + ' ';
+  return '<div class="quick" role="group" aria-label="Quick visit"><div class="quick-t">' + FI.cardSm + '<span>Quick visit ' + when + 'at ' + state.short[k] + '?</span></div>' +
+    '<p class="quick-s">Your phone saw you at the office for under 5 minutes, so it didn’t count. Was it an office day?</p>' +
+    '<div class="quick-b"><button class="qbtn yes" data-act="qYes" data-k="' + k + '">Yes, count it</button><button class="qbtn" data-act="qNo" data-k="' + k + '">No</button></div>' +
+    '<button class="link" data-act="qAlways" data-k="' + k + '">Always count quick visits</button></div>';
+}
+function quickCount(k) {
+  var i = info(fromK(k));
+  if (i.working && i.st !== 'office' && i.st !== 'leave') state.days[k] = { s: 'office', src: 'phone', t: state.short[k] || '' };
+  delete state.short[k];
+  if (k === K(new Date())) state.noAuto = null;
+  save(); renderAll();
 }
 function rowHtml(v, extra) {
   return '<div class="loc ' + v.cls + extra + '"><span class="loc-dot" aria-hidden="true"></span><div class="loc-text"><div class="loc-title">' + v.title + '</div>' + (v.sub ? '<div class="loc-sub">' + v.sub + '</div>' : '') + '</div>' + (v.act || '') + '</div>';
 }
+function needArea() { return !FRAMED && !!S().link && hasCampus() && !state.ui.area && (state.ui.phoneV || 0) >= 2; }
 function remoteView(now) {
   if (FRAMED) return { cls: '', title: 'Automatic check-in needs your own copy of the app.', sub: 'This preview inside Claude can’t use it. Help shows how.', act: '<button class="link" data-act="help">Help</button>' };
   if (!S().link) return { cls: '', title: 'Automatic check-in is off.', sub: 'Let your phone log office days, even when this app is closed.', act: '<button class="link" data-act="wizAuto">Set up</button>' };
   if (remote.state === 'error') return { cls: 'warn', title: 'Couldn’t reach your check-in link.', sub: 'Check your internet, then try again.', act: '<button class="link" data-act="syncNow">Try again</button>' };
+  if ((state.ui.phoneV || 0) < 2 || (remote.ver && remote.ver < 2)) return { cls: 'warn', title: 'Update your phone setup.', sub: 'So walking past doesn’t count, and you get one notification a day. About 10 minutes.', act: '<button class="link" data-act="upgrade">Start</button>' };
+  if (needArea()) return { cls: 'warn', title: 'Cover the whole campus.', sub: 'Make the office circle in your phone bigger, so every Nordea building and entrance counts. About 3 minutes.', act: '<button class="link" data-act="areaFix">Start</button>' };
+  var i = info(now);
+  if (remote.pending && K(new Date(remote.pending)) === K(now) && !i.office && i.working)
+    return { cls: 'inside', title: 'Your phone saw you arrive at ' + hhmm(new Date(remote.pending)) + '.', sub: 'Today counts at ' + hhmm(new Date(remote.pending + DWELL)) + ' if you’re still there. Or tap the button now.', act: '<button class="link" data-act="syncNow">Check now</button>' };
   var sub = remote.state === 'syncing' ? 'Checking for new check-ins…' : remote.last ? 'Last check-in from your phone: ' + relTime(new Date(remote.last)) + '.' : remote.state === 'ok' ? 'Waiting for your phone’s first check-in.' : '';
-  return { cls: 'inside', title: 'Automatic check-in is on.', sub: sub, act: '<button class="link" data-act="syncNow">Check now</button>' };
+  return { cls: 'inside', title: S().phoneMode === 'notify' ? 'Arrival reminder is on.' : 'Automatic check-in is on.', sub: sub, act: '<button class="link" data-act="syncNow">Check now</button>' };
 }
 
 function dayLabel(i, sug) {
@@ -1675,7 +1882,7 @@ function renderCalendar(sug, now) {
   $('#cal').classList.toggle('marking', markMode);
   $('#calTools').innerHTML = markMode
     ? '<div class="cal-tools on"><span>Tap days to switch them on or off.</span><button class="pill" data-act="markOff">Done</button></div>'
-    : '<div class="cal-tools"><span>Tap a day to change it.</span><button class="pill" data-act="markOn">Mark several days</button></div>';
+    : '<div class="cal-tools idle"><span class="cal-hint">Tap a day to change it.</span><button class="pill" data-act="leaveAdd">' + ICON.sun + 'Add leave</button><button class="pill" data-act="markOn">Mark several days</button></div>';
 }
 function quickToggle(k) {
   var d = fromK(k), i = info(d), now = new Date(), tK = K(now);
@@ -1836,21 +2043,24 @@ function openDay(k) {
     body = opts.map(function (o) {
       return '<button class="opt ' + o[0] + '" data-act="setDay" data-k="' + k + '" data-v="' + o[0] + '" aria-pressed="' + (cur === o[0]) + '"><span class="ic">' + o[2] + '</span><span>' + o[1] + '</span></button>';
     }).join('');
+    body += '<button class="link lv-more" data-act="leaveAdd" data-k="' + k + '">Away for longer? Add leave for several days</button>';
     var foot = '';
     if (i.st === 'office' && i.rec.src === 'phone') foot = 'Logged by your phone at ' + (i.rec.t || '') + '.';
     else if (i.st === 'office' && i.rec.src === 'auto') foot = 'Logged automatically at ' + (i.rec.t || '') + '.';
     else if (i.st === 'office' && i.rec.t) foot = 'Logged at ' + i.rec.t + '.';
+    else if (state.short[k] && !future) foot = 'Your phone saw a quick visit at ' + state.short[k] + ', under 5 minutes. Choose “I was in the office” to count it.';
     else foot = 'Leave and sick days don’t count as working days, so your target goes down.';
     body += '<p class="sheet-foot">' + foot + '</p>';
   }
   openSheet('day', head(title, sub) + body);
 }
 function setDay(k, v) {
-  var now = new Date(), tK = K(now);
+  var now = new Date(), tK = K(now), prev = state.days[k] ? state.days[k].s : null;
+  if (state.short[k]) { if (v === 'office') delete state.short[k]; else state.shortNo[k] = 1; }
   if (v === 'none') delete state.days[k];
   else if (v === 'office') { var r = { s: 'office', src: 'manual' }; if (k === tK) r.t = hhmm(now); state.days[k] = r; }
   else state.days[k] = { s: v };
-  if (k === tK) state.noAuto = (v === 'office') ? null : tK;
+  if (k === tK) { if (v === 'office') state.noAuto = null; else if (prev === 'office') state.noAuto = tK; }   // only pause after un-marking an office day
   save(); renderAll();
   var future = k > tK;
   toast({ office: 'Marked as an office day', leave: 'Marked as leave', plan: 'Planned', none: future ? 'Plan removed' : 'Marked as remote' }[v]);
@@ -1866,23 +2076,35 @@ function openSettings() {
   if (FRAMED) h += '<p class="sheet-foot" style="margin-top:0">This needs your own copy of the app (for example on GitHub Pages). It can’t run inside Claude.</p>';
   else if (s.link) {
     h += '<div class="set-row"><span>' + (remote.state === 'error' ? 'The link isn’t answering right now.' : remote.last ? 'On. Last check-in ' + relTime(new Date(remote.last)) + '.' : 'On. No check-ins yet.') + '</span><button class="link" data-act="syncNow">Check now</button></div>';
-    h += '<div class="copy-label">Arrival link (for your phone’s automation)</div>' + copyRow(s.link + '?a=in');
+    if ((state.ui.phoneV || 0) < 2 || (remote.ver && remote.ver < 2)) h += '<button class="btn wide" data-act="upgrade">Update your phone setup</button>';
+    else if (needArea()) h += '<button class="btn wide" data-act="areaFix">Cover the whole campus</button>';
+    if (s.phoneMode !== 'notify') h += '<div class="set-row" style="margin-top:8px"><span>Count quick visits too<small class="set-sub">For days you only pop in to tap your card. Walking past will count too.</small></span><button class="switch" role="switch" data-act="quickToggle" aria-checked="' + !!S().quick + '" aria-label="Count quick visits too"></button></div>';
+    h += '<div class="copy-label">' + (s.phoneMode === 'notify' ? 'Arrival link (reminder only)' : 'Arrival link') + '</div>' + copyRow(s.link + (s.phoneMode === 'notify' ? '?a=hi' : '?a=in'));
+    if (s.phoneMode !== 'notify') h += '<div class="copy-label">Leaving link</div>' + copyRow(s.link + '?a=out');
     h += '<div class="copy-label">Morning reminder link</div>' + copyRow(s.link + '?a=today');
-    h += '<button class="btn wide" data-act="wizAuto">Show the setup steps</button><button class="btn wide" data-act="linkRemove">Turn off automatic check-in</button>';
+    h += '<button class="btn wide" data-act="wizAuto">Show the setup steps</button><button class="btn wide" data-act="copyCode">Copy the script</button><button class="btn wide" data-act="linkRemove">Turn off automatic check-in</button>';
   } else h += '<p class="sheet-foot" style="margin-top:0">Let your phone log office days, even when this app is closed.</p><button class="btn wide" data-act="wizAuto">Set it up</button>';
   h += '</div>';
   h += '<div class="set-group"><div class="set-label">Office target</div><div class="set-row"><span>Share of working days</span><div class="mini-step"><button data-act="tgt" data-d="-5" aria-label="Lower target">−</button><output>' + s.target + '%</output><button data-act="tgt" data-d="5" aria-label="Raise target">+</button></div></div></div>';
   h += '<div class="set-group"><div class="set-label">Count the target per</div><div class="chips">' + periods.map(function (p) { return '<button class="chip" data-act="period" data-v="' + p[0] + '" aria-pressed="' + (s.period === p[0]) + '">' + p[1] + '</button>'; }).join('') + '</div></div>';
   h += '<div class="set-group"><div class="set-label">Days you like to go in (used for suggestions)</div><div class="chips">' + [1, 2, 3, 4, 5].map(function (n) { return '<button class="chip" data-act="pref" data-v="' + n + '" aria-pressed="' + (s.prefer.indexOf(n) >= 0) + '" aria-label="' + WD_LONG[n - 1] + '">' + WD_LONG[n - 1].slice(0, 3) + '</button>'; }).join('') + '</div></div>';
+  h += '<div class="set-group"><div class="set-label">Leave and vacations</div>' + leaveListHtml('') + '<button class="btn wide" data-act="leaveAdd">' + ICON.sun + 'Add leave</button></div>';
   h += '<div class="set-group"><div class="set-label">Holidays</div><div class="set-row"><span>Midsummer Eve and Christmas Eve are days off</span><button class="switch" role="switch" data-act="eves" aria-checked="' + s.eves + '" aria-label="Midsummer Eve and Christmas Eve are days off"></button></div></div>';
+  var campus = hasCampus(s.spots);
   h += '<div class="set-group"><div class="set-label">Your office</div><div class="chips">' + radii.map(function (r) { return '<button class="chip" data-act="radius" data-v="' + r + '" aria-pressed="' + (s.radius === r) + '">' + r + ' m</button>'; }).join('') + '</div>';
+  h += '<p class="sheet-foot" style="margin-top:6px">A day counts when you’re this close to ' + (campus ? 'any campus building' : 'your office') + '.</p>';
+  if (campus) {
+    var cd = loc.pos ? Math.min.apply(null, DEFAULT_SPOTS.map(function (x) { return haversine(loc.pos.lat, loc.pos.lng, x.lat, x.lng); })) : null;
+    h += '<div class="spot"><div><div class="spot-name">Nordea Vallila campus</div><div class="spot-sub">' + CAMPUS_ADDR + (cd !== null ? '. ' + fmtDist(cd) + ' from you' : '') + '</div></div><button class="link" data-act="campusDel">Remove</button></div>';
+  }
   h += s.spots.map(function (sp, idx) {
+    if (campus && isCampusSpot(sp)) return '';
     var dist = loc.pos ? fmtDist(haversine(loc.pos.lat, loc.pos.lng, sp.lat, sp.lng)) + ' from you' : sp.lat.toFixed(5) + ', ' + sp.lng.toFixed(5);
     return '<div class="spot"><div><div class="spot-name">' + esc(sp.name) + '</div><div class="spot-sub">' + dist + '</div></div>' + '<button class="link" data-act="spotDel" data-i="' + idx + '">Remove</button>' + '</div>';
   }).join('');
   if (!s.spots.length) h += '<p class="sheet-foot">No office set yet. Add it when you’re there, or pick the Vallila campus.</p>';
   if (GEO_OK) h += '<button class="btn wide" data-act="spotAdd">' + ICON.pin + 'Add where I am now</button>';
-  if (!sameSpots(s.spots, DEFAULT_SPOTS)) h += '<button class="btn wide" data-act="useVallila">Use the Vallila campus, Helsinki</button>';
+  if (!campus) h += '<button class="btn wide" data-act="useVallila">Use the Nordea Vallila campus</button>';
   if (GEO_OK) h += '<div class="set-row" style="margin-top:8px"><span>Also check my location when the app is open</span><button class="switch" role="switch" data-act="locToggle" aria-checked="' + s.autoLoc + '" aria-label="Check my location when the app is open"></button></div>';
   h += '</div>';
   var photo = getPhoto();
@@ -1895,17 +2117,20 @@ function openSettings() {
 function openHelp() {
   var h = head('How it works', '');
   h += '<div class="help">';
-  h += '<h4>Automatic check-in</h4><p>No web app can watch your location in the background, on any phone. So your phone’s own automation does it. When you arrive at the office, it opens your private check-in link. Office Days picks that up and counts the day, even if the app was closed.</p>';
+  h += '<button class="tour-cta" data-act="tourStart">' + FI.play + '<span><b>Take the tour</b><span class="set-sub">See what each part of the screen does.</span></span></button>';
+  h += '<h4>Automatic check-in</h4><p>No web app can watch your location in the background, on any phone. So your phone’s own automation does it, even when this app is closed. When you arrive, it tells your private link. ' + (S().quick ? 'Every arrival counts, even a quick one.' : 'The day counts after 5 minutes at the office, so walking past doesn’t count.') + ' You get at most one notification a day.</p>';
   h += FRAMED ? '<p>This preview runs inside Claude, which blocks it. Put your own copy of the app online (GitHub Pages is free), open that link, and follow the start screens.</p>' : '<p><button class="btn" data-act="wizAuto">' + (S().link ? 'Show the setup steps' : 'Set it up') + '</button></p>';
-  h += '<h4>When the app is open</h4><p>It also checks if you’re within ' + S().radius + ' m of your office and logs the day right away.</p>';
+  if (!FRAMED) h += '<h4>Quick visits</h4><p>Popped in for a minute to tap your card? A visit under 5 minutes looks like walking past, so it doesn’t count by itself. The app asks you about it on the Today card. You can also open the app while you’re there, or turn on “Count quick visits too” in Settings.</p>';
+  h += '<h4>Just open the app</h4><p>At the office, open Office Days. It checks that you’re within ' + S().radius + ' m of ' + (hasCampus() ? 'any Nordea campus building (' + CAMPUS_ADDR + ')' : 'your office') + ' and marks today right away. Any entrance works.</p>';
   if (!FRAMED) h += '<h4>Weather</h4><p>The picture at the top shows the weather where you are right now: sun, clouds, rain, sleet, snow, fog, evening or night. Tap the temperature for details. Your location is rounded to about 100 m and only used to look up the weather.</p>';
   h += '<h4>Add days you missed</h4><p>Tap any day in the calendar and choose “I was in the office”. To fix many days at once, tap “Mark several days”, then tap each day.</p>';
   h += '<h4>Location is blocked or keeps asking</h4><p>iPhone: Settings › Privacy & Security › Location Services › Safari Websites › While Using the App, with Precise Location on. Android: allow location for Chrome.</p>';
   h += '<h4>How the target is counted</h4><p>Working days are Monday to Friday, minus Finnish public holidays' + (S().eves ? ', Midsummer Eve and Christmas Eve' : '') + ', minus your leave days. The target is ' + S().target + '% of them, rounded up.</p><p>After 5 pm, today no longer counts as a day left, unless you were in the office.</p>';
-  h += '<h4>Leave and sick days</h4><p>Tap the day and choose “Leave or sick day”. It stops counting as a working day, so you need fewer office days.</p>';
+  h += '<h4>Leave, sick days and vacations</h4><p>One day: tap it in the calendar and choose “Leave or sick day”. Several days, like a vacation: tap “Add leave” under the calendar and pick the first and the last day. Weekends and holidays are skipped.</p><p>Leave days don’t count as working days, so you need fewer office days.</p>';
   if (needInstall() || deferredPrompt) h += '<h4>Add it to your Home Screen</h4><p>It then opens like a normal app.</p><p><button class="btn" data-act="install">' + ICON.download + 'Show me how</button></p>';
-  h += '<h4>A notification at the office</h4><p>Your phone’s automation can show one when you arrive, even if you don’t set up automatic logging. Settings › Automatic check-in › Set it up › “Just remind me”.</p>';
+  h += '<h4>Only a reminder</h4><p>Prefer to count days yourself? In the setup, pick “Just remind me”. You get one notification when you arrive. Open the app and it marks today by itself.</p>';
   h += FRAMED ? '<h4>Share with others</h4><p>Share the link of your own copy (for example GitHub Pages), not this Claude page. Everyone gets their own empty app.</p>' : '<h4>Share with others</h4><p>Tap “Share app” at the bottom. They get their own empty app. Nobody can see your days, and you can’t see theirs.</p>';
+  h += '<p style="margin-top:18px"><button class="btn" data-act="tour">What Office Days can do</button></p>';
   h += '</div>';
   openSheet('help', h);
 }
@@ -2033,110 +2258,587 @@ function guideHtml(kind) {
   }).join('') + '</div>';
 }
 
+/* ============ leave for a date range ============ */
+var lv = { from: '', to: '', fresh: '' };
+function nextWorkK(d) { for (var x = d, n = 0; n < 30; n++, x = addD(x, 1)) { var i = info(x); if (!i.weekend && !i.hol) return K(x); } return K(d); }
+function lvDay(k, yr) { var d = fromK(k); return fmtDate(d) + (yr ? ' ' + d.getFullYear() : ''); }
+function lvRange(a, b) {
+  var A = fromK(a), Z = fromK(b), y = new Date().getFullYear(), yr = A.getFullYear() !== y || Z.getFullYear() !== y;
+  if (a === b) return lvDay(a, yr);
+  if (A.getFullYear() === Z.getFullYear() && A.getMonth() === Z.getMonth()) return A.getDate() + '–' + Z.getDate() + ' ' + MON3[A.getMonth()] + (yr ? ' ' + A.getFullYear() : '');
+  return A.getDate() + ' ' + MON3[A.getMonth()] + (A.getFullYear() !== Z.getFullYear() ? ' ' + A.getFullYear() : '') + ' – ' + Z.getDate() + ' ' + MON3[Z.getMonth()] + (yr ? ' ' + Z.getFullYear() : '');
+}
+// what adding leave from a to b would do
+function lvCount(a, b) {
+  var r = { work: 0, add: 0, office: 0, had: 0 };
+  for (var d = fromK(a), n = 0; K(d) <= b && n < 400; d = addD(d, 1), n++) {
+    var i = info(d);
+    if (i.weekend || i.hol) continue;
+    r.work++;
+    if (i.st === 'office') r.office++; else if (i.st === 'leave') r.had++; else r.add++;
+  }
+  return r;
+}
+function lvEffect(a, b) {
+  var now = new Date(), p = periodOf(now, S().period), pa = K(p.start), pb = K(p.end), n = 0;
+  if (b < pa || a > pb) return '';
+  for (var d = fromK(a > pa ? a : pa); K(d) <= (b < pb ? b : pb); d = addD(d, 1)) { var i = info(d); if (i.working && !i.office) n++; }
+  var st = computeStats(p, now), W2 = st.W - n, T2 = W2 ? Math.ceil(W2 * S().target / 100 - 1e-9) : 0;
+  return n && T2 < st.T ? ' Your target ' + pIn(p, now) + ' goes from ' + st.T + ' to ' + T2 + ' office days.' : '';
+}
+// leave days that belong together: only weekends, holidays or office days you kept between them
+function leaveRuns() {
+  var runs = [];
+  Object.keys(state.days).filter(function (k) { return state.days[k].s === 'leave' && info(fromK(k)).leave; }).sort().forEach(function (k) {
+    var last = runs[runs.length - 1];
+    if (last && onlyOff(last.to, k)) { last.to = k; last.n++; } else runs.push({ from: k, to: k, n: 1 });
+  });
+  return runs;
+}
+function onlyOff(a, b) {
+  for (var d = addD(fromK(a), 1), n = 0; K(d) < b; d = addD(d, 1), n++) { var i = info(d); if (n > 14 || (!i.weekend && !i.hol && i.st !== 'office')) return false; }
+  return true;
+}
+function leaveListHtml(hi) {
+  var tK = K(new Date()), lim = K(addD(new Date(), -60)), runs = leaveRuns().filter(function (r) { return r.to >= lim; });
+  if (!runs.length) return '<p class="sheet-foot" style="margin-top:0">No leave in your calendar yet.</p>';
+  return runs.slice(-12).map(function (r) {
+    return '<div class="spot' + (hi && r.from <= hi && hi <= r.to ? ' lv-new' : '') + '"><div><div class="spot-name">' + lvRange(r.from, r.to) + '</div><div class="spot-sub">' + r.n + ' ' + plural(r.n, 'working day', 'working days') + (r.to < tK ? ', past' : r.from <= tK ? ', now' : '') + '</div></div>' +
+      '<button class="link" data-act="leaveDel" data-from="' + r.from + '" data-to="' + r.to + '" aria-label="Remove leave ' + lvRange(r.from, r.to) + '">Remove</button></div>';
+  }).join('');
+}
+function openLeave(k0, keep) {
+  if (!keep) { var f = k0 || nextWorkK(new Date()); lv = { from: f, to: f, fresh: '' }; }
+  var h = head('Add leave', 'Vacation, sick days or any days off.');
+  h += '<div class="lv-dates"><label><span>First day</span><input type="date" class="field date" data-field="lvFrom" value="' + lv.from + '"></label>' +
+    '<label><span>Last day</span><input type="date" class="field date" data-field="lvTo" value="' + lv.to + '" min="' + lv.from + '"></label></div>';
+  h += '<p class="lv-sum" id="lvSum" aria-live="polite"></p><button class="primary" data-act="leaveSave" id="lvSave">' + ICON.sun + 'Add leave</button>';
+  h += '<div class="set-group"><div class="set-label">Your leave</div>' + leaveListHtml(keep ? lv.fresh : '') + '</div>';
+  openSheet('leave', h);
+  leaveSum();
+}
+function leaveSum() {
+  var out = $('#lvSum'), btn = $('#lvSave'), a = lv.from, b = lv.to, bad = '', txt = '', c = null;
+  if (!out || !btn) return;
+  if (!a || !b) bad = 'Pick the first and the last day.';
+  else if (b < a) bad = 'The last day is before the first day.';
+  else if ((fromK(b) - fromK(a)) / 864e5 > 366) bad = 'Pick up to one year at a time.';
+  else {
+    c = lvCount(a, b);
+    if (!c.work) bad = 'There are no working days on these dates.';
+    else if (!c.add) txt = c.had ? 'These days are already leave.' : 'You were in the office on these days.';
+    else txt = c.add + ' ' + plural(c.add, 'working day', 'working days') + ' off. Weekends and holidays are skipped.' + (c.office ? ' Days you were in the office stay as they are.' : '') + lvEffect(a, b);
+  }
+  out.textContent = bad || txt; out.className = 'lv-sum' + (bad ? ' bad' : '');
+  btn.disabled = !!bad || !(c && c.add);
+}
+function leaveSave() {
+  var a = lv.from, b = lv.to, n = 0, first = '', last = '';
+  if (!a || !b || b < a) return;
+  for (var d = fromK(a), c = 0; K(d) <= b && c < 400; d = addD(d, 1), c++) {
+    var i = info(d);
+    if (i.weekend || i.hol || i.st === 'office' || i.st === 'leave') continue;
+    state.days[i.k] = { s: 'leave' }; n++;
+    if (!first) first = i.k;
+    last = i.k;
+    if (state.short[i.k]) state.shortNo[i.k] = 1;
+  }
+  if (!n) return;
+  save(); renderAll();
+  lv.fresh = first; openLeave(null, true);
+  toast('Leave added: ' + lvRange(first, last) + ', ' + n + ' ' + plural(n, 'working day', 'working days'));
+}
+function lvField(e) {
+  var f = e.target && e.target.getAttribute && e.target.getAttribute('data-field');
+  if (f !== 'lvFrom' && f !== 'lvTo') return;
+  lv[f === 'lvFrom' ? 'from' : 'to'] = e.target.value;
+  var to = document.querySelector('[data-field="lvTo"]');
+  if (f === 'lvFrom' && lv.from && (!lv.to || lv.to < lv.from)) { lv.to = lv.from; if (to) to.value = lv.to; }
+  if (to && lv.from) to.min = lv.from;
+  leaveSum();
+}
+document.addEventListener('input', lvField);
+document.addEventListener('change', lvField);
+
+/* ============ first-visit tour: tips that point at each part of the screen ============ */
+var tour = { on: false, i: 0, list: [], raf: 0, cur: null, anim: false, th: 0, sTop: 0, sBot: 0, rt: 0, tok: 0, guard: 0 };
+function tourSteps() {
+  var now = new Date(), st = computeStats(viewPeriod(), now), auto = !FRAMED && GEO_OK && S().autoLoc && S().spots.length;
+  var goal = (st.status === 'open' || st.status === 'short')
+    ? 'The big number is how many more office days you need ' + pIn(st.p, now) + '. It goes down each time you go in.'
+    : 'This shows where you stand ' + pIn(st.p, now) + '.' + (st.status === 'done' ? ' You’ve reached your target. Nice!' : '');
+  var today = 'Shows if today counts as an office day. ' + (auto ? 'At the office, just open the app. It marks the day by itself.' : 'At the office, tap the button here to count the day.');
+  if (!FRAMED && S().link) today += S().phoneMode === 'notify' ? ' Your phone also reminds you when you arrive.' : ' Your phone also logs it, even when the app is closed.';
+  var all = [
+    { el: '#heroCopy', top: true, t: 'Your goal', d: goal },
+    { el: '#status', t: 'Your progress', d: 'Green fills up as you go in. The line is your ' + S().target + '% target. “You can skip” is how many more days you can stay home.' },
+    { el: '#today', t: 'Today', d: today },
+    { el: '#calSec', t: 'Your calendar', d: 'Green days are office days. Tap any day to change it or plan it. Away for a while? Tap “Add leave”.' },
+    { el: '#planSec', t: 'Your plan', d: 'Shows how many days to go in each week, so you don’t have to rush at the end.' },
+    { el: '#simSec', t: 'What if I skip days?', d: 'Thinking of a day at home or on leave? Add days here to see if you still reach your target.' },
+    { el: '.hero-actions [data-act="settings"]', top: true, t: 'Settings', d: 'Change your target, your office and your phone setup. You can also back up your days here.' },
+    { el: '.hero-actions [data-act="help"]', top: true, t: 'Help', d: 'Answers to common questions. You can watch this tour again here any time.' }
+  ];
+  return all.filter(function (x) {
+    var e = document.querySelector(x.el);
+    if (!e || !e.innerHTML.trim()) return false;
+    var r = e.getBoundingClientRect();
+    return r.width > 10 && r.height > 10;
+  });
+}
+function tourRaw(x) {
+  var e = document.querySelector(x.el);
+  if (!e) return null;
+  var r = e.getBoundingClientRect(), pad = r.width < 60 && r.height < 60 ? 4 : 6, br = getComputedStyle(e).borderTopLeftRadius || '';
+  var rad = br.indexOf('%') > 0 ? Math.min(r.width, r.height) / 2 : (parseFloat(br) || 0);
+  return { x: r.left - pad, y: r.top - pad, w: r.width + pad * 2, h: r.height + pad * 2, r: Math.max(12, rad + pad) };
+}
+// room left for the spotlight when the tip sits next to it
+function tourRoom() { return window.innerHeight - tour.sTop - tour.sBot - tour.th - 14 - 24; }
+function tourFit(r) {
+  var o = { x: r.x, y: r.y, w: r.w, h: r.h, r: r.r }, top = tour.sTop + 3, room = tourRoom(), vw = document.documentElement.clientWidth;
+  if (o.y < top && o.y + o.h > top + 40) { o.h -= top - o.y; o.y = top; }
+  if (o.x < 4) { o.w -= 4 - o.x; o.x = 4; }
+  if (o.x + o.w > vw - 4) o.w = vw - 4 - o.x;
+  if (room > 60 && o.h > room) o.h = room;
+  o.r = Math.min(o.r, o.h / 2, o.w / 2);
+  return o;
+}
+// where to scroll so the part and its tip sit in the middle of the screen
+function tourScrollFor(x, raw) {
+  if (x.top) return 0;
+  var vh = window.innerHeight, sy = window.pageYOffset || 0, room = tourRoom();
+  var block = Math.min(raw.h, Math.max(60, room)) + 14 + tour.th;
+  var want = Math.max(tour.sTop + 12, (vh - tour.sBot + tour.sTop - block) / 2);
+  var max = Math.max(0, document.documentElement.scrollHeight - vh);
+  return Math.round(Math.min(max, Math.max(0, sy + raw.y - want)));
+}
+function tourSpot(r) {
+  var e = $('#tourSpot').style;
+  e.left = r.x + 'px'; e.top = r.y + 'px'; e.width = r.w + 'px'; e.height = r.h + 'px'; e.borderRadius = r.r + 'px';
+  tour.cur = r;
+}
+function tourTip(r) {
+  var tip = $('#tourTip'), vh = window.innerHeight, vw = document.documentElement.clientWidth, th = tip.offsetHeight, tw = tip.offsetWidth, G = 14, M = 12, cls, top;
+  if (r.y + r.h + G + th <= vh - tour.sBot - M) { cls = 'below'; top = r.y + r.h + G; }
+  else if (r.y - G - th >= tour.sTop + M) { cls = 'above'; top = r.y - G - th; }
+  else { cls = 'free'; top = vh - tour.sBot - M - th; }
+  var cx = r.x + r.w / 2, left = Math.min(Math.max(M, cx - tw / 2), vw - M - tw);
+  tip.style.left = Math.round(left) + 'px'; tip.style.top = Math.round(top) + 'px';
+  tip.style.setProperty('--ax', Math.round(Math.min(tw - 24, Math.max(24, cx - left))) + 'px');
+  tip.classList.remove('below', 'above', 'free'); tip.classList.add(cls);
+}
+function tourFill() {
+  var x = tour.list[tour.i], n = tour.list.length, last = tour.i === n - 1, tip = $('#tourTip');
+  tip.classList.remove('show');
+  tip.innerHTML = '<button class="tour-x" data-act="tourEnd" aria-label="Close the tour">' + ICON.close + '</button>' +
+    '<h3 class="tour-t" id="tourT">' + x.t + '</h3><p class="tour-d" id="tourD">' + x.d + '</p>' +
+    '<div class="tour-f"><span class="tour-n">' + (tour.i + 1) + ' of ' + n + '</span>' +
+    (tour.i ? '<button class="tour-back" data-act="tourBack">Back</button>' : '') +
+    '<button class="tour-next" data-act="tourNext">' + (last ? 'Done' : 'Next') + '</button></div>';
+}
+function tourGo(i, instant) {
+  if (!tour.on) return;
+  tour.i = Math.max(0, Math.min(tour.list.length - 1, i));
+  var x = tour.list[tour.i], tip = $('#tourTip');
+  tourFill();
+  tour.th = tip.offsetHeight;
+  var raw = tourRaw(x);
+  if (!raw) { if (tour.i < tour.list.length - 1) tourGo(tour.i + 1, instant); else tourEnd(true); return; }
+  var sy = window.pageYOffset || 0, y1 = tourScrollFor(x, raw);
+  var fin = tourFit({ x: raw.x, y: raw.y + sy - y1, w: raw.w, h: raw.h, r: raw.r });
+  var from = instant ? null : tour.cur, calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var D = from && !calm ? 460 : 0, t0 = 0, tok = ++tour.tok;
+  cancelAnimationFrame(tour.raf); clearTimeout(tour.guard);
+  tour.anim = true;
+  function land() {
+    if (tok !== tour.tok || !tour.on) return;
+    tour.anim = false; clearTimeout(tour.guard);
+    var r = tourRaw(x);
+    tourSpot(tourFit(r || fin));
+    tourTip(tour.cur);
+    tip.classList.add('show');
+    $('#tour').classList.add('on');
+    try { tip.focus({ preventScroll: true }); } catch (e) {}
+  }
+  if (!D) { window.scrollTo(0, y1); land(); return; }
+  function frame(now) {
+    if (!tour.on || tok !== tour.tok) return;
+    if (!t0) t0 = now;
+    var k = Math.min(1, (now - t0) / D), e = k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+    window.scrollTo(0, Math.round(sy + (y1 - sy) * e));
+    tourSpot({ x: from.x + (fin.x - from.x) * e, y: from.y + (fin.y - from.y) * e, w: from.w + (fin.w - from.w) * e, h: from.h + (fin.h - from.h) * e, r: from.r + (fin.r - from.r) * e });
+    if (k < 1) tour.raf = requestAnimationFrame(frame); else land();
+  }
+  tour.raf = requestAnimationFrame(frame);
+  // if frames stop (hidden tab, frozen clock), still finish the move
+  tour.guard = setTimeout(function () { if (tok === tour.tok && tour.anim) { cancelAnimationFrame(tour.raf); window.scrollTo(0, y1); land(); } }, D + 300);
+}
+function tourRefresh() {
+  if (!tour.on || tour.anim) return;
+  var r = tourRaw(tour.list[tour.i]);
+  if (!r) return;
+  tourSpot(tourFit(r)); tourTip(tour.cur);
+}
+function tourScroll() { if (tour.on && !tour.anim) tourRefresh(); }
+function tourResize() { clearTimeout(tour.rt); tour.rt = setTimeout(function () { if (tour.on) tourGo(tour.i, true); }, 160); }
+function startTour() {
+  if (tour.on || !$('#wiz').hidden) return;
+  closeSheet();
+  var list = tourSteps();
+  if (!list.length) return;
+  tour.on = true; tour.list = list; tour.i = 0; tour.cur = null;
+  var el = $('#tour'), cs;
+  el.classList.remove('on'); el.hidden = false;
+  cs = getComputedStyle(el.querySelector('.tour-probe'));
+  tour.sTop = parseFloat(cs.marginTop) || 0; tour.sBot = parseFloat(cs.marginBottom) || 0;
+  window.addEventListener('resize', tourResize);
+  window.addEventListener('scroll', tourScroll, { passive: true });
+  requestAnimationFrame(function () { tourGo(0, true); });
+}
+function tourNext() { if (tour.i >= tour.list.length - 1) tourEnd(true); else tourGo(tour.i + 1); }
+function tourBack() { if (tour.i > 0) tourGo(tour.i - 1); }
+function tourEnd(done) {
+  if (!tour.on) return;
+  tour.on = false; tour.anim = false; tour.tok++; cancelAnimationFrame(tour.raf); clearTimeout(tour.guard); clearTimeout(tour.rt);
+  window.removeEventListener('resize', tourResize);
+  window.removeEventListener('scroll', tourScroll);
+  if (!state.ui.tour) { state.ui.tour = 1; save(); }
+  var el = $('#tour');
+  el.classList.remove('on'); $('#tourTip').classList.remove('show');
+  setTimeout(function () { if (!tour.on) { el.hidden = true; tour.cur = null; } }, 260);
+  toast(done ? 'You’re all set' : 'You can watch the tour again in Help');
+}
+// first visit: show it once, after the start screens, when nothing else is open
+function maybeTour(ms) {
+  setTimeout(function () {
+    if (tour.on || state.ui.tour || state.wiz < 2 || window.__OD_NOTOUR || document.hidden) return;
+    if (!$('#wiz').hidden || sheetKind !== null) return;
+    startTour();
+  }, ms || 0);
+}
+$('#tour').addEventListener('wheel', function (e) { e.preventDefault(); }, { passive: false });
+$('#tour').addEventListener('touchmove', function (e) { if (!e.target.closest('#tourTip')) e.preventDefault(); }, { passive: false });
+
 /* ============ start screens ============ */
+function campusSpots() { return DEFAULT_SPOTS.map(function (x) { return { name: x.name, lat: x.lat, lng: x.lng }; }); }
+function isCampusSpot(x) { return DEFAULT_SPOTS.some(function (d) { return Math.abs(d.lat - x.lat) < 1e-6 && Math.abs(d.lng - x.lng) < 1e-6; }); }
+function hasCampus(list) { list = list || S().spots; return DEFAULT_SPOTS.every(function (d) { return list.some(function (x) { return Math.abs(d.lat - x.lat) < 1e-6 && Math.abs(d.lng - x.lng) < 1e-6; }); }); }
 function sameSpots(a, b) { return a.length === b.length && a.every(function (x, i) { return Math.abs(x.lat - b[i].lat) < 1e-6 && Math.abs(x.lng - b[i].lng) < 1e-6; }); }
-var wiz = { step: 'hello', hist: [], os: IS_ANDROID ? 'android' : 'ios', other: false, linkOk: '', mode: 'auto', single: false, installed: false, didPhone: false };
+var wiz = { step: 'hello', hist: [], os: IS_ANDROID ? 'android' : 'ios', other: false, linkOk: '', mode: 'auto', single: false, installed: false, didPhone: false, flow: 'setup', g: { i: 0, all: false }, linkDraft: '', fixNew: false };
+// flows: setup (first run), phone (Settings › set up), upgrade (what's new in v8), tour (welcome again)
 function wizPath() {
   if (FRAMED) return ['hello', 'name', 'target', 'auto', 'done'];
+  var leave = wiz.mode === 'notify' ? [] : ['leave'];
+  if (wiz.flow === 'upgrade') return ['news', 'script', wiz.fixNew ? 'phone' : 'fix'].concat(leave, ['done']);
+  if (wiz.flow === 'tour') return ['hello'];
+  if (wiz.flow === 'area') return ['area'];
+  var tail = ['link', 'phone'].concat(leave, ['remind', 'done']);
+  if (wiz.flow === 'phone') return ['auto'].concat(tail);
   var p = ['hello'];
   if (needInstall()) p.push('install');
-  p.push('name', 'office', 'target', 'auto');
-  p = p.concat(wiz.mode === 'notify' ? ['phone'] : ['link', 'phone', 'remind']);
-  p.push('done');
-  return p;
+  return p.concat(['name', 'office', 'target', 'auto'], tail);
 }
-function openWiz(step, single) {
+function openWiz(step, single, flow, at) {
   wiz.step = step || 'hello'; wiz.hist = []; wiz.single = !!single;
-  wiz.other = !sameSpots(S().spots, DEFAULT_SPOTS);
+  wiz.flow = flow || (wiz.step === 'news' ? 'upgrade' : 'setup');
+  wiz.mode = S().phoneMode === 'notify' ? 'notify' : 'auto';
+  wiz.g = { i: 0, all: false }; wiz.fixNew = false;
+  if (at) { wiz.g = { i: at.i || 0, all: !!at.a }; wiz.mode = at.m; wiz.os = at.o; wiz.fixNew = !!at.x; }
+  wiz.other = !hasCampus();
   closeSheet();
   $('#wiz').hidden = false; document.body.classList.add('lock');
   renderWiz();
 }
-function closeWiz() { $('#wiz').hidden = true; document.body.classList.remove('lock'); }
-function wizTo(step) { wiz.hist.push(wiz.step); wiz.step = step; renderWiz(); }
-function wizBack() { if (wiz.hist.length) { wiz.step = wiz.hist.pop(); renderWiz(); } }
+function closeWiz() { $('#wiz').hidden = true; document.body.classList.remove('lock'); if (state.ui.resume) { state.ui.resume = null; save(); } maybeTour(700); }
+function wizTo(step) { wiz.hist.push(wiz.step); wiz.step = step; wiz.g = { i: 0, all: false }; renderWiz(); }
+function wizBack() {
+  var gs = curGuide();
+  if (gs && !wiz.g.all && wiz.g.i > 0) { wiz.g.i = Math.min(wiz.g.i, gs.length - 1) - 1; renderWiz(); return; }
+  if (wiz.hist.length) { wiz.step = wiz.hist.pop(); wiz.g = { i: 99, all: false }; renderWiz(); }
+}
 function wizNextStep() { var o = wizPath(), i = o.indexOf(wiz.step === 'opennow' ? 'install' : wiz.step); wizTo(o[Math.min(o.length - 1, i + 1)]); }
 function finishWiz() {
-  state.wiz = 2; state.setup = true; save(); closeWiz(); heroKey = ''; renderAll();
+  var upg = wiz.flow === 'upgrade';
+  if (S().link) state.ui.phoneV = 2;
+  if (S().link && (!upg || wiz.fixNew)) state.ui.area = 1;   // the new steps already make the circle big enough
+  state.wiz = 2; state.setup = true; state.ui.resume = null; save(); closeWiz(); heroKey = ''; renderAll();
+  if (upg) { toast('All updated ✓'); syncRemote(); return; }
   if (GEO_OK && loc.state !== 'denied') { S().autoLoc = true; save(); if (watchId !== null && loc.pos) recheck(); else startWatch(); }
   syncRemote();
 }
 function copyRow(text) { return '<div class="copyrow"><code>' + esc(text) + '</code><button data-act="copy" data-text="' + esc(text) + '">Copy</button></div>'; }
 function chip(t) { return '<button class="code-chip" data-act="copy" data-text="' + esc(t) + '" aria-label="Copy ' + esc(t) + '">' + esc(t) + '</button>'; }
-function officeTerm() { return sameSpots(S().spots, DEFAULT_SPOTS) ? chip('Satamaradankatu 5, Helsinki') : 'your office address'; }
-var REMIND_TEXT = 'You’re at the office 🏢 Open Office Days to log today.';
-// iPhone (iOS 26 wording; older iPhones say "New Blank Automation" instead of "Create New Shortcut")
-function iosArrive() {
-  return '<li>Open the <b>Shortcuts</b> app. Tap <b>Automation</b> at the bottom.</li>' +
-    '<li>Tap <b>+</b> at the top right. (No automations yet? Tap <b>New Automation</b> in the middle.)</li>' +
-    '<li>Scroll down and tap <b>Arrive</b>.</li>' +
-    '<li>Tap <b>Choose</b> next to Location. In the search field type ' + officeTerm() + ', tap the right address, then tap <b>Done</b>.</li>' +
-    '<li>Keep <b>Any Time</b>. Select <b>Run Immediately</b>. If you see <b>Notify When Run</b>, you can switch it off.</li>' +
-    '<li>Tap <b>Next</b> at the top right, then tap <b>Create New Shortcut</b>. (Older iPhones say <b>New Blank Automation</b>.)</li>';
+function officeTerm() { return hasCampus() ? chip('Satamaradankatu 5, Helsinki') : 'your office address'; }
+function B(t) { return '<b>' + t + '</b>'; }
+var FI = (function () {
+  var o = function (d, px) { return '<svg viewBox="0 0 24 24" width="' + (px || 22) + '" height="' + (px || 22) + '" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + d + '</svg>'; };
+  return {
+    arrive: o('<path d="M12 21s-6.5-5.7-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 15.3 12 21 12 21z"/><path d="M9.3 9.8l1.9 1.9 3.6-3.7"/>'),
+    goal: o('<path d="M4 20h16"/><path d="M7 16.5v-3.5M12 16.5V8.5M17 16.5V6"/>'),
+    plan: o('<rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M8.5 3v4M15.5 3v4"/><path d="M9.3 14.6l1.9 1.9 3.6-3.6"/>'),
+    lock: o('<rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/>'),
+    clock: o('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'),
+    bell: o('<path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 1.5h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/>'),
+    phone: o('<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M9.6 12.1l1.7 1.7 3.2-3.3"/>'),
+    card: o('<rect x="3.5" y="6" width="17" height="12" rx="2.5"/><path d="M7 10.5h5M7 13.5h3"/><circle cx="16" cy="12" r="1.6"/>'),
+    cardSm: o('<rect x="3.5" y="6" width="17" height="12" rx="2.5"/><path d="M7 10.5h5M7 13.5h3"/><circle cx="16" cy="12" r="1.6"/>', 19),
+    phoneSm: o('<rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M9.6 12.1l1.7 1.7 3.2-3.3"/>', 17),
+    play: o('<circle cx="12" cy="12" r="9"/><path d="M10.3 8.6l5 3.4-5 3.4z" fill="currentColor"/>', 24),
+    sun: o('<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/>'),
+    whatif: o('<rect x="2.5" y="6.5" width="19" height="11" rx="5.5"/><path d="M6.5 12h3.5M14.5 12h3.5M16.25 10.25v3.5"/>'),
+    fix: o('<rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M8.5 3v4M15.5 3v4"/><path d="M9.5 17.5l.6-2.2 3.9-3.9 1.6 1.6-3.9 3.9z"/>'),
+    cloud: o('<path d="M9 3.5v1.3M3.8 8.7H2.5M5.3 5l.9.9M12.7 5l-.9.9"/><path d="M5.6 11.3a3.6 3.6 0 0 1 6.7-2.5"/><path d="M8.2 20h9.3a3.6 3.6 0 0 0 .3-7.2 5 5 0 0 0-9.5 1 3.1 3.1 0 0 0-.1 6.2z"/>'),
+    share: o('<path d="M12 15V3.5M8 7.5l4-4 4 4"/><path d="M5 11.5v7A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-7"/>')
+  };
+})();
+function feat(icon, title, text) { return '<li><span class="fi">' + icon + '</span><div><b>' + title + '</b><span class="ft">' + text + '</span></div></li>'; }
+// everything the app can do: shown on the last start screen and from Help
+function featList() {
+  var campus = hasCampus(), notify = S().phoneMode === 'notify';
+  var grp = function (label, items) { return '<p class="feat-h">' + label + '</p><ul class="feat feat-all">' + items.join('') + '</ul>'; };
+  return grp('Logging days', [
+    feat(FI.arrive, notify ? 'A reminder when you arrive' : 'Logs office days for you',
+      (FRAMED ? 'In your own copy of the app, your phone notices when you arrive' : notify ? 'Your phone tells you when you get to the office' : 'Your phone notices when you arrive') +
+      (campus ? ', at any Nordea building.' : '.') + (notify ? '' : ' Walking past doesn’t count.')),
+    feat(FI.phone, 'Open the app at the office', 'It marks today by itself' + (campus ? ', whichever entrance you use.' : '.')),
+    FRAMED || notify ? '' : feat(FI.card, 'Quick visits', 'Popped in just to tap your card? The app asks if it counts.')
+  ]) + grp('Planning', [
+    feat(FI.goal, 'See where you stand', 'How many office days you still need, and how many you can skip.'),
+    feat(FI.plan, 'A plan for every week', 'Suggested office days that skip Finnish holidays. Tap a day to plan it.'),
+    feat(FI.sun, 'Leave and vacations', 'Add one day off or a whole vacation. Your target goes down.'),
+    feat(FI.whatif, 'What if I skip days?', 'Check if you still reach your target with days at home or on leave.'),
+    feat(FI.fix, 'Fix any day', 'Tap a day in the calendar, or mark several days at once.')
+  ]) + grp('Extras', [
+    FRAMED ? '' : feat(FI.bell, 'Morning reminder', 'Optional: your plan for the day at 8:00 on workdays.'),
+    WX_OK ? feat(FI.cloud, 'Weather where you are', 'The picture at the top shows the weather right now. Tap the temperature for more.') : '',
+    feat(FI.lock, 'Private by design', 'Your days stay on your phone. Only you see them.'),
+    feat(FI.share, 'Backup and share', 'Keep a backup of your days, and share the app with colleagues.')
+  ]);
 }
-function iosMorning() {
-  return '<li>Open the <b>Shortcuts</b> app. Tap <b>Automation</b> at the bottom, then <b>+</b> at the top right.</li>' +
-    '<li>Tap <b>Time of Day</b> and set the time to <b>8:00</b>.</li>' +
-    '<li>Under Repeat, tap <b>Weekly</b> and keep only <b>Monday to Friday</b> selected.</li>' +
-    '<li>Select <b>Run Immediately</b>. Tap <b>Next</b>, then tap <b>Create New Shortcut</b>.</li>';
+
+/* ---- step-by-step guides ---- */
+function iosVer() { return state.ui.iosv || (SAFARI_VER >= 27 ? '27' : '26'); }
+function plat() { return wiz.os === 'android' ? 'android' : 'ios' + iosVer(); }
+function platTabs() {
+  var p = plat(), b = function (v, label) { return '<button data-act="wizPlat" data-v="' + v + '" aria-pressed="' + (p === v) + '">' + label + '</button>'; };
+  return '<div class="seg three" role="group" aria-label="Your phone">' + b('ios26', 'iOS 26') + b('ios27', 'iOS 27') + b('android', 'Android') + '</div>' +
+    (p === 'android' ? '' : '<p class="vhint">Not sure? Settings › General › About › iOS Version. Older than 26? Use iOS 26.</p>');
 }
-function iosLinkActions(url, expect) {
-  return '<li>Tap <b>Search Actions</b> at the bottom. Type ' + chip('Get Contents of URL') + ' and tap it in the results.</li>' +
-    '<li>In the new action, tap the blue word <b>URL</b>. Paste this link exactly as it is, then tap outside the field:' + copyRow(url) + '</li>' +
-    '<li>Tap <b>Search Actions</b> again. Type ' + chip('Show Notification') + ' and tap it.</li>' +
-    '<li>Tap the text inside <b>Show notification</b> (it may say Hello World) and delete it. In the bar above the keyboard, tap <b>Contents of URL</b>.</li>' +
-    '<li>Tap <b>▶</b> at the bottom right to test. You should see ' + expect + '.</li>' +
-    '<li>Tap the blue <b>✓</b> at the top right to save. Done!</li>';
+function curGuide() {
+  if (FRAMED || ['link', 'script', 'phone', 'fix', 'leave', 'remind', 'area'].indexOf(wiz.step) < 0) return null;
+  return guideSteps(wiz.step);
 }
-function iosNotifyActions() {
-  return '<li>Tap <b>Search Actions</b> at the bottom. Type ' + chip('Show Notification') + ' and tap it in the results.</li>' +
-    '<li>Tap the text inside <b>Show notification</b> (it may say Hello World) and delete it. Paste this text exactly as it is:' + copyRow(REMIND_TEXT) + '</li>' +
-    '<li>Tap <b>▶</b> at the bottom right to test. You should see the notification.</li>' +
-    '<li>Tap the blue <b>✓</b> at the top right to save. Done!</li>';
+function gdHtml(steps) {
+  var n = steps.length, i = clamp(wiz.g.i, 0, n - 1);
+  wiz.g.i = i;
+  if (wiz.g.all) return '<div class="gd gd-all"><div class="gd-head"><span>All ' + n + ' steps</span><button class="link" data-act="gAll">One at a time</button></div><ol class="steps">' +
+    steps.map(function (x) { return '<li>' + B(x.t) + (x.d ? '<br>' + x.d : '') + (x.x || '') + '</li>'; }).join('') + '</ol></div>';
+  var st = steps[i];
+  return '<div class="gd"><div class="gd-head"><span>Step ' + (i + 1) + ' of ' + n + '</span><button class="link" data-act="gAll">See all steps</button></div>' +
+    '<div class="gd-bar" aria-hidden="true">' + steps.map(function (x, k) { return '<i class="' + (k < i ? 'done' : k === i ? 'on' : '') + '"></i>'; }).join('') + '</div>' +
+    '<div class="gd-card" aria-live="polite"><span class="gd-num" aria-hidden="true">' + (i + 1) + '</span><div class="gd-t">' + st.t + '</div>' + (st.d ? '<div class="gd-d">' + st.d + '</div>' : '') + (st.x ? '<div class="gd-x">' + st.x + '</div>' : '') + '</div></div>';
 }
-function androidArrive(notify, link) {
-  return '<ol class="steps">' +
-    '<li>Install <b>MacroDroid</b> from Google Play (free) and open it.</li>' +
-    '<li>Tap <b>Add Macro</b>.</li>' +
-    '<li>Under <b>Triggers</b>, tap <b>+</b> and search ' + chip('Geofence') + '. Pick <b>Geofence Trigger</b>, then <b>Area entered</b>.</li>' +
-    '<li>Add a zone at ' + (sameSpots(S().spots, DEFAULT_SPOTS) ? chip('Satamaradankatu 5, Helsinki') : 'your office') + ', about 200 m wide, and save it.</li>' +
-    (notify
-      ? '<li>Under <b>Actions</b>, tap <b>+</b> and search ' + chip('Notification') + '. Pick <b>Display Notification</b> and paste this as the text:' + copyRow(REMIND_TEXT) + '</li>'
-      : '<li>Under <b>Actions</b>, tap <b>+</b> and search ' + chip('HTTP Request') + '. Pick it, set the method to <b>GET</b>, and paste this link exactly as it is:' + copyRow(link + '?a=in') + '</li>' +
-        '<li>Tap <b>+</b> again, search ' + chip('Notification') + ', pick <b>Display Notification</b>, and paste this text:' + copyRow('Office day logged ✅') + '</li>') +
-    '<li>Name the macro and save it. When Android asks, allow location <b>All the time</b>.</li></ol>';
+function linkField() {
+  var v = wiz.linkDraft || S().link || '';
+  return '<input class="field mono" data-field="link" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="https://script.google.com/macros/s/…/exec" value="' + esc(v) + '">' +
+    '<button class="btn wide" data-act="checkLink">Check link</button><p class="wiz-status" id="linkStatus" aria-live="polite">' + (v && wiz.linkOk === cleanLink(v) ? '✓ Link works.' : '') + '</p>';
 }
-function androidMorning(link) {
-  return '<ol class="steps">' +
-    '<li>In MacroDroid, tap <b>Add Macro</b>.</li>' +
-    '<li>Under <b>Triggers</b>, tap <b>+</b>, search ' + chip('Day/Time') + ', and set <b>8:00</b>, Monday to Friday.</li>' +
-    '<li>Under <b>Actions</b>, tap <b>+</b>, search ' + chip('HTTP Request') + ', set <b>GET</b>, paste this link, and save the response in a new text variable:' + copyRow(link + '?a=today') + '</li>' +
-    '<li>Tap <b>+</b> again, search ' + chip('Notification') + ', pick <b>Display Notification</b>, and put that variable in the text. Save the macro.</li></ol>';
+// shared middle part: your link, then (for arrivals) "only show answers that mention the office"
+function actSteps(url, add, withIf) {
+  var st = [{ t: 'Add your link', d: add + ', type ' + chip('Get Contents of URL') + ' and tap it. Tap the blue word ' + B('URL') + ' and paste this link:', x: copyRow(url) }];
+  return withIf ? st.concat(ifSteps(add)) : st;
 }
-function osTabs() {
-  return '<div class="seg" role="group" aria-label="Your phone"><button data-act="wizOs" data-v="ios" aria-pressed="' + (wiz.os === 'ios') + '">iPhone</button><button data-act="wizOs" data-v="android" aria-pressed="' + (wiz.os === 'android') + '">Android</button></div>';
+// "only show answers that mention the office": that's what keeps it to one notification a day
+function ifSteps(add) {
+  return [
+    { k: 'if', t: 'Add a check', d: add + ', type ' + chip('If') + ' and tap it. It should say ' + B('If Contents of URL') + '. Tap ' + B('Condition') + ', pick ' + B('contains') + ', then tap ' + B('Text') + ' and type ' + chip('office') },
+    { t: 'Add the notification', d: add + ', type ' + chip('Show Notification') + ' and tap it.' },
+    { t: 'Move it inside the check', d: 'Touch and hold ' + B('Show Notification') + ' and drag it up, so it sits between ' + B('If') + ' and ' + B('Otherwise') + '.' },
+    { t: 'Show the answer', d: 'In Show Notification, delete ' + B('Hello World') + '. In the bar above the keyboard, tap ' + B('Contents of URL') + '.' }
+  ];
 }
+function removeStep() { return { t: 'Remove the old notification', d: 'Tap the ' + B('ⓧ') + ' on ' + B('Show Notification') + ' (or touch and hold it, then tap ' + B('Delete') + '). You’ll add it back inside the check.' }; }
+function noteSteps(add) {
+  return [{ t: 'Add the notification', d: add + ', type ' + chip('Show Notification') + ' and tap it.' },
+    { t: 'Show the answer', d: 'In Show Notification, delete ' + B('Hello World') + '. In the bar above the keyboard, tap ' + B('Contents of URL') + '.' }];
+}
+// iOS 26: Automation tab, then a new shortcut
+function i26Trigger(what, place) {
+  return [
+    { t: 'Open the ' + B('Shortcuts') + ' app and tap ' + B('Automation'), d: 'It’s at the bottom of the screen.' },
+    { t: 'Tap ' + B('+') + ' at the top right', d: 'No automations yet? Tap ' + B('New Automation') + ' in the middle instead.' },
+    what === 'Time of Day'
+      ? { t: 'Tap ' + B('Time of Day') + ' and set ' + B('8:00'), d: 'Under Repeat, tap ' + B('Weekly') + ' and keep only ' + B('Monday to Friday') + '.' }
+      : { t: 'Scroll down and tap ' + B(what), d: what === 'Leave' ? 'It’s right below Arrive.' : '' },
+    what === 'Time of Day' ? null : { t: 'Pick your office', d: 'Tap ' + B('Choose') + ' next to Location. Search ' + place + ' and tap the address. A map with a blue circle opens.' },
+    what === 'Time of Day' ? null : circleStep(what),
+    { t: 'Let it run by itself', d: (what === 'Time of Day' ? '' : 'Keep ' + B('Any Time') + '. ') + 'Select ' + B('Run Immediately') + '. If you see ' + B('Notify When Run') + ', switch it off.' },
+    { t: 'Tap ' + B('Next') + ', then ' + B('Create New Shortcut'), d: 'Older iPhones say ' + B('New Blank Automation') + '.' }
+  ].filter(Boolean);
+}
+var ADD26 = 'Tap ' + B('Search Actions') + ' at the bottom', ADD27 = 'Tap ' + B('Add Action');
+// one circle around the whole campus: Satamaradankatu 5 is in the middle, the far buildings are about 200 m away
+function circleStep(what) {
+  var c = hasCampus();
+  return { t: c ? 'Make the circle cover the whole campus' : 'Make the circle cover your building',
+    d: 'Drag the dot on the edge of the blue circle outwards until ' + (c ? 'it covers every Nordea building, from ' + B('Fleminginkatu') + ' to ' + B('Kustaankatu') + '. That’s about 250 m, so any entrance counts.' : 'it covers your whole building and its entrances.') +
+      (what === 'Leave' ? ' Make it the same size as for arriving.' : '') + ' Then tap ' + B('Done') + '.' };
+}
+// for phones set up before version 1: make the existing circles bigger
+function areaSteps(p) {
+  var both = S().phoneMode !== 'notify', big = { t: 'Make the circle bigger', d: 'Drag the dot on the edge of the blue circle outwards until it covers every Nordea building, from ' + B('Fleminginkatu') + ' to ' + B('Kustaankatu') + '. About 250 m. Then tap ' + B('Done') + '.' };
+  if (p === 'android') return [
+    { t: 'Open ' + B('MacroDroid') + ' and your office macro', d: 'The one with the ' + B('Geofence Trigger') + ' (Area entered).' },
+    { t: 'Edit the office zone', d: 'Tap the Geofence trigger, then tap your office zone to edit it.' },
+    { t: 'Set the radius to ' + B('250 m'), d: 'Keep the pin on Satamaradankatu 5. Then every Nordea building is inside, from Fleminginkatu to Kustaankatu. Save.' }
+  ].concat(both ? [{ t: 'Check your leave macro', d: 'If it uses a different zone, set that one to 250 m too.' }] : []);
+  if (p === 'ios27') return [
+    { t: 'Open your arrive shortcut', d: 'In ' + B('Shortcuts') + ', go to ' + B('Library') + ' › ' + B('Automation') + ' and open ' + B('Office arrive') + '. Tap ' + B('Edit') + ' if you see it.' },
+    { t: 'Tap the place', d: 'In the ' + B('Arrive') + ' box at the top, tap the address. A map with a blue circle opens.' },
+    big,
+    { t: 'Tap ' + B('Done') + ' to save', d: both ? 'Arriving is done.' : 'That’s it.' }
+  ].concat(both ? [{ t: 'Now ' + B('Office leave'), d: 'Open it and do the same in the ' + B('Leave') + ' box: tap the place, make the circle the same size, then tap ' + B('Done') + '.' }] : []);
+  return [
+    { t: 'Open the ' + B('Shortcuts') + ' app and tap ' + B('Automation'), d: 'It’s at the bottom of the screen.' },
+    { t: 'Tap your arrive automation', d: 'The one that starts with “When I arrive at…”.' },
+    { t: 'Tap the place', d: 'Tap the line ' + B('When I arrive at…') + ', then tap the address next to Location. A map with a blue circle opens.' },
+    big,
+    { t: 'Tap ' + B('Done') + ' to save', d: both ? 'Arriving is done.' : 'That’s it.' }
+  ].concat(both ? [{ t: 'Now your leave automation', d: 'Go back to ' + B('Automation') + ' and tap the one that starts with “When I leave…”. Do the same: tap the place, make the circle the same size, then tap ' + B('Done') + '.' }] : []);
+}
+function i26Arrive(url, place) { return i26Trigger('Arrive', place).concat(actSteps(url, ADD26, true), [{ t: 'Tap ' + B('✓') + ' at the top right', d: 'Saved. You get at most one notification a day.' }]); }
+function i26Leave(url, place) { return i26Trigger('Leave', place).concat(actSteps(url, ADD26, false), [{ t: 'Tap ' + B('✓') + ' at the top right', d: 'Saved. No notification needed: it only tells the app you left.' }]); }
+function i26Time(url) { return i26Trigger('Time of Day').concat(actSteps(url, ADD26, false), noteSteps(ADD26), [{ t: 'Tap ' + B('▶') + ' to test, then ' + B('✓'), d: 'You should see today’s plan.' }]); }
+function i26Fix() {
+  return [{ t: 'Open your arrive automation', d: 'In ' + B('Shortcuts') + ', tap ' + B('Automation') + ' at the bottom. Tap your office one (“When I arrive…”).' }, removeStep()]
+    .concat(ifSteps(ADD26), [{ t: 'Tap ' + B('Done'), d: 'Saved. You get at most one notification a day.' }]);
+}
+// iOS 27: automations live inside a shortcut, as a trigger at the top
+function i27Trigger(what, place) {
+  return [
+    { t: 'Open the ' + B('Shortcuts') + ' app and tap ' + B('+'), d: 'This starts a new shortcut.' },
+    { t: 'Tap ' + B('Edit') + ', then ' + B('Automation'), d: 'If you see Describe a Shortcut, ' + B('Edit') + ' is at the top right.' },
+    { t: 'Tap ' + B(what) },
+    what === 'Time of Day'
+      ? { t: 'Set ' + B('8:00') + ' on workdays', d: 'In the Time of Day box, set the time and repeat on ' + B('Monday to Friday') + '.' }
+      : { t: 'Pick your office', d: 'In the ' + what + ' box, tap ' + B('Location') + '. Search ' + place + ' and tap the address. A map with a blue circle opens.' },
+    what === 'Time of Day' ? null : circleStep(what),
+    { t: 'Let it run by itself', d: 'Tap the small arrow on the ' + what + ' box. Keep ' + B('Automation') + ' on and turn ' + B('Confirm Before Run') + ' off.' }
+  ].filter(Boolean);
+}
+function i27End(name, note) {
+  return [{ t: 'Let it run when your phone is locked', d: 'Tap ' + B('ⓘ') + ' at the bottom, tap ' + B('Privacy') + ', and turn on ' + B('Allow Running When Locked') + '.' },
+    { t: 'Name it and save', d: 'Tap the name at the top and call it ' + chip(name) + '. Then tap ' + B('Done') + '.' + (note ? ' ' + note : '') }];
+}
+function i27Arrive(url, place) { return i27Trigger('Arrive', place).concat(actSteps(url, ADD27, true), i27End('Office arrive', 'You get at most one notification a day.')); }
+function i27Leave(url, place) { return i27Trigger('Leave', place).concat(actSteps(url, ADD27, false), i27End('Office leave', 'No notification needed.')); }
+function i27Time(url) { return i27Trigger('Time of Day').concat(actSteps(url, ADD27, false), noteSteps(ADD27), i27End('Office morning', '')); }
+function i27Fix() {
+  return [{ t: 'Open your arrive shortcut', d: 'In ' + B('Shortcuts') + ', go to ' + B('Library') + ' › ' + B('Automation') + ' and open your office one. Tap ' + B('Edit') + ' if you see it.' }, removeStep()]
+    .concat(ifSteps(ADD27), [{ t: 'Check two switches, then save', d: 'Tap the small arrow on the Arrive box: ' + B('Confirm Before Run') + ' off. Tap ' + B('ⓘ') + ' › ' + B('Privacy') + ': ' + B('Allow Running When Locked') + ' on. Then tap ' + B('Done') + '.' }]);
+}
+// Android: MacroDroid
+function anArrive(url, place) {
+  return [
+    { t: 'Install ' + B('MacroDroid'), d: 'It’s free on Google Play. Open it and tap ' + B('Add Macro') + '.' },
+    { t: 'Add the trigger', d: 'Under ' + B('Triggers') + ', tap ' + B('+') + ' and search ' + chip('Geofence') + '. Pick ' + B('Geofence Trigger') + ', then ' + B('Area entered') + '.' },
+    { t: 'Pick your office', d: hasCampus() ? 'Add a zone at ' + place + ' and set the radius to ' + B('250 m') + ', so every Nordea building is inside, from Fleminginkatu to Kustaankatu. Save it.' : 'Add a zone at your office address with a radius of about ' + B('150 m') + ', so the whole building is inside. Save it.' },
+    { t: 'Add your link', d: 'Under ' + B('Actions') + ', tap ' + B('+') + ' and search ' + chip('HTTP Request') + '. Set ' + B('GET') + ', paste this link, and save the response in a new text variable called ' + chip('answer') + '.', x: copyRow(url) },
+    { k: 'if', t: 'Add a check', d: 'Tap ' + B('+') + ', search ' + chip('If Clause') + ' and add it with: variable ' + B('answer') + ' contains ' + chip('office') },
+    { t: 'Add the notification inside it', d: 'Inside the If, add ' + B('Display Notification') + ' with the ' + B('answer') + ' variable as the text.' },
+    { t: 'Save', d: 'Name the macro and save it. When Android asks, allow location ' + B('All the time') + '.' }
+  ];
+}
+function anLeave(url) {
+  return [
+    { t: 'In MacroDroid, tap ' + B('Add Macro') },
+    { t: 'Add the trigger', d: B('Geofence Trigger') + ' › ' + B('Area exited') + ', with the same office zone.' },
+    { t: 'Add your link', d: 'Under ' + B('Actions') + ', add ' + chip('HTTP Request') + ', set ' + B('GET') + ' and paste this link:', x: copyRow(url) },
+    { t: 'Save', d: 'No notification needed: it only tells the app you left.' }
+  ];
+}
+function anMorning(url) {
+  return [
+    { t: 'In MacroDroid, tap ' + B('Add Macro') },
+    { t: 'Add the trigger', d: 'Tap ' + B('+') + ', search ' + chip('Day/Time') + ', and set ' + B('8:00') + ', Monday to Friday.' },
+    { t: 'Add your link', d: 'Under ' + B('Actions') + ', add ' + chip('HTTP Request') + ', set ' + B('GET') + ', paste this link, and save the response in a text variable:', x: copyRow(url) },
+    { t: 'Add the notification', d: 'Add ' + B('Display Notification') + ' with that variable as the text. Save the macro.' }
+  ];
+}
+function anFix() {
+  return [
+    { t: 'Open your office macro', d: 'In ' + B('MacroDroid') + ', open the macro with the Geofence trigger.' },
+    { t: 'Keep the answer', d: 'In the ' + B('HTTP Request') + ' action, save the response in a text variable called ' + chip('answer') + '.' },
+    { k: 'if', t: 'Add a check', d: 'Add ' + chip('If Clause') + ' with: variable ' + B('answer') + ' contains ' + chip('office') },
+    { t: 'Move the notification inside', d: 'Put ' + B('Display Notification') + ' inside the If, showing the ' + B('answer') + ' variable. Save.' }
+  ];
+}
+function guideSteps(st) {
+  var s = S(), link = s.link || 'https://script.google.com/macros/s/…/exec', p = plat(), place = officeTerm();
+  var copyScript = '<button class="btn wide" data-act="copyCode">Copy script</button>';
+  if (st === 'link') return [
+    { t: 'On a computer, open ' + chip('script.new'), d: 'Sign in to Google if it asks. Tip: open this app on the computer too, so copy and paste is easy.' },
+    { t: 'Paste the script', d: 'Delete everything in the editor, then paste.', x: copyScript },
+    { t: 'Make it a web app', d: 'Click ' + B('Deploy') + ' › ' + B('New deployment') + '. Click the gear next to “Select type” and pick ' + B('Web app') + '.' },
+    { t: 'Let your phone reach it', d: 'Set ' + B('Execute as: Me') + ' and ' + B('Who has access: Anyone') + '. Click ' + B('Deploy') + '. If Google asks for permission, allow it. It’s your own script.' },
+    { t: 'Paste the Web app URL here', d: 'Google shows it after deploying. It ends with /exec.', x: linkField() }
+  ];
+  if (st === 'script') return [
+    { t: 'Copy the new script', d: 'On a computer? Open this app there, then Settings › Copy the script.', x: copyScript },
+    { t: 'Open your script', d: 'Go to ' + chip('script.google.com') + ' and open your Office Days project.' },
+    { t: 'Replace the code', d: 'Click in the code, select everything (' + B('Ctrl+A') + ' or ' + B('⌘A') + '), paste, then click ' + B('Save') + '.' },
+    { t: 'Publish the new version', d: 'Click ' + B('Deploy') + ' › ' + B('Manage deployments') + '. Click the pencil ✏️, set ' + B('Version') + ' to ' + B('New version') + ', then click ' + B('Deploy') + '. Your link stays the same.' },
+    { t: 'Check it', d: 'See if the new version is live.', x: '<button class="btn wide" data-act="checkScript">Check my script</button><p class="wiz-status" id="scriptStatus" aria-live="polite"></p>' }
+  ];
+  if (st === 'remind') { var tu = link + '?a=today'; return p === 'android' ? anMorning(tu) : p === 'ios27' ? i27Time(tu) : i26Time(tu); }
+  if (st === 'leave') { var lu = link + '?a=out'; return p === 'android' ? anLeave(lu) : p === 'ios27' ? i27Leave(lu, place) : i26Leave(lu, place); }
+  if (st === 'fix') return p === 'android' ? anFix() : p === 'ios27' ? i27Fix() : i26Fix();
+  if (st === 'area') return areaSteps(p);
+  var au = link + (wiz.mode === 'notify' ? '?a=hi' : '?a=in');
+  return p === 'android' ? anArrive(au, place) : p === 'ios27' ? i27Arrive(au, place) : i26Arrive(au, place);
+}
+
 function renderWiz() {
-  var s = S(), step = wiz.step, order = wizPath(), name = s.name.trim();
-  var mid = order.slice(1, -1), mi = mid.indexOf(step === 'opennow' ? 'install' : step), phase = skyPhase(new Date());
-  var link = s.link, html = '', body = '', foot = '', hint = '', kind = installKind();
+  var s = S(), step = wiz.step, order = wizPath(), name = s.name.trim(), notify = wiz.mode === 'notify';
+  var mid = order.filter(function (x) { return x !== 'hello' && x !== 'news' && x !== 'done'; }), mi = mid.indexOf(step === 'opennow' ? 'install' : step), phase = skyPhase(new Date());
+  var html = '', body = '', foot = '', hint = '', kind = installKind(), gs = curGuide();
+  if (gs) wiz.g.i = clamp(wiz.g.i, 0, gs.length - 1);
+  var gLast = !gs || wiz.g.all || wiz.g.i >= gs.length - 1;
   var back = '<button class="btn-back" data-act="wizBack">Back</button>';
-  var next = function (label) { return '<button class="primary" data-act="wizNext">' + (label || 'Next') + '</button>'; };
-  if (step === 'hello' || step === 'done') {
+  var next = function (label) { return '<button class="primary" data-act="wizNext">' + (gLast ? (label || 'Next') : 'Next step') + '</button>'; };
+  if (step === 'hello' || step === 'done' || step === 'news' || step === 'features') {
     var Ww = wxSceneNow(phase);
-    var art = scene({ phase: phase, month: new Date().getMonth(), lit: step === 'done' ? 10 : 4, done: step === 'done', seed: dayNum(new Date()) + 1, animate: 'load', prevLit: 0, sfx: 'w', wx: Ww, hour: new Date().getHours() });
-    html += '<div class="wiz-art ph-' + skyCls(phase, Ww) + '">' + art + '<div class="wiz-brand">' + document.querySelector('.brand svg').outerHTML + '<span>Office Days</span></div></div>';
+    var art = scene({ phase: phase, month: new Date().getMonth(), lit: step === 'hello' ? 4 : 10, done: step !== 'hello', seed: dayNum(new Date()) + 1, animate: 'load', prevLit: 0, sfx: 'w', wx: Ww, hour: new Date().getHours() });
+    html += '<div class="wiz-art' + (step === 'done' && wiz.flow !== 'setup' ? '' : ' short') + ' ph-' + skyCls(phase, Ww) + '">' + art + '<div class="wiz-brand">' + document.querySelector('.brand svg').outerHTML + '<span>Office Days</span></div></div>';
   } else {
     var right = '';
     if (step === 'install' && (kind === 'android' || kind === 'ipad' || kind === 'iosother')) right = pointerHtml('up', kind === 'android' ? 'Tap ⋮ up here' : 'Tap Share up here');
+    else if ((wiz.flow === 'upgrade' || wiz.flow === 'area') && !wiz.single) right = '<button class="wiz-skip" data-act="wizClose">Close</button>';
     else if (!wiz.single && step !== 'auto' && step !== 'opennow' && step !== 'install') right = '<button class="wiz-skip" data-act="wizSkip">Skip setup</button>';
-    html += '<div class="wiz-top"><div class="wiz-dots"' + (wiz.single ? ' hidden' : '') + ' aria-label="Step ' + (mi + 1) + ' of ' + mid.length + '">' + mid.map(function (x, i) { return '<i class="' + (i < mi ? 'done' : i === mi ? 'on' : '') + '"></i>'; }).join('') + '</div>' + right + '</div>';
+    html += '<div class="wiz-top"><div class="wiz-dots"' + (wiz.single || wiz.flow === 'area' ? ' hidden' : '') + ' aria-label="Step ' + (mi + 1) + ' of ' + mid.length + '">' + mid.map(function (x, i) { return '<i class="' + (i < mi ? 'done' : i === mi ? 'on' : '') + '"></i>'; }).join('') + '</div>' + right + '</div>';
   }
   switch (step) {
     case 'hello':
-      body = '<h2 id="wizTitle">Your office days, counted for you</h2>' +
-        '<ul class="wiz-points"><li>See how many office days you still need</li><li>Get a simple plan for the weeks ahead</li><li>Your phone logs office days and reminds you at the office</li></ul>';
-      foot = next('Get started');
+      body = '<p class="wiz-kicker">Welcome to</p><h2 id="wizTitle">Office Days</h2><ul class="feat">' +
+        feat(FI.arrive, 'Counts office days for you', 'Your phone notices when you get to the office. Walking past doesn’t count.') +
+        feat(FI.goal, 'Always know where you stand', 'See how many days you still need for your ' + s.target + '% target.') +
+        feat(FI.plan, 'A plan for the weeks ahead', 'Suggested office days that skip Finnish holidays.') +
+        feat(FI.lock, 'Private by design', 'Your days stay on your phone. Only you see them.') + '</ul>';
+      foot = next(wiz.flow === 'tour' ? 'Close' : 'Get started');
+      break;
+    case 'features':
+      body = '<p class="wiz-kicker">Office Days</p><h2 id="wizTitle">What you can do</h2>' + featList();
+      foot = next('Close');
+      break;
+    case 'news':
+      body = '<p class="wiz-kicker">What’s new</p><h2 id="wizTitle">Smarter check-ins</h2><ul class="feat">' +
+        (notify ? feat(FI.clock, 'Walking past doesn’t count', 'Nothing is logged until you open the app at the office.')
+          : feat(FI.clock, 'Walking past doesn’t count', 'A day counts after 5 minutes at the office.') + feat(FI.card, 'Quick visits', 'Popped in just to tap your card? The app asks if it counts.')) +
+        feat(FI.bell, 'One notification a day', 'Back from lunch? No second notification.') +
+        feat(FI.phone, 'Just open the app', 'At the office, open Office Days and it marks today by itself.') + '</ul>' +
+        '<p class="wiz-small">Your phone needs a quick update first. About 10 minutes, once.</p>';
+      foot = '<button class="btn-back" data-act="wizClose">Later</button>' + next('Start');
       break;
     case 'install':
       body = '<h2 id="wizTitle">Add it to your Home Screen</h2>';
@@ -2159,8 +2861,8 @@ function renderWiz() {
       foot = back + next(name ? 'Next' : 'Skip');
       break;
     case 'office':
-      body = '<h2 id="wizTitle">Where’s your office?</h2><p class="wiz-lead">Days count when you’re within ' + s.radius + ' m of it.</p>' +
-        '<button class="opt" data-act="wOffice" data-v="vallila" aria-pressed="' + !wiz.other + '"><span class="ic">' + ICON.building + '</span><span>Vallila campus, Helsinki<small>Satamaradankatu 5 and Aleksis Kiven katu</small></span></button>' +
+      body = '<h2 id="wizTitle">Where’s your office?</h2><p class="wiz-lead">Days count when you’re within ' + s.radius + ' m of it, whichever entrance you use.</p>' +
+        '<button class="opt" data-act="wOffice" data-v="vallila" aria-pressed="' + !wiz.other + '"><span class="ic">' + ICON.building + '</span><span>Nordea Vallila campus, Helsinki<small>Every building and entrance: Satamaradankatu 5, Aleksis Kiven katu 3–9 and Fleminginkatu 27</small></span></button>' +
         '<button class="opt" data-act="wOffice" data-v="other" aria-pressed="' + wiz.other + '"><span class="ic">' + ICON.pin + '</span><span>Somewhere else<small>Save it with your phone’s location</small></span></button>';
       if (wiz.other) body += s.spots.length ? '<p class="wiz-small">Saved: ' + esc(s.spots.map(function (x) { return x.name; }).join(', ')) + '.</p>'
         : '<button class="btn wide" data-act="spotAdd">' + ICON.pin + 'I’m at my office now</button><p class="wiz-small">Not there now? Save it later in Settings › Your office.</p>';
@@ -2178,66 +2880,86 @@ function renderWiz() {
         foot = back + next();
       } else {
         body = '<h2 id="wizTitle">Let your phone help at the office</h2>' +
-          '<p class="wiz-lead">No web app can watch your location in the background, on any phone. Your phone’s own automation can, even when this app is closed. Pick one:</p>' +
-          '<button class="opt" data-act="wMode" data-v="auto" aria-pressed="' + (wiz.mode === 'auto') + '"><span class="ic">' + ICON.check + '</span><span>Log it for me<em class="rec">Recommended</em><small>When you arrive, the day is logged and you see “Office day logged ✅ 10 more to go.” About 10 minutes to set up.</small></span></button>' +
-          '<button class="opt" data-act="wMode" data-v="notify" aria-pressed="' + (wiz.mode === 'notify') + '"><span class="ic">' + ICON.bell + '</span><span>Just remind me<small>When you arrive, you see “You’re at the office 🏢 Open Office Days to log today.” About 2 minutes.</small></span></button>';
-        foot = '<button class="btn-text" data-act="wizSkip">Not now</button>' + next();
+          '<p class="wiz-lead">Your phone’s own automation notices when you arrive, even when this app is closed. Pick one:</p>' +
+          '<button class="opt" data-act="wMode" data-v="auto" aria-pressed="' + !notify + '"><span class="ic">' + ICON.check + '</span><span>Log it for me<em class="rec">Recommended</em><small>' + (s.quick ? 'Every arrival counts, even a quick one. One notification a day.' : 'The day counts after 5 minutes at the office, so walking past doesn’t count. One notification a day.') + '</small></span></button>' +
+          '<button class="opt" data-act="wMode" data-v="notify" aria-pressed="' + notify + '"><span class="ic">' + ICON.bell + '</span><span>Just remind me<small>One notification when you arrive. Open the app and it marks today by itself.</small></span></button>' +
+          (notify ? '' : '<div class="set-row" style="margin-top:10px"><span>Count quick visits too<small class="set-sub">Popping in just to tap your card? Turn this on and every arrival counts, even walking past.</small></span><button class="switch" role="switch" data-act="quickToggle" aria-checked="' + !!s.quick + '" aria-label="Count quick visits too"></button></div>') +
+          '<p class="wiz-small">You set it up once, step by step. About 10 minutes.</p>';
+        foot = (wiz.flow === 'phone' ? '<button class="btn-back" data-act="wizClose">Close</button>' : '<button class="btn-text" data-act="wizSkip">Not now</button>') + next();
       }
       break;
     case 'link':
-      body = '<h2 id="wizTitle">Make your private link</h2><p class="wiz-lead">A tiny script in your own Google account remembers when your phone checks in. Only you have the link.</p>' +
-        '<ol class="steps">' +
-        '<li>On a computer, go to <b>script.new</b> and sign in to Google.</li>' +
-        '<li>Delete what’s there and paste this script. <button class="btn sm" data-act="copyCode">Copy script</button></li>' +
-        '<li>Click <b>Deploy › New deployment</b>. Click the gear next to “Select type” and pick <b>Web app</b>.</li>' +
-        '<li>Set <b>Execute as: Me</b> and <b>Who has access: Anyone</b>. Click <b>Deploy</b>. If Google asks for permission, allow it. It’s your own script.</li>' +
-        '<li>Copy the <b>Web app URL</b> and paste it here.</li></ol>' +
-        '<input class="field mono" data-field="link" inputmode="url" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="https://script.google.com/macros/s/…/exec" value="' + esc(link) + '">' +
-        '<button class="btn wide" data-act="checkLink">Check link</button><p class="wiz-status" id="linkStatus" aria-live="polite">' + (link && wiz.linkOk === link ? '✓ Link works.' : '') + '</p>' +
-        '<p class="wiz-small">Doing this on a computer? Open this same app link there, so you can copy and paste easily.</p>';
+      body = '<h2 id="wizTitle">Make your private link</h2><p class="wiz-lead">A tiny script in your own Google account notes when your phone arrives and leaves. Only you have the link.</p>' + gdHtml(gs);
+      foot = back + next();
+      break;
+    case 'script':
+      body = '<h2 id="wizTitle">Update your script</h2><p class="wiz-lead">Easiest on a computer. Your link stays the same.</p>' + gdHtml(gs);
+      foot = back + next();
+      break;
+    case 'fix':
+      body = '<h2 id="wizTitle">Update your arrive automation</h2><p class="wiz-lead">So you get at most one notification a day.</p>' + platTabs() + gdHtml(gs) +
+        '<p class="gd-note">Don’t have it anymore? <button class="link" data-act="wizNew">Make a new one instead</button></p>';
       foot = back + next();
       break;
     case 'phone':
-      body = wiz.mode === 'notify'
-        ? '<h2 id="wizTitle">Get a notification at the office</h2><p class="wiz-lead">Your phone shows it when you arrive. Then open the app for a few seconds and the day is logged.</p>'
-        : '<h2 id="wizTitle">Let your phone check in</h2><p class="wiz-lead">When you arrive, your phone opens your private link, logs the day, and shows how many days are left.</p>';
-      body += osTabs() + '<p class="wiz-small" style="margin:6px 0 2px">Tap any grey word to copy it.</p>';
-      if (wiz.os === 'ios') {
-        body += '<ol class="steps">' + iosArrive() + (wiz.mode === 'notify' ? iosNotifyActions() : iosLinkActions(link + '?a=in', '“Office day logged ✅”')) + '</ol>';
-        if (wiz.mode !== 'notify') body += '<p class="wiz-small">A test at night doesn’t count as an office day. If you test in the daytime away from the office, tap today in the calendar afterwards and choose “I worked remotely”.</p>';
-        body += '<p class="wiz-small">Not firing? Check Settings › Privacy & Security › Location Services › Shortcuts, and keep Precise Location on.</p>';
-      } else body += androidArrive(wiz.mode === 'notify', link);
+      body = (notify
+        ? '<h2 id="wizTitle">Get one reminder when you arrive</h2><p class="wiz-lead">At most once a day. Open Office Days and it marks today by itself.</p>'
+        : '<h2 id="wizTitle">Let your phone check in</h2><p class="wiz-lead">When you arrive, your phone tells your link. ' + (s.quick ? 'Today counts as soon as you arrive.' : 'Today counts after 5 minutes there.') + '</p>') + platTabs() + gdHtml(gs);
+      if (wiz.flow === 'upgrade') body += '<p class="gd-note">Delete your old office automation, so you don’t get two notifications.</p>';
+      foot = back + next();
+      break;
+    case 'area':
+      body = '<h2 id="wizTitle">Cover the whole campus</h2><p class="wiz-lead">The Nordea campus has many buildings and entrances. Make the office circle in your phone big enough for all of them, so every arrival counts.</p>' + platTabs() + gdHtml(gs);
+      foot = (wiz.g.i > 0 && !wiz.g.all ? back : '<button class="btn-back" data-act="wizClose">Later</button>') + next('Done');
+      break;
+    case 'leave':
+      body = '<h2 id="wizTitle">Tell the app when you leave</h2><p class="wiz-lead">This is what stops walking past from counting. It runs quietly, no notification.</p>' + platTabs() + gdHtml(gs);
       foot = back + next();
       break;
     case 'remind':
-      body = '<h2 id="wizTitle">Get a morning reminder</h2><p class="wiz-lead">Optional. On workdays your phone tells you the plan, like: “Hi ' + esc(name || 'there') + '! Office day today 🏢 6 more to go in ' + MONTHS[new Date().getMonth()] + '.”</p>' +
-        osTabs() + '<p class="wiz-small" style="margin:6px 0 2px">Tap any grey word to copy it.</p>';
-      body += wiz.os === 'ios' ? '<ol class="steps">' + iosMorning() + iosLinkActions(link + '?a=today', 'today’s plan') + '</ol>' : androidMorning(link);
+      body = '<h2 id="wizTitle">Get a morning reminder</h2><p class="wiz-lead">Optional. On workdays your phone tells you the plan, like: “Hi ' + esc(name || 'there') + '! Office day today 🏢 6 more to go in ' + MONTHS[new Date().getMonth()] + '.”</p>' + platTabs() + gdHtml(gs);
       foot = back + next();
       break;
     case 'done':
-      body = '<h2 id="wizTitle">You’re all set' + (name ? ', ' + esc(name) : '') + '!</h2>' +
-        '<ul class="wiz-points"><li>Target: ' + s.target + '% of working days per ' + s.period + '</li>' +
-        '<li>' + (s.link ? 'Automatic check-in: on' : FRAMED ? 'Automatic check-in: needs your own copy of the app' : wiz.mode === 'notify' && wiz.didPhone ? 'A notification when you reach the office' : 'Automatic check-in: off for now. Set it up any time in Settings') + '</li>' +
-        '<li>Forgot a day? Tap it in the calendar</li></ul>';
-      foot = next('Open Office Days');
+      if (wiz.flow === 'upgrade') {
+        body = '<h2 id="wizTitle">All updated' + (name ? ', ' + esc(name) : '') + '!</h2><ul class="wiz-points">' +
+          (notify ? '<li>One reminder a day when you arrive</li>' : '<li>Walking past the office doesn’t count</li><li>At most one notification a day</li>') +
+          '<li>At the office, just open the app to count today right away</li></ul>';
+        foot = next('Done');
+      } else {
+        var chk = s.link ? (notify ? 'One reminder when you reach the office' : 'Automatic check-in: on') : FRAMED ? 'Automatic check-in: needs your own copy of the app' : 'Automatic check-in: off for now. Set it up any time in Settings';
+        body = '<h2 id="wizTitle">You’re all set' + (name ? ', ' + esc(name) : '') + '!</h2>' +
+          '<ul class="wiz-points"><li>Target: ' + s.target + '% of working days per ' + s.period + '</li><li>' + chk + '</li>' +
+          (wiz.flow === 'setup'
+            ? '</ul><h3 class="feat-title">Here’s what you can do</h3>' + featList() + (state.ui.tour ? '' : '<p class="wiz-small">Next, a short tour shows you where everything is.</p>')
+            : (FRAMED ? '' : '<li>At the office, just open the app: it marks today by itself</li>') + '<li>Forgot a day? Tap it in the calendar</li></ul>');
+        foot = next('Open Office Days');
+      }
       break;
   }
   $('#wiz').innerHTML = html + '<div class="wiz-body">' + body + '</div><div class="wiz-foot' + (hint ? ' has-hint' : '') + '">' + foot + '</div>' + hint;
   var wb = $('#wiz .wiz-body'); if (wb) wb.scrollTop = 0;
+  if (!FRAMED && !wiz.single && wiz.flow !== 'tour') {   // come back to the same step if the phone reloads the app
+    state.ui.resume = { f: wiz.flow, s: step, i: wiz.g.i, a: wiz.g.all ? 1 : 0, m: wiz.mode, o: wiz.os, x: wiz.fixNew, at: Date.now() };
+    save();
+  }
 }
 function wizNext() {
-  var st = wiz.step;
+  var st = wiz.step, gs = curGuide();
+  if (gs && !wiz.g.all && wiz.g.i < gs.length - 1) { wiz.g.i++; renderWiz(); return; }
   if (st === 'done') return finishWiz();
+  if (st === 'features') return closeWiz();
+  if (st === 'hello' && (wiz.single || wiz.flow === 'tour')) return closeWiz();
   if (st === 'install') {
     if (IS_IOS && !wiz.installed) return wizTo('opennow');
     if (wiz.single) { closeWiz(); renderInstall(); return; }
     return wizNextStep();
   }
   if (st === 'auto' && FRAMED) return wizTo('done');
-  if (st === 'phone') wiz.didPhone = true;
+  if (st === 'area') { state.ui.area = 1; state.ui.resume = null; save(); closeWiz(); renderAll(); toast('Whole campus covered ✓'); return; }
+  if (st === 'phone' || st === 'fix') wiz.didPhone = true;
   if (st === 'link') {
-    var inp = $('#wiz [data-field="link"]'), v = cleanLink(inp ? inp.value : '');
+    var inp = $('#wiz [data-field="link"]'), v = cleanLink(inp ? inp.value : (wiz.linkDraft || S().link));
     if (!v) return wizTo('done');                 // no link yet: nothing to set up on the phone
     if (wiz.linkOk === v) { if (S().link !== v) { S().link = v; state.remoteAfter = 0; save(); } return wizNextStep(); }
     return checkLink(v, true);
@@ -2253,12 +2975,24 @@ function checkLink(v, thenNext) {
     if (!r || r.ok !== true || r.app !== 'office-days') throw new Error('bad');
     wiz.linkOk = v;
     if (S().link !== v) { S().link = v; state.remoteAfter = 0; save(); }
-    say('✓ Link works.', 'ok');
+    remote.ver = Number(r.v) || 1;
+    say(remote.ver >= 2 ? '✓ Link works.' : '✓ Link works, but it’s the old script. Paste the new one (step 2) and deploy a new version.', remote.ver >= 2 ? 'ok' : 'bad');
     syncRemote();
     if (thenNext) wizNextStep();
   }).catch(function () {
     say(/script\.google\.com/.test(v) ? 'That link didn’t answer. Check step 4: “Who has access” must be Anyone.' : 'That doesn’t look like your Web app URL. It ends with /exec.', 'bad');
   });
+}
+function checkScript() {
+  var out = $('#scriptStatus'), say = function (t, cls) { if (out) { out.textContent = t; out.className = 'wiz-status ' + (cls || ''); } };
+  if (!S().link) { say('Set up your link first.', 'bad'); return; }
+  say('Checking…');
+  jsonp(S().link + '?a=ping', 15000).then(function (r) {
+    if (!r || r.ok !== true) throw new Error('bad');
+    remote.ver = Number(r.v) || 1;
+    if (remote.ver >= 2) say('✓ The new version is live.', 'ok');
+    else say('Still the old version. In Manage deployments, pick “New version”, then Deploy.', 'bad');
+  }).catch(function () { say('Couldn’t reach your link. Check your internet and try again.', 'bad'); });
 }
 function shareApp() {
   var url = location.origin + location.pathname;
@@ -2333,8 +3067,8 @@ document.addEventListener('click', function (e) {
     case 'markOff': markMode = false; renderAll(); break;
     case 'share': shareApp(); break;
     case 'wOffice':
-      if (b.getAttribute('data-v') === 'other') { wiz.other = true; if (sameSpots(S().spots, DEFAULT_SPOTS)) S().spots = []; }
-      else { wiz.other = false; S().spots = DEFAULT_SPOTS.map(function (x) { return { name: x.name, lat: x.lat, lng: x.lng }; }); }
+      if (b.getAttribute('data-v') === 'other') { wiz.other = true; if (hasCampus()) S().spots = S().spots.filter(function (x) { return !isCampusSpot(x); }); }
+      else { wiz.other = false; S().spots = campusSpots(); }
       save(); recheck(); renderWiz(); break;
     case 'wTgt': S().target = clamp(S().target + (+b.getAttribute('data-d')), 10, 100); save(); renderWiz(); break;
     case 'wPeriod': S().period = b.getAttribute('data-v'); simK = 0; save(); renderWiz(); break;
@@ -2342,11 +3076,34 @@ document.addEventListener('click', function (e) {
     case 'install': promptInstall(); break;
     case 'wizClose': closeWiz(); renderInstall(); break;
     case 'wizHere': wizTo('name'); break;
-    case 'wMode': wiz.mode = b.getAttribute('data-v') === 'notify' ? 'notify' : 'auto'; renderWiz(); break;
+    case 'wMode': wiz.mode = b.getAttribute('data-v') === 'notify' ? 'notify' : 'auto'; S().phoneMode = wiz.mode; save(); renderWiz(); break;
     case 'wizBack': wizBack(); break;
     case 'wizSkip': wizTo('done'); break;
     case 'wizOs': wiz.os = b.getAttribute('data-v'); renderWiz(); break;
-    case 'wizAuto': openWiz('auto'); break;
+    case 'wizAuto': openWiz('auto', false, 'phone'); break;
+    case 'wizPlat': var pv = b.getAttribute('data-v'); if (pv === 'android') wiz.os = 'android'; else { wiz.os = 'ios'; state.ui.iosv = pv.slice(3); save(); } wiz.g.i = 0; renderWiz(); break;
+    case 'gAll': wiz.g.all = !wiz.g.all; renderWiz(); break;
+    case 'wizNew': wiz.fixNew = true; wiz.step = 'phone'; wiz.g = { i: 0, all: false }; renderWiz(); break;
+    case 'upgrade': openWiz('news', false, 'upgrade'); break;
+    case 'tour': openWiz('features', true, 'tour'); break;
+    case 'leaveAdd': openLeave(b.getAttribute('data-k') || ''); break;
+    case 'leaveSave': leaveSave(); break;
+    case 'leaveDel':
+      var la = b.getAttribute('data-from'), lb = b.getAttribute('data-to');
+      Object.keys(state.days).forEach(function (k) { if (k >= la && k <= lb && state.days[k].s === 'leave') delete state.days[k]; });
+      save(); renderAll(); toast('Leave removed');
+      if (sheetKind === 'settings') openSettings(); else openLeave(null, true);
+      break;
+    case 'areaFix': openWiz('area', false, 'area'); break;
+    case 'tourStart': closeSheet(); setTimeout(startTour, 340); break;
+    case 'tourNext': tourNext(); break;
+    case 'tourBack': tourBack(); break;
+    case 'tourEnd': tourEnd(false); break;
+    case 'checkScript': checkScript(); break;
+    case 'qYes': quickCount(b.getAttribute('data-k')); toast('Counted as an office day'); break;
+    case 'qNo': state.shortNo[b.getAttribute('data-k')] = 1; save(); renderAll(); break;
+    case 'qAlways': S().quick = true; quickCount(b.getAttribute('data-k')); toast('Quick visits now count by themselves'); break;
+    case 'quickToggle': S().quick = !S().quick; save(); renderAll(); if (!$('#wiz').hidden) renderWiz(); else if (sheetKind === 'settings') openSettings(); break;
     case 'checkLink': var li = $('#wiz [data-field="link"]'); checkLink(cleanLink(li ? li.value : ''), false); break;
     case 'copy': copyText(b.getAttribute('data-text'), 'Copied'); break;
     case 'copyCode': copyText($('#gsCode').textContent.trim() + '\n', 'Script copied. Paste it at script.new'); break;
@@ -2356,7 +3113,8 @@ document.addEventListener('click', function (e) {
       S().autoLoc = !S().autoLoc; save();
       if (S().autoLoc) startWatch(); else { stopWatch(); loc.state = GEO_OK ? 'idle' : loc.state; }
       renderAll(); openSettings(); break;
-    case 'useVallila': S().spots = DEFAULT_SPOTS.map(function (x) { return { name: x.name, lat: x.lat, lng: x.lng }; }); save(); recheck(); renderAll(); openSettings(); break;
+    case 'useVallila': S().spots = campusSpots(); save(); recheck(); renderAll(); openSettings(); break;
+    case 'campusDel': S().spots = S().spots.filter(function (x) { return !isCampusSpot(x); }); save(); recheck(); renderAll(); openSettings(); break;
     case 'setDay': setDay(b.getAttribute('data-k'), b.getAttribute('data-v')); closeSheet(); break;
     case 'checkin':
       var tK = K(now); state.days[tK] = { s: 'office', src: 'manual', t: hhmm(now) }; state.noAuto = null;
@@ -2401,6 +3159,19 @@ document.addEventListener('click', function (e) {
 });
 $('#photoInput').addEventListener('change', function (e) { handlePhoto(e.target.files && e.target.files[0]); e.target.value = ''; });
 document.addEventListener('keydown', function (e) {
+  if (tour.on) {
+    if (e.key === 'Escape') { e.preventDefault(); tourEnd(false); return; }
+    if (e.key === 'ArrowRight') { e.preventDefault(); tourNext(); return; }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); tourBack(); return; }
+    if (e.key === 'Tab') {
+      var tb = Array.prototype.slice.call(document.querySelectorAll('#tourTip button')), ti = tb.indexOf(document.activeElement);
+      e.preventDefault();
+      if (tb.length) tb[ti < 0 ? 0 : (ti + (e.shiftKey ? tb.length - 1 : 1)) % tb.length].focus({ preventScroll: true });
+      return;
+    }
+    if (['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].indexOf(e.key) >= 0 && !(e.target && e.target.closest && e.target.closest('#tourTip button'))) e.preventDefault();
+    return;
+  }
   if (e.key === 'Escape') closeSheet();
   if (e.key === 'Enter' && e.target && e.target.getAttribute && e.target.getAttribute('data-field') === 'name' && !$('#wiz').hidden) { e.preventDefault(); wizNext(); }
 });
@@ -2411,7 +3182,7 @@ document.addEventListener('input', function (e) {
     var now = new Date(); renderHero(computeStats(viewPeriod(), now), now);
     var nb = document.querySelector('#wiz [data-act="wizNext"]'); if (nb && wiz.step === 'name') nb.textContent = S().name.trim() ? 'Next' : 'Skip';
   }
-  if (f === 'link') { var out = $('#linkStatus'); if (out) { out.textContent = ''; out.className = 'wiz-status'; } }
+  if (f === 'link') { wiz.linkDraft = e.target.value; var out = $('#linkStatus'); if (out) { out.textContent = ''; out.className = 'wiz-status'; } }
 });
 
 // swipe between months on the calendar
@@ -2438,7 +3209,7 @@ setInterval(function () {
 }, 60000);
 
 // for tests
-window.__OD = { easter: easter, holidaysFor: holidaysFor, computeStats: computeStats, periodOf: periodOf, suggest: suggest, perWeekText: perWeekText, whatIf: whatIf, isoWeek: isoWeek, K: K, sunTimes: sunTimes, skyPhase: skyPhase, syncRemote: syncRemote, uploadPlan: uploadPlan, openWiz: openWiz, getState: function () { return state; }, wxInterp: wxInterp, wxScene: wxScene, wxRefresh: wxRefresh, wxPlace: wxPlace, getWx: function () { return wx; } };
+window.__OD = { easter: easter, holidaysFor: holidaysFor, computeStats: computeStats, periodOf: periodOf, suggest: suggest, perWeekText: perWeekText, whatIf: whatIf, isoWeek: isoWeek, K: K, sunTimes: sunTimes, skyPhase: skyPhase, syncRemote: syncRemote, uploadPlan: uploadPlan, openWiz: openWiz, getState: function () { return state; }, getWiz: function () { return wiz; }, startTour: startTour, getTour: function () { return tour; }, leaveRuns: leaveRuns, hasCampus: hasCampus, spots: DEFAULT_SPOTS, wxInterp: wxInterp, wxScene: wxScene, wxRefresh: wxRefresh, wxPlace: wxPlace, getWx: function () { return wx; } };
 
 if (!FRAMED && (location.protocol === 'https:' || location.hostname === 'localhost')) {
   try { var ml = document.createElement('link'); ml.rel = 'manifest'; ml.href = 'manifest.webmanifest'; document.head.appendChild(ml); } catch (e) {}
@@ -2447,7 +3218,13 @@ if (!FRAMED && (location.protocol === 'https:' || location.hostname === 'localho
 renderAll();
 initLocation();
 if (WX_OK) setTimeout(function () { wxRefresh(); }, 300);
-if (state.wiz < 2) setTimeout(function () { if (state.wiz < 2 && $('#wiz').hidden) openWiz('hello'); }, FRAMED ? 2500 : 150);
+(function () {
+  var rs = state.ui.resume;
+  if (!FRAMED && rs && Math.abs(Date.now() - rs.at) < 30 * 6e4 && (state.wiz < 2 || rs.f !== 'setup')) setTimeout(function () { if ($('#wiz').hidden) openWiz(rs.s, false, rs.f, rs); }, 150);
+  else if (state.wiz < 2) setTimeout(function () { if (state.wiz < 2 && $('#wiz').hidden) openWiz('hello'); }, FRAMED ? 2500 : 150);
+  else if (!FRAMED && S().link && (state.ui.phoneV || 0) < 2 && (state.ui.news || 0) < 8) setTimeout(function () { if ($('#wiz').hidden && sheetKind === null) { state.ui.news = 8; save(); openWiz('news', false, 'upgrade'); } }, 700);
+  else maybeTour(1200);
+})();
 syncRemote();
 (function tryCloud(n) {
   if (window.claude && typeof window.claude.use === 'function') Cloud.init();
