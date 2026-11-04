@@ -704,7 +704,7 @@ var MONTHS = ['January','February','March','April','May','June','July','August',
 var MON3 = MONTHS.map(function (m) { return m.slice(0, 3); });
 var WD_LONG = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 var WD_1 = ['M','T','W','T','F','S','S'];
-var APP_VERSION = '1.1';
+var APP_VERSION = '1.3';
 var WIZ_STEPS = ['hello', 'install', 'opennow', 'name', 'office', 'target', 'auto', 'link', 'phone', 'fix', 'leave', 'remind', 'news', 'script', 'area', 'features', 'done'];
 var CUTOFF_HOUR = 17;          // after this, an unlogged today no longer counts as "left"
 var OFFICE_LAT = 60.1898, OFFICE_LNG = 24.9575;
@@ -2120,7 +2120,7 @@ function openHelp() {
   var h = head('How it works', '');
   h += '<div class="help">';
   h += '<button class="tour-cta" data-act="tourStart">' + FI.play + '<span><b>Take the tour</b><span class="set-sub">See what each part of the screen does.</span></span></button>';
-  h += '<h4>Automatic check-in</h4><p>No web app can watch your location in the background, on any phone. So your phone’s own automation does it, even when this app is closed. When you arrive, it tells your private link. ' + (S().quick ? 'Every arrival counts, even a quick one.' : 'The day counts after 5 minutes at the office, so walking past doesn’t count.') + ' You get at most one notification a day.</p>';
+  h += '<h4>Automatic check-in</h4><p>No web app can watch your location in the background, on any phone. So your phone’s own automation does it, even when this app is closed. When you arrive, it tells your private link. ' + (S().quick ? 'Every arrival counts, even a quick one.' : 'The day counts after 5 minutes at the office, so walking past doesn’t count.') + ' You get at most one Office Days message a day. On iPhone, Shortcuts may also show its own small banner when the automation runs. That’s normal.</p>';
   h += FRAMED ? '<p>This preview runs inside Claude, which blocks it. Put your own copy of the app online (GitHub Pages is free), open that link, and follow the start screens.</p>' : '<p><button class="btn" data-act="wizAuto">' + (S().link ? 'Show the setup steps' : 'Set it up') + '</button></p>';
   if (!FRAMED) h += '<h4>Quick visits</h4><p>Popped in for a minute to tap your card? A visit under 5 minutes looks like walking past, so it doesn’t count by itself. The app asks you about it on the Today card. You can also open the app while you’re there, or turn on “Count quick visits too” in Settings.</p>';
   h += '<h4>Just open the app</h4><p>At the office, open Office Days. It checks that you’re within ' + S().radius + ' m of ' + (hasCampus() ? 'any Nordea campus building (' + CAMPUS_ADDR + ')' : 'your office') + ' and marks today right away. Any entrance works.</p>';
@@ -2654,16 +2654,19 @@ function actSteps(url, add, withIf) {
 // "only show answers that mention the office": that's what keeps it to one notification a day
 function ifSteps(add) {
   return [
-    { k: 'if', t: 'Add a check', d: add + ', type ' + chip('If') + ' and tap it. It should say ' + B('If Contents of URL') + '. Tap ' + B('Condition') + ', pick ' + B('contains') + ', then tap ' + B('Text') + ' and type ' + chip('office') },
+    { k: 'if', t: 'Add a check', d: add + ', type ' + chip('If') + ' and tap it. It reads ' + B('If Contents of URL is Anything') + '. Each blue word in it is a button.' },
+    { t: 'Make it text', d: 'Tap the blue words ' + B('Contents of URL') + '. Tap ' + B('Type') + ' and pick ' + B('Text') + '. Then tap an empty spot to close the menu. Already says Text? Just go on.' },
+    { t: 'Change “is” to “contains”', d: 'Tap the blue word ' + B('is') + ' and pick ' + B('contains') + ' from the list.' },
+    { t: 'Type the word office', d: 'Tap the blue word ' + B('Anything') + ' and type ' + chip('office') + '. Close the keyboard: tap ' + B('Done') + ' on the keyboard, or tap an empty spot. It now reads ' + B('If Contents of URL contains office') + '.' },
     { t: 'Add the notification', d: add + ', type ' + chip('Show Notification') + ' and tap it.' },
     { t: 'Move it inside the check', d: 'Touch and hold ' + B('Show Notification') + ' and drag it up, so it sits between ' + B('If') + ' and ' + B('Otherwise') + '.' },
-    { t: 'Show the answer', d: 'In Show Notification, delete ' + B('Hello World') + '. In the bar above the keyboard, tap ' + B('Contents of URL') + '.' }
+    showAnswer()
   ];
 }
-function removeStep() { return { t: 'Remove the old notification', d: 'Tap the ' + B('ⓧ') + ' on ' + B('Show Notification') + ' (or touch and hold it, then tap ' + B('Delete') + '). You’ll add it back inside the check.' }; }
+function showAnswer() { return { t: 'Show the answer', d: 'In Show Notification, delete ' + B('Hello World') + '. In the bar above the keyboard, tap ' + B('Contents of URL') + '. Not there? Tap ' + B('Select Variable') + ', then tap ' + B('Contents of URL') + '.' }; }
+function removeStep() { return { t: 'Remove the old notification', d: 'Tap the ' + B('ⓧ') + ' on the ' + B('Show Notification') + ' action. You’ll add it back inside the check.' }; }
 function noteSteps(add) {
-  return [{ t: 'Add the notification', d: add + ', type ' + chip('Show Notification') + ' and tap it.' },
-    { t: 'Show the answer', d: 'In Show Notification, delete ' + B('Hello World') + '. In the bar above the keyboard, tap ' + B('Contents of URL') + '.' }];
+  return [{ t: 'Add the notification', d: add + ', type ' + chip('Show Notification') + ' and tap it.' }, showAnswer()];
 }
 // iOS 26: Automation tab, then a new shortcut
 function i26Trigger(what, place) {
@@ -2671,109 +2674,131 @@ function i26Trigger(what, place) {
     { t: 'Open the ' + B('Shortcuts') + ' app and tap ' + B('Automation'), d: 'It’s at the bottom of the screen.' },
     { t: 'Tap ' + B('+') + ' at the top right', d: 'No automations yet? Tap ' + B('New Automation') + ' in the middle instead.' },
     what === 'Time of Day'
-      ? { t: 'Tap ' + B('Time of Day') + ' and set ' + B('8:00'), d: 'Under Repeat, tap ' + B('Weekly') + ' and keep only ' + B('Monday to Friday') + '.' }
-      : { t: 'Scroll down and tap ' + B(what), d: what === 'Leave' ? 'It’s right below Arrive.' : '' },
+      ? { t: 'Tap ' + B('Time of Day'), d: 'Tap the time and set ' + B('8:00') + '. Under Repeat, tap ' + B('Weekly') + '. Then tap the days so only ' + B('Monday to Friday') + ' are selected.' }
+      : { t: 'Find ' + B(what) + ' in the list and tap it' },
     what === 'Time of Day' ? null : { t: 'Pick your office', d: 'Tap ' + B('Choose') + ' next to Location. Search ' + place + ' and tap the address. A map with a blue circle opens.' },
     what === 'Time of Day' ? null : circleStep(what),
     { t: 'Let it run by itself', d: (what === 'Time of Day' ? '' : 'Keep ' + B('Any Time') + '. ') + 'Select ' + B('Run Immediately') + '. If you see ' + B('Notify When Run') + ', switch it off.' },
-    { t: 'Tap ' + B('Next') + ', then ' + B('Create New Shortcut'), d: 'Older iPhones say ' + B('New Blank Automation') + '.' }
+    { t: 'Tap ' + B('Next') + ', then ' + B('Create New Shortcut'), d: 'It’s the grey tile at the top. Older iPhones say ' + B('New Blank Automation') + '.' }
   ].filter(Boolean);
 }
-var ADD26 = 'Tap ' + B('Search Actions') + ' at the bottom', ADD27 = 'Tap ' + B('Add Action');
+var ADD26 = 'Tap ' + B('Search Actions') + ' at the bottom', ADD27 = 'Tap the search bar at the bottom (' + B('Search Actions') + ')';
 // one circle around the whole campus: Satamaradankatu 5 is in the middle, the far buildings are about 200 m away
 function circleStep(what) {
   var c = hasCampus();
   return { t: c ? 'Make the circle cover the whole campus' : 'Make the circle cover your building',
     d: 'Drag the dot on the edge of the blue circle outwards until ' + (c ? 'it covers every Nordea building, from ' + B('Fleminginkatu') + ' to ' + B('Kustaankatu') + '. That’s about 250 m, so any entrance counts.' : 'it covers your whole building and its entrances.') +
-      (what === 'Leave' ? ' Make it the same size as for arriving.' : '') + ' Then tap ' + B('Done') + '.' };
+      (what === 'Leave' ? ' Make it the same size as for arriving.' : '') + ' Then tap ' + B('✓') + ' at the top right (some iPhones say ' + B('Done') + ').' };
 }
 // for phones set up before version 1: make the existing circles bigger
 function areaSteps(p) {
-  var both = S().phoneMode !== 'notify', big = { t: 'Make the circle bigger', d: 'Drag the dot on the edge of the blue circle outwards until it covers every Nordea building, from ' + B('Fleminginkatu') + ' to ' + B('Kustaankatu') + '. About 250 m. Then tap ' + B('Done') + '.' };
+  var both = S().phoneMode !== 'notify', big = { t: 'Make the circle bigger', d: 'Drag the dot on the edge of the blue circle outwards until it covers every Nordea building, from ' + B('Fleminginkatu') + ' to ' + B('Kustaankatu') + '. About 250 m. Then tap ' + B('✓') + ' at the top right (some iPhones say ' + B('Done') + ').' };
   if (p === 'android') return [
-    { t: 'Open ' + B('MacroDroid') + ' and your office macro', d: 'The one with the ' + B('Geofence Trigger') + ' (Area entered).' },
-    { t: 'Edit the office zone', d: 'Tap the Geofence trigger, then tap your office zone to edit it.' },
-    { t: 'Set the radius to ' + B('250 m'), d: 'Keep the pin on Satamaradankatu 5. Then every Nordea building is inside, from Fleminginkatu to Kustaankatu. Save.' }
-  ].concat(both ? [{ t: 'Check your leave macro', d: 'If it uses a different zone, set that one to 250 m too.' }] : []);
+    { t: 'Open the Geofences tile', d: 'On the ' + B('MacroDroid') + ' home screen, tap the ' + B('Geofences') + ' tile, then tap your office zone.' },
+    { t: 'Set the radius to ' + B('250 m'), d: 'Keep the pin on Satamaradankatu 5. Drag the radius slider, or tap the number and type 250. Save.' },
+    { t: both ? 'That updates both macros' : 'That’s it', d: both ? 'Your arrive and leave macros use the same zone, so both now cover the whole campus. If they use two different zones, set the other one to 250 m too.' : 'Every Nordea building is now inside, from Fleminginkatu to Kustaankatu.' }
+  ];
   if (p === 'ios27') return [
-    { t: 'Open your arrive shortcut', d: 'In ' + B('Shortcuts') + ', go to ' + B('Library') + ' › ' + B('Automation') + ' and open ' + B('Office arrive') + '. Tap ' + B('Edit') + ' if you see it.' },
+    { t: 'Open your arrive shortcut', d: 'In ' + B('Shortcuts') + ', tap ' + B('‹') + ' at the top left until you see ' + B('Library') + '. Tap ' + B('Automation') + ' and open ' + B('Office arrive') + '. See a description instead of the steps? Tap ' + B('☰') + '.' },
     { t: 'Tap the place', d: 'In the ' + B('Arrive') + ' box at the top, tap the address. A map with a blue circle opens.' },
     big,
-    { t: 'Tap ' + B('Done') + ' to save', d: both ? 'Arriving is done.' : 'That’s it.' }
-  ].concat(both ? [{ t: 'Now ' + B('Office leave'), d: 'Open it and do the same in the ' + B('Leave') + ' box: tap the place, make the circle the same size, then tap ' + B('Done') + '.' }] : []);
+    { t: 'Save', d: 'Tap ' + B('‹') + ' at the top left. It saves by itself.' + (both ? ' Arriving is done.' : '') }
+  ].concat(both ? [{ t: 'Now ' + B('Office leave'), d: 'Open it and do the same in the ' + B('Leave') + ' box: tap the place, make the circle the same size, then tap ' + B('‹') + '.' }] : []);
   return [
     { t: 'Open the ' + B('Shortcuts') + ' app and tap ' + B('Automation'), d: 'It’s at the bottom of the screen.' },
     { t: 'Tap your arrive automation', d: 'The one that starts with “When I arrive at…”.' },
     { t: 'Tap the place', d: 'Tap the line ' + B('When I arrive at…') + ', then tap the address next to Location. A map with a blue circle opens.' },
     big,
-    { t: 'Tap ' + B('Done') + ' to save', d: both ? 'Arriving is done.' : 'That’s it.' }
-  ].concat(both ? [{ t: 'Now your leave automation', d: 'Go back to ' + B('Automation') + ' and tap the one that starts with “When I leave…”. Do the same: tap the place, make the circle the same size, then tap ' + B('Done') + '.' }] : []);
+    { t: 'Save', d: 'Tap ' + B('✓') + ' at the top right until you see your list of automations again.' + (both ? ' Arriving is done.' : '') }
+  ].concat(both ? [{ t: 'Now your leave automation', d: 'Tap the one that starts with “When I leave…”. Do the same: tap the place, make the circle the same size, then tap ' + B('✓') + ' at the top right until you’re back at the list.' }] : []);
 }
-function i26Arrive(url, place) { return i26Trigger('Arrive', place).concat(actSteps(url, ADD26, true), [{ t: 'Tap ' + B('✓') + ' at the top right', d: 'Saved. You get at most one notification a day.' }]); }
-function i26Leave(url, place) { return i26Trigger('Leave', place).concat(actSteps(url, ADD26, false), [{ t: 'Tap ' + B('✓') + ' at the top right', d: 'Saved. No notification needed: it only tells the app you left.' }]); }
+function i26Arrive(url, place) { return i26Trigger('Arrive', place).concat(actSteps(url, ADD26, true), [{ t: 'Tap ' + B('✓') + ' at the top right', d: 'Saved. You get at most one Office Days message a day. ' + 'Your iPhone may also show a small Shortcuts banner each time. That’s from iPhone and is normal.' }]); }
+function i26Leave(url, place) { return i26Trigger('Leave', place).concat(actSteps(url, ADD26, false), [{ t: 'Tap ' + B('✓') + ' at the top right', d: 'Saved. It only tells the app you left, so there’s no Office Days message. ' + 'Your iPhone may also show a small Shortcuts banner each time. That’s from iPhone and is normal.' }]); }
 function i26Time(url) { return i26Trigger('Time of Day').concat(actSteps(url, ADD26, false), noteSteps(ADD26), [{ t: 'Tap ' + B('▶') + ' to test, then ' + B('✓'), d: 'You should see today’s plan.' }]); }
 function i26Fix() {
   return [{ t: 'Open your arrive automation', d: 'In ' + B('Shortcuts') + ', tap ' + B('Automation') + ' at the bottom. Tap your office one (“When I arrive…”).' }, removeStep()]
-    .concat(ifSteps(ADD26), [{ t: 'Tap ' + B('Done'), d: 'Saved. You get at most one notification a day.' }]);
+    .concat(ifSteps(ADD26), [{ t: 'Tap ' + B('✓') + ' at the top right', d: 'Saved (older iPhones say ' + B('Done') + '). You get at most one Office Days message a day. ' + 'Your iPhone may also show a small Shortcuts banner each time. That’s from iPhone and is normal.' }]);
 }
 // iOS 27: automations live inside a shortcut, as a trigger at the top
 function i27Trigger(what, place) {
   return [
     { t: 'Open the ' + B('Shortcuts') + ' app and tap ' + B('+'), d: 'This starts a new shortcut.' },
-    { t: 'Tap ' + B('Edit') + ', then ' + B('Automation'), d: 'If you see Describe a Shortcut, ' + B('Edit') + ' is at the top right.' },
+    { t: 'Open the editor', d: 'See a box asking what your shortcut should do? Tap the button with three lines ' + B('☰') + ' at the top right. Apple calls it ' + B('Edit') + '.' },
+    { t: 'Tap ' + B('Automation'), d: 'It’s in the list of actions.' },
     { t: 'Tap ' + B(what) },
     what === 'Time of Day'
-      ? { t: 'Set ' + B('8:00') + ' on workdays', d: 'In the Time of Day box, set the time and repeat on ' + B('Monday to Friday') + '.' }
-      : { t: 'Pick your office', d: 'In the ' + what + ' box, tap ' + B('Location') + '. Search ' + place + ' and tap the address. A map with a blue circle opens.' },
+      ? { t: 'Set ' + B('8:00') + ' on workdays', d: 'In the Time of Day box, tap the time and set 8:00. Set it to repeat ' + B('Weekly') + ' and keep only ' + B('Monday to Friday') + '.' }
+      : { t: 'Pick your office', d: 'In the ' + what + ' box, tap the blue word for the place (it may say ' + B('Location') + ' or ' + B('Choose') + '). Search ' + place + ' and tap the address. A map with a blue circle opens.' },
     what === 'Time of Day' ? null : circleStep(what),
     { t: 'Let it run by itself', d: 'Tap the small arrow on the ' + what + ' box. Keep ' + B('Automation') + ' on and turn ' + B('Confirm Before Run') + ' off.' }
   ].filter(Boolean);
 }
 function i27End(name, note) {
-  return [{ t: 'Let it run when your phone is locked', d: 'Tap ' + B('ⓘ') + ' at the bottom, tap ' + B('Privacy') + ', and turn on ' + B('Allow Running When Locked') + '.' },
-    { t: 'Name it and save', d: 'Tap the name at the top and call it ' + chip(name) + '. Then tap ' + B('Done') + '.' + (note ? ' ' + note : '') }];
+  return [{ t: 'Let it run when your phone is locked', d: 'Tap ' + B('ⓘ') + ' at the bottom, tap ' + B('Privacy') + ', and turn on ' + B('Allow Running When Locked') + '. It may already be on.' },
+    { t: 'Name it', d: 'Tap the name at the top, tap ' + B('Rename') + ', type ' + chip(name) + ' and tap ' + B('Done') + '.' },
+    { t: 'Save', d: 'Tap ' + B('‹') + ' at the top left. It saves by itself.' + (note ? ' ' + note : '') }];
 }
-function i27Arrive(url, place) { return i27Trigger('Arrive', place).concat(actSteps(url, ADD27, true), i27End('Office arrive', 'You get at most one notification a day.')); }
+function i27Arrive(url, place) { return i27Trigger('Arrive', place).concat(actSteps(url, ADD27, true), i27End('Office arrive', 'You get at most one Office Days message a day. ' + 'Your iPhone may also show a small Shortcuts banner each time. That’s from iPhone and is normal.')); }
 function i27Leave(url, place) { return i27Trigger('Leave', place).concat(actSteps(url, ADD27, false), i27End('Office leave', 'No notification needed.')); }
-function i27Time(url) { return i27Trigger('Time of Day').concat(actSteps(url, ADD27, false), noteSteps(ADD27), i27End('Office morning', '')); }
+function i27Time(url) {
+  return i27Trigger('Time of Day').concat(actSteps(url, ADD27, false), noteSteps(ADD27),
+    [{ t: 'Test it', d: 'Tap ' + B('▶') + ' at the bottom. You should see today’s plan. If it asks to connect to script.google.com, tap ' + B('Always Allow') + '.' }], i27End('Office morning', ''));
+}
 function i27Fix() {
-  return [{ t: 'Open your arrive shortcut', d: 'In ' + B('Shortcuts') + ', go to ' + B('Library') + ' › ' + B('Automation') + ' and open your office one. Tap ' + B('Edit') + ' if you see it.' }, removeStep()]
-    .concat(ifSteps(ADD27), [{ t: 'Check two switches, then save', d: 'Tap the small arrow on the Arrive box: ' + B('Confirm Before Run') + ' off. Tap ' + B('ⓘ') + ' › ' + B('Privacy') + ': ' + B('Allow Running When Locked') + ' on. Then tap ' + B('Done') + '.' }]);
+  return [{ t: 'Open your arrive shortcut', d: 'In ' + B('Shortcuts') + ', tap ' + B('‹') + ' at the top left until you see ' + B('Library') + '. Tap ' + B('Automation') + ' and open your office one. See a description instead of the steps? Tap ' + B('☰') + '.' }, removeStep()]
+    .concat(ifSteps(ADD27), [
+      { t: 'Check two switches', d: 'Tap the small arrow on the Arrive box: ' + B('Confirm Before Run') + ' off. Tap ' + B('ⓘ') + ' › ' + B('Privacy') + ': ' + B('Allow Running When Locked') + ' on.' },
+      { t: 'Save', d: 'Tap ' + B('‹') + ' at the top left. It saves by itself. You get at most one Office Days message a day.' }]);
 }
 // Android: MacroDroid
 function anArrive(url, place) {
+  var c = hasCampus();
   return [
     { t: 'Install ' + B('MacroDroid'), d: 'It’s free on Google Play. Open it and tap ' + B('Add Macro') + '.' },
-    { t: 'Add the trigger', d: 'Under ' + B('Triggers') + ', tap ' + B('+') + ' and search ' + chip('Geofence') + '. Pick ' + B('Geofence Trigger') + ', then ' + B('Area entered') + '.' },
-    { t: 'Pick your office', d: hasCampus() ? 'Add a zone at ' + place + ' and set the radius to ' + B('250 m') + ', so every Nordea building is inside, from Fleminginkatu to Kustaankatu. Save it.' : 'Add a zone at your office address with a radius of about ' + B('150 m') + ', so the whole building is inside. Save it.' },
-    { t: 'Add your link', d: 'Under ' + B('Actions') + ', tap ' + B('+') + ' and search ' + chip('HTTP Request') + '. Set ' + B('GET') + ', paste this link, and save the response in a new text variable called ' + chip('answer') + '.', x: copyRow(url) },
-    { k: 'if', t: 'Add a check', d: 'Tap ' + B('+') + ', search ' + chip('If Clause') + ' and add it with: variable ' + B('answer') + ' contains ' + chip('office') },
-    { t: 'Add the notification inside it', d: 'Inside the If, add ' + B('Display Notification') + ' with the ' + B('answer') + ' variable as the text.' },
-    { t: 'Save', d: 'Name the macro and save it. When Android asks, allow location ' + B('All the time') + '.' }
+    { t: 'Add the trigger', d: 'Tap ' + B('+') + ' next to ' + B('Triggers') + ' and search ' + chip('Geofence') + '. Pick ' + B('Geofence Trigger') + ' (not Location Trigger), then ' + B('Area Entered') + '.' },
+    { t: 'Make your office zone', d: 'Tap ' + B('Select Zone') + ' or ' + B('+') + ' to add a zone. Search ' + place + ' on the map and name the zone ' + chip('Office') + '.' },
+    { t: 'Set the size', d: c ? 'Set the radius to ' + B('250 m') + ': drag the slider, or tap the number. Then every Nordea building is inside, from Fleminginkatu to Kustaankatu. Save, then tap ' + B('OK') + '.'
+        : 'Set the radius to about ' + B('150 m') + ', so your whole building is inside. Save, then tap ' + B('OK') + '.' },
+    { t: 'Add your link', d: 'Tap ' + B('+') + ' next to ' + B('Actions') + ' and search ' + chip('HTTP Request') + '. Set the method to ' + B('GET') + ' and paste this link in the URL box:', x: copyRow(url) },
+    { t: 'Tick two boxes', d: 'In the same HTTP Request, tick ' + B('Follow redirects') + ' and ' + B('Block next actions until complete') + '. Without them, the check below never sees the answer.' },
+    { t: 'Keep the answer', d: 'Choose to save the response in a ' + B('String variable') + '. Tap ' + B('[New Variable]') + ', type ' + chip('answer') + ', set Type to ' + B('String') + ' and tap ' + B('OK') + '.' },
+    { k: 'if', t: 'Add a check', d: 'Tap ' + B('+') + ' next to Actions again, search ' + chip('If') + ' and pick ' + B('If Clause') + '. Tap ' + B('+') + ' to add a condition, search ' + chip('Variable') + ' and pick ' + B('MacroDroid Variable') + '.' },
+    { t: 'Look for the word office', d: 'Choose ' + B('answer') + ', then ' + B('Contains') + ', and type ' + chip('office') + '. Tap ' + B('OK') + '. MacroDroid adds ' + B('End If') + ' by itself.' },
+    { t: 'Add the notification', d: 'Tap ' + B('+') + ' next to Actions and search ' + chip('Display Notification') + '. Type a title, like ' + chip('Office') + '. In the text box, tap the ' + B('…') + ' button and pick ' + B('answer') + '. Tap ' + B('OK') + '.' },
+    { t: 'Put it inside the check', d: 'The order must be: HTTP Request, If, Display Notification, End If. If the notification is below End If, press and hold it and drag it up.' },
+    { t: 'Name it and save', d: 'Type a name at the top, like ' + chip('Office arrive') + ', then tap save (the tick at the bottom right).' },
+    { t: 'Allow location all the time', d: 'Open your phone’s ' + B('Settings') + ' › ' + B('Apps') + ' › ' + B('MacroDroid') + ' › ' + B('Permissions') + ' › ' + B('Location') + '. Choose ' + B('Allow all the time') + ' and keep ' + B('Use precise location') + ' on.' },
+    { t: 'Let it run in the background', d: 'In ' + B('Settings') + ' › ' + B('Apps') + ' › ' + B('MacroDroid') + ', open ' + B('App battery usage') + ' and pick ' + B('Unrestricted') + '. The names can be a little different on your phone.' }
   ];
 }
 function anLeave(url) {
   return [
     { t: 'In MacroDroid, tap ' + B('Add Macro') },
-    { t: 'Add the trigger', d: B('Geofence Trigger') + ' › ' + B('Area exited') + ', with the same office zone.' },
-    { t: 'Add your link', d: 'Under ' + B('Actions') + ', add ' + chip('HTTP Request') + ', set ' + B('GET') + ' and paste this link:', x: copyRow(url) },
-    { t: 'Save', d: 'No notification needed: it only tells the app you left.' }
+    { t: 'Add the trigger', d: 'Tap ' + B('+') + ' next to ' + B('Triggers') + ', search ' + chip('Geofence') + ' and pick ' + B('Geofence Trigger') + '. Choose ' + B('Area Exited') + ', pick your ' + B('Office') + ' zone and tap ' + B('OK') + '.' },
+    { t: 'Add your link', d: 'Tap ' + B('+') + ' next to ' + B('Actions') + ', search ' + chip('HTTP Request') + ', set ' + B('GET') + ' and paste this link:', x: copyRow(url) },
+    { t: 'Name it and save', d: 'Type a name at the top, like ' + chip('Office leave') + ', then tap save. No notification needed: it only tells the app you left.' }
   ];
 }
 function anMorning(url) {
   return [
     { t: 'In MacroDroid, tap ' + B('Add Macro') },
-    { t: 'Add the trigger', d: 'Tap ' + B('+') + ', search ' + chip('Day/Time') + ', and set ' + B('8:00') + ', Monday to Friday.' },
-    { t: 'Add your link', d: 'Under ' + B('Actions') + ', add ' + chip('HTTP Request') + ', set ' + B('GET') + ', paste this link, and save the response in a text variable:', x: copyRow(url) },
-    { t: 'Add the notification', d: 'Add ' + B('Display Notification') + ' with that variable as the text. Save the macro.' }
+    { t: 'Add the trigger', d: 'Tap ' + B('+') + ' next to ' + B('Triggers') + ', search ' + chip('Day/Time') + ' and pick ' + B('Day/Time Trigger') + '. Set the time to ' + B('08:00') + ', tick ' + B('Mon, Tue, Wed, Thu, Fri') + ' and tap ' + B('OK') + '.' },
+    { t: 'Add your link', d: 'Tap ' + B('+') + ' next to ' + B('Actions') + ', search ' + chip('HTTP Request') + ', set ' + B('GET') + ' and paste this link:', x: copyRow(url) },
+    { t: 'Tick two boxes and keep the answer', d: 'Tick ' + B('Follow redirects') + ' and ' + B('Block next actions until complete') + '. Save the response in a ' + B('String variable') + ': tap ' + B('[New Variable]') + ', type ' + chip('today') + ', set Type to ' + B('String') + ', tap ' + B('OK') + '.' },
+    { t: 'Add the notification', d: 'Tap ' + B('+') + ' next to Actions and add ' + chip('Display Notification') + '. Type a title. In the text box, tap ' + B('…') + ' and pick ' + B('today') + '. Tap ' + B('OK') + '.' },
+    { t: 'Name it and save', d: 'Type a name at the top, like ' + chip('Office morning') + ', then tap save.' }
   ];
 }
 function anFix() {
   return [
-    { t: 'Open your office macro', d: 'In ' + B('MacroDroid') + ', open the macro with the Geofence trigger.' },
-    { t: 'Keep the answer', d: 'In the ' + B('HTTP Request') + ' action, save the response in a text variable called ' + chip('answer') + '.' },
-    { k: 'if', t: 'Add a check', d: 'Add ' + chip('If Clause') + ' with: variable ' + B('answer') + ' contains ' + chip('office') },
-    { t: 'Move the notification inside', d: 'Put ' + B('Display Notification') + ' inside the If, showing the ' + B('answer') + ' variable. Save.' }
+    { t: 'Open your office macro', d: 'On the MacroDroid home screen, tap ' + B('Macros') + ', then tap your office macro (the one with Area Entered).' },
+    { t: 'Open the HTTP Request', d: 'Tap the ' + B('HTTP Request') + ' action. If a menu opens, tap ' + B('Configure') + '.' },
+    { t: 'Tick two boxes', d: 'Tick ' + B('Follow redirects') + ' and ' + B('Block next actions until complete') + '.' },
+    { t: 'Keep the answer', d: 'Save the response in a ' + B('String variable') + ': tap ' + B('[New Variable]') + ', type ' + chip('answer') + ', set Type to ' + B('String') + ', tap ' + B('OK') + '.' },
+    { k: 'if', t: 'Add a check', d: 'Tap ' + B('+') + ' next to Actions, search ' + chip('If') + ' and pick ' + B('If Clause') + '. Tap ' + B('+') + ' to add a condition, search ' + chip('Variable') + ' and pick ' + B('MacroDroid Variable') + '.' },
+    { t: 'Look for the word office', d: 'Choose ' + B('answer') + ', then ' + B('Contains') + ', and type ' + chip('office') + '. Tap ' + B('OK') + '.' },
+    { t: 'Put the notification inside', d: 'Press and hold ' + B('Display Notification') + ' and drag it between ' + B('If') + ' and ' + B('End If') + '. The order must be: HTTP Request, If, Display Notification, End If.' },
+    { t: 'Show the answer, then save', d: 'Tap Display Notification. In the text box, tap ' + B('…') + ' and pick ' + B('answer') + '. Tap ' + B('OK') + ', then save the macro.' }
   ];
 }
 function guideSteps(st) {
@@ -2911,7 +2936,8 @@ function renderWiz() {
       foot = back + next();
       break;
     case 'area':
-      body = '<h2 id="wizTitle">Cover the whole campus</h2><p class="wiz-lead">The Nordea campus has many buildings and entrances. Make the office circle in your phone big enough for all of them, so every arrival counts.</p>' + platTabs() + gdHtml(gs);
+      body = '<h2 id="wizTitle">Cover the whole campus</h2><p class="wiz-lead">The Nordea campus has many buildings and entrances. Make the office circle in your phone big enough for all of them, so every arrival counts.</p>' + platTabs() + gdHtml(gs) +
+        '<p class="gd-note">Next time you arrive, check that the app shows your phone’s check-in.</p>';
       foot = (wiz.g.i > 0 && !wiz.g.all ? back : '<button class="btn-back" data-act="wizClose">Later</button>') + next('Done');
       break;
     case 'leave':
