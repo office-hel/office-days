@@ -360,6 +360,34 @@ textarea{width:100%;min-height:120px;margin-top:8px;padding:12px;border-radius:1
 .wiz-ok{margin:4px 0 12px;padding:12px 14px;border-radius:14px;background:var(--green-soft);color:var(--green-strong);font-weight:650}
 @media (prefers-color-scheme:dark){.wiz-ok{color:var(--link)}}
 
+.code-chip{display:inline-block;margin:2px 0;padding:1px 9px;border-radius:9px;background:var(--surface-2);border:1px solid var(--line);font-family:inherit;font-size:15px;font-weight:650;color:var(--ink);line-height:1.55;vertical-align:baseline}
+.code-chip:active{background:var(--green-soft)}
+.ver{margin-top:6px!important;font-size:12.5px;opacity:.8}
+
+/* weather */
+#wxChip:empty{display:none}
+.wx-chip{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 13px 0 9px;border-radius:20px;background:rgba(255,255,255,.14);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-weight:650;font-size:16.5px;letter-spacing:-.01em;font-variant-numeric:tabular-nums;white-space:nowrap;animation:wxIn .45s ease-out both}
+.wx-chip svg{flex:none}
+.hero.ph-day .wx-chip{background:rgba(255,255,255,.55)}
+@keyframes wxIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (max-width:350px){.brand span{display:none}}
+.wx-fall{animation:wxFall 1s linear infinite}
+@keyframes wxFall{from{transform:translateY(0)}to{transform:translateY(540px)}}
+.wx-sway{animation:wxSway 3.6s ease-in-out infinite alternate}
+@keyframes wxSway{from{transform:translateX(-7px)}to{transform:translateX(7px)}}
+.wx-drift{animation:wxDrift 34s ease-in-out infinite alternate}
+@keyframes wxDrift{from{transform:translateX(-14px)}to{transform:translateX(14px)}}
+.wx-splash{transform-box:fill-box;transform-origin:center;animation:wxSplash 1s ease-out infinite}
+@keyframes wxSplash{0%{opacity:0;transform:scale(.3)}25%{opacity:1}100%{opacity:0;transform:scale(1.7)}}
+.wx-flash{opacity:0;animation:wxFlash 7.5s linear infinite}
+@keyframes wxFlash{0%,86%{opacity:0}87%{opacity:1}88%{opacity:.15}89.5%{opacity:.8}92%,100%{opacity:0}}
+.wx-now{display:flex;align-items:center;gap:14px;margin:4px 0 14px}
+.wx-ico{width:60px;height:60px;border-radius:18px;background:var(--surface-2);display:grid;place-items:center;color:var(--ink-2);flex:none}
+.wx-temp{font-size:44px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.wx-feels{font-size:15px;color:var(--ink-2);margin-top:4px}
+.wx-src{font-size:13px;line-height:1.45}
+.wx-src a{color:var(--link);font-weight:600}
+
 /* toast */
 .toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom));transform:translate(-50%,16px);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:16px;font-weight:600;font-size:15px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:60;max-width:calc(100vw - 32px);text-align:center}
 .toast.show{opacity:1;transform:translate(-50%,0)}
@@ -377,7 +405,7 @@ textarea{width:100%;min-height:120px;margin-top:8px;padding:12px;border-radius:1
         <svg viewBox="0 0 22 22" width="22" height="22" aria-hidden="true"><rect x="5.5" y="7" width="10" height="13" rx="1.3" fill="currentColor" opacity=".3"/><g fill="#FFC95E"><rect x="7.2" y="16.4" width="2.6" height="1.9" rx=".4"/><rect x="11.2" y="16.4" width="2.6" height="1.9" rx=".4"/><rect x="7.2" y="13" width="2.6" height="1.9" rx=".4"/><rect x="11.2" y="13" width="2.6" height="1.9" rx=".4"/></g><g fill="currentColor" opacity=".55"><rect x="7.2" y="9.6" width="2.6" height="1.9" rx=".4"/><rect x="11.2" y="9.6" width="2.6" height="1.9" rx=".4"/></g><path d="M14.8 7V2.4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M15.3 2.4l4.4 1.5-4.4 1.5z" fill="#36B57C"/></svg>
         <span>Office Days</span>
       </div>
-      <div class="hero-actions">
+      <div class="hero-actions"><div id="wxChip"></div>
         <button class="icon-btn" data-act="help" aria-label="Help"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 0 1 4.9.7c0 1.8-2.5 2.1-2.5 3.9"/><circle cx="12" cy="17.3" r=".7" fill="currentColor" stroke="none"/></svg></button>
         <button class="icon-btn" data-act="settings" aria-label="Settings"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2.2"/><circle cx="9" cy="17" r="2.2"/></svg></button>
       </div>
@@ -540,6 +568,7 @@ var MONTHS = ['January','February','March','April','May','June','July','August',
 var MON3 = MONTHS.map(function (m) { return m.slice(0, 3); });
 var WD_LONG = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 var WD_1 = ['M','T','W','T','F','S','S'];
+var APP_VERSION = '7';
 var CUTOFF_HOUR = 17;          // after this, an unlogged today no longer counts as "left"
 var OFFICE_LAT = 60.1898, OFFICE_LNG = 24.9575;
 var DEFAULT_SPOTS = [
@@ -550,7 +579,7 @@ function defaults() {
   return {
     v: 1, days: {}, noAuto: null, setup: false, wiz: 0, remoteAfter: 0,
     settings: { target: 60, period: 'month', radius: 200, eves: true, prefer: [2, 3, 4], spots: DEFAULT_SPOTS.map(function (s) { return { name: s.name, lat: s.lat, lng: s.lng }; }), autoLoc: false, name: '', link: '' },
-    ui: { simMode: 'wfh', hideInstall: false }
+    ui: { simMode: 'wfh', hideInstall: false, wxGps: false }
   };
 }
 
@@ -664,6 +693,7 @@ function normalize(s) {
   if (s.ui && typeof s.ui === 'object') {
     out.ui.simMode = s.ui.simMode === 'leave' ? 'leave' : 'wfh';
     out.ui.hideInstall = !!s.ui.hideInstall;
+    out.ui.wxGps = !!s.ui.wxGps;
   }
   return out;
 }
@@ -791,8 +821,14 @@ function sunTimes(date, lat, lng) {   // compact SunCalc-style sunrise/sunset
   function toDate(j) { return new Date((j + 0.5 - J1970) * dayMs); }
   return { rise: toDate(Jrise), set: toDate(Jset) };
 }
+function skyPlace() { return (typeof wx !== 'undefined' && wx && isNum(wx.lat)) ? [wx.lat, wx.lng] : [OFFICE_LAT, OFFICE_LNG]; }
+function sunUp(now) {
+  var pl = skyPlace(), t = sunTimes(now, pl[0], pl[1]);
+  if (!t) return now.getMonth() >= 3 && now.getMonth() <= 8;
+  return now >= t.rise && now <= t.set;
+}
 function skyPhase(now) {
-  var t = sunTimes(now, OFFICE_LAT, OFFICE_LNG);
+  var pl = skyPlace(), t = sunTimes(now, pl[0], pl[1]);
   if (!t) return (now.getMonth() >= 4 && now.getMonth() <= 7) ? 'day' : 'night';
   var n = +now, r = +t.rise, s = +t.set, m = 6e4;
   if (n < r - 45 * m || n > s + 50 * m) return 'night';
@@ -808,22 +844,105 @@ var PH = {
 };
 function mulberry32(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
 function f1(n) { return Math.round(n * 10) / 10; }
+/* weather drawing: grey skies, clouds, rain, snow, fog, lightning */
+function wxHex(h) { var n = parseInt(h.slice(1), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
+function wxMix(a, b, t) {
+  if (!a || !b || !t) return a;
+  var x = wxHex(a), y = wxHex(b);
+  return '#' + x.map(function (v, i) { var c = Math.round(v + (y[i] - v) * t); return (c < 16 ? '0' : '') + c.toString(16); }).join('');
+}
+var WXG = {   // sky colours to blend toward: [top, middle, horizon]
+  night: { cloud: ['#15191F', '#1F232B', '#33313A'], wet: ['#101318', '#181B21', '#2A2930'], snow: ['#24262D', '#33343C', '#4A4850'], fog: ['#24282E', '#30343A', '#46484E'] },
+  dawn: { cloud: ['#3C4254', '#5E6375', '#8C8C99'], wet: ['#2F3547', '#4A5063', '#727588'], snow: ['#4D5467', '#6F7588', '#9B9EAD'], fog: ['#5B5F71', '#7D8091', '#A5A6B2'] },
+  day: { cloud: ['#8C99A5', '#AFB9C2', '#D2D8DD'], wet: ['#55626F', '#75828E', '#9CA7B1'], snow: ['#8E9AA6', '#ADB7C0', '#CCD3D9'], fog: ['#B3BCC4', '#C8CFD5', '#DCE1E5'] },
+  dusk: { cloud: ['#2F3548', '#4E5266', '#7B7989'], wet: ['#252A3B', '#3E4255', '#616477'], snow: ['#3E4457', '#5D6276', '#888B9C'], fog: ['#4B4F61', '#6B6E7F', '#90919E'] }
+};
+var WXC = { night: ['#4B566A', '#2E3746'], dawn: ['#C9A7B6', '#7D6E8E'], day: ['#FFFFFF', '#D5DEE6'], dusk: ['#B3889B', '#5D5677'] };   // fair-weather clouds
+var WXD = {   // the cloud ceiling on grey days
+  night: { cloud: '#22262E', wet: '#1A1D23', snow: '#2C2E36', fog: '#2E3238' },
+  dawn: { cloud: '#4E5266', wet: '#3C4154', snow: '#5E6477', fog: '#6E7284' },
+  day: { cloud: '#7F8C98', wet: '#4E5A66', snow: '#9AA5B0', fog: '#B7C0C8' },
+  dusk: { cloud: '#3B3F52', wet: '#2E3243', snow: '#4B5164', fog: '#5E6274' }
+};
+function wxPal(phase, W) {
+  var B = PH[phase], P = {}, T = WXG[phase][W.tone], k;
+  for (k in B) P[k] = B[k];
+  P.sky = B.sky.map(function (c, i) { return wxMix(c, T[i], W.grey); });
+  if (W.haze) ['far2', 'far', 'crane'].forEach(function (q) { P[q] = wxMix(B[q], T[2], W.haze); });
+  if (W.haze2) ['brick', 'brick2', 'mod', 'mod2', 'glass', 'glass2', 'mwin', 'bwin', 'gwin', 'side', 'birch'].forEach(function (q) { P[q] = wxMix(B[q], T[2], W.haze2); });
+  return P;
+}
+function wxPuff(x, y, k, fill, shade, op) {
+  return '<g transform="translate(' + f1(x) + ' ' + f1(y) + ') scale(' + k.toFixed(2) + ')" opacity="' + op + '">' +
+    '<g fill="' + shade + '"><circle cx="-17" cy="3" r="12"/><circle cx="1" cy="-4" r="17"/><circle cx="20" cy="2" r="12"/><rect x="-30" y="2" width="62" height="13" rx="6.5"/></g>' +
+    '<g fill="' + fill + '"><circle cx="-17" cy="0" r="11"/><circle cx="1" cy="-7" r="16"/><circle cx="19" cy="-1" r="11"/><rect x="-29" y="0" width="60" height="11" rx="5.5"/></g></g>';
+}
+function wxClouds(W, phase, r2) {
+  var s = '', c = W.cloud, i, x;
+  if (c >= .8 || W.fall || W.kind === 'fog') {
+    var col = WXD[phase][W.tone], low = wxMix(col, phase === 'day' ? '#FFFFFF' : '#8A8C99', phase === 'day' ? .2 : .14);
+    s += '<g class="wx-drift" style="animation-duration:70s">';
+    s += '<rect x="-40" y="-20" width="480" height="52" fill="' + col + '"/>';
+    for (x = -40; x < 450; x += 26 + r2() * 20) s += '<circle cx="' + f1(x) + '" cy="' + f1(30 + r2() * 14) + '" r="' + f1(20 + r2() * 16) + '" fill="' + col + '"/>';
+    s += '<g fill="' + low + '" opacity="' + (W.kind === 'fog' ? .35 : .6) + '">';
+    for (x = -30; x < 440; x += 44 + r2() * 46) s += '<ellipse cx="' + f1(x) + '" cy="' + f1(84 + r2() * 46) + '" rx="' + f1(30 + r2() * 30) + '" ry="' + f1(6 + r2() * 6) + '"/>';
+    s += '</g></g>';
+  } else if (c >= .12) {
+    var C = WXC[phase], n = clamp(Math.round(c * 6), 1, 5), op = phase === 'day' ? .95 : .75;
+    var SPOT = [[318, 128, .78], [214, 110, .55], [372, 162, .58], [92, 176, .6], [28, 122, .5]];
+    s += '<g class="wx-drift"' + (W.wind >= 8 ? ' style="animation-duration:16s"' : '') + '>';
+    for (i = 0; i < n; i++) s += wxPuff(SPOT[i][0] + (r2() - .5) * 20, SPOT[i][1] + (r2() - .5) * 10, SPOT[i][2] * (.9 + c * .3), C[0], C[1], op);
+    s += '</g>';
+  }
+  return s;
+}
+// Rain and snow fall in a 540-tall tile that repeats, tilted by the wind.
+function wxFall(W, phase, r2, near) {
+  var s = '', n = W.int, H = 540, y0 = -80, i, x, y, L;
+  var ang = clamp(-W.u * 2.2, -24, 24), drizzle = W.kind === 'drizzle';
+  if (W.fall === 'rain' || W.fall === 'sleet') {
+    var cnt = Math.round((near ? [0, 24, 46, 78] : [0, 44, 78, 120])[n] * (W.fall === 'sleet' ? .55 : 1) * (drizzle ? 1.2 : 1));
+    var len = drizzle ? (near ? 4.5 : 3) : (near ? 15 : 9);
+    var col = phase === 'day' ? '#26323E' : '#C9D6E4', op = phase === 'day' ? (near ? .46 : .3) : (near ? .5 : .3);
+    var d = '';
+    for (i = 0; i < cnt; i++) { x = -70 + r2() * 540; y = y0 + r2() * H; L = len * (.7 + r2() * .6); d += 'M' + f1(x) + ' ' + f1(y) + 'v' + f1(L) + 'M' + f1(x) + ' ' + f1(y - H) + 'v' + f1(L); }
+    var dur = drizzle ? (near ? 1.6 : 2.4) : (near ? .6 : .95);
+    s += '<g transform="rotate(' + f1(ang) + ' 200 190)"><g class="wx-fall" style="animation-duration:' + dur + 's"><path d="' + d + '" stroke="' + col + '" stroke-width="' + (near ? 1.3 : .9) + '" stroke-linecap="round" opacity="' + op + '"/></g></g>';
+    if (near && !drizzle) {
+      s += '<g fill="none" stroke="' + col + '" stroke-width=".8" opacity="' + Math.min(1, op + .15).toFixed(2) + '">';
+      for (i = 0; i < 4 + n * 3; i++) s += '<ellipse class="wx-splash" style="animation-duration:' + (.7 + r2() * .6).toFixed(2) + 's;animation-delay:-' + r2().toFixed(2) + 's" cx="' + f1(r2() * 400) + '" cy="' + f1(345 + r2() * 33) + '" rx="3.4" ry=".9"/>';
+      s += '</g>';
+    }
+  }
+  if (W.fall === 'snow' || W.fall === 'sleet') {
+    var cs = Math.round((near ? [0, 24, 42, 70] : [0, 34, 58, 92])[n] * (W.fall === 'sleet' ? .5 : 1)), dots = '';
+    for (i = 0; i < cs; i++) { x = -70 + r2() * 540; y = y0 + r2() * H; var r = (near ? 1.4 + r2() * 1.1 : .75 + r2() * .7).toFixed(2); dots += '<circle cx="' + f1(x) + '" cy="' + f1(y) + '" r="' + r + '"/><circle cx="' + f1(x) + '" cy="' + f1(y - H) + '" r="' + r + '"/>'; }
+    var ds = (near ? [0, 10, 8, 6] : [0, 16, 13, 10])[n];
+    s += '<g transform="rotate(' + f1(ang * .6) + ' 200 190)"><g class="wx-sway" style="animation-duration:' + (near ? 3.2 : 4.6) + 's"><g class="wx-fall" style="animation-duration:' + ds + 's" fill="#FFFFFF" opacity="' + (near ? .95 : .7) + '">' + dots + '</g></g></g>';
+  }
+  return s;
+}
 function scene(o) {
-  var P = PH[o.phase], rnd = mulberry32(o.seed * 7919 + 13), mo = o.month, X = o.sfx || '';
-  var snow = mo === 11 || mo <= 2;
+  var W = o.wx || null, P = W ? wxPal(o.phase, W) : PH[o.phase], rnd = mulberry32(o.seed * 7919 + 13), mo = o.month, X = o.sfx || '';
+  var r2 = mulberry32(o.seed * 104729 + 7);   // the weather has its own dice, so the windows stay put
+  var snow = W && W.ground !== null ? W.ground : (mo === 11 || mo <= 2);
   var season = (mo >= 10 || mo <= 2) ? 'bare' : mo <= 4 ? 'spring' : mo <= 7 ? 'summer' : 'autumn';
   var leafC = { spring: '#9CCB6A', summer: '#4F9A50', autumn: '#E2A83A' }[season];
   var nightish = o.phase !== 'day';
+  var hr = o.hour === undefined ? 12 : o.hour, busy = (hr >= 23 || hr < 6) ? 0.35 : hr >= 19 ? 0.75 : 1;   // fewer lit windows late at night
+  var skyO = W ? W.sky : 1, starF = W ? W.stars : 1, wet = !!(W && W.wet), fog = !!(W && W.kind === 'fog');
   var s = '<svg viewBox="0 0 400 380" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">';
   s += '<defs><linearGradient id="skyG' + X + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + P.sky[0] + '"/><stop offset=".6" stop-color="' + P.sky[1] + '"/><stop offset="1" stop-color="' + P.sky[2] + '"/></linearGradient>';
   if (P.sun) s += '<radialGradient id="sunG' + X + '"><stop offset="0" stop-color="' + P.sun + '" stop-opacity=".85"/><stop offset="1" stop-color="' + P.sun + '" stop-opacity="0"/></radialGradient>';
-  s += '<mask id="moonM' + X + '"><circle cx="368" cy="62" r="11" fill="#fff"/><circle cx="373" cy="58" r="10" fill="#000"/></mask>';
+  if (fog) { var fc = WXG[o.phase].fog[2]; s += '<linearGradient id="fogG' + X + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="' + fc + '" stop-opacity="0"/><stop offset=".5" stop-color="' + fc + '" stop-opacity=".92"/><stop offset="1" stop-color="' + fc + '" stop-opacity="0"/></linearGradient>'; }
+  s += '<mask id="moonM' + X + '"><circle cx="356" cy="132" r="11" fill="#fff"/><circle cx="361" cy="128" r="10" fill="#000"/></mask>';
   s += '<filter id="glowF' + X + '" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>';
   s += '<rect width="400" height="380" fill="url(#skyG' + X + ')"/>';
   var i, x, y, w, h;
-  if (P.star) for (i = 0; i < 46; i++) { x = rnd() * 400; y = rnd() * 235; s += '<circle cx="' + f1(x) + '" cy="' + f1(y) + '" r="' + (0.35 + rnd() * 1.05).toFixed(2) + '" fill="#fff" opacity="' + (P.star * (0.3 + rnd() * 0.65)).toFixed(2) + '"/>'; }
-  if (P.moon) s += '<circle cx="368" cy="62" r="11" fill="' + P.moon + '" mask="url(#moonM' + X + ')"/>';
-  if (P.sun) { var sy = o.phase === 'day' ? 200 : 240; s += '<circle cx="352" cy="' + sy + '" r="46" fill="url(#sunG' + X + ')"/><circle cx="352" cy="' + sy + '" r="11" fill="' + P.sun + '"/>'; }
+  if (P.star) for (i = 0; i < 46; i++) { x = rnd() * 400; y = rnd() * 235; var sr = 0.35 + rnd() * 1.05, so = P.star * (0.3 + rnd() * 0.65) * starF; if (so > 0.02) s += '<circle cx="' + f1(x) + '" cy="' + f1(y) + '" r="' + sr.toFixed(2) + '" fill="#fff" opacity="' + so.toFixed(2) + '"/>'; }
+  if (P.moon && skyO > 0.02) s += '<circle cx="356" cy="132" r="11" fill="' + P.moon + '" mask="url(#moonM' + X + ')"' + (skyO < 1 ? ' opacity="' + skyO.toFixed(2) + '"' : '') + '/>';
+  if (P.sun && skyO > 0.02) { var sy = o.phase === 'day' ? 200 : 240; s += '<g' + (skyO < 1 ? ' opacity="' + skyO.toFixed(2) + '"' : '') + '><circle cx="352" cy="' + sy + '" r="46" fill="url(#sunG' + X + ')"/><circle cx="352" cy="' + sy + '" r="11" fill="' + P.sun + '"/></g>'; }
+  if (W) s += wxClouds(W, o.phase, r2);
   // far skyline, two layers
   [[P.far2, 30, 72, 44, 118], [P.far, 18, 50, 30, 82]].forEach(function (L, li) {
     x = -6; s += '<g fill="' + L[0] + '">';
@@ -831,7 +950,10 @@ function scene(o) {
       w = 16 + rnd() * 30; var hmax = x < 250 ? L[2] : L[4], hmin = x < 250 ? L[1] : L[3];
       h = hmin + rnd() * (hmax - hmin);
       s += '<rect x="' + f1(x) + '" y="' + f1(342 - h) + '" width="' + f1(w + 0.6) + '" height="' + f1(h) + '"/>';
-      if (li === 1 && P.farlit) for (var j = 0; j < 3; j++) if (rnd() < P.farlit) s += '<rect x="' + f1(x + 3 + rnd() * (w - 7)) + '" y="' + f1(342 - h + 4 + rnd() * (h - 10)) + '" width="2.2" height="2.2" fill="' + P.lit + '" opacity=".55"/>';
+      if (li === 1 && P.farlit) for (var j = 0; j < 3; j++) if (rnd() < P.farlit) {
+        var fx = x + 3 + rnd() * (w - 7), fy = 342 - h + 4 + rnd() * (h - 10);
+        if (((j * 7 + Math.round(x)) % 10) < busy * 10) s += '<rect x="' + f1(fx) + '" y="' + f1(fy) + '" width="2.2" height="2.2" fill="' + P.lit + '" opacity=".55"/>';
+      }
       x += w;
     }
     s += '</g>';
@@ -839,23 +961,25 @@ function scene(o) {
   // construction crane (Kalasatama is always being built)
   s += '<g stroke="' + P.crane + '" stroke-width="1.6" fill="none" stroke-linecap="round"><path d="M381 342V196M338 199H399M381 196L366 199M381 196L396 199M344 199V226"/></g>';
   if (nightish) s += '<circle cx="381" cy="194" r="1.8" fill="#FF6A55"/>';
+  if (fog) s += '<rect class="wx-drift" style="animation-duration:40s" x="-40" y="200" width="480" height="92" fill="url(#fogG' + X + ')"/>';
+  if (W && W.fall) s += wxFall(W, o.phase, r2, false);
   // old brick hall with a sawtooth roof
   var teeth = 'M4 272';
   for (i = 0; i < 8; i++) { x = 4 + 19 * i; teeth += 'L' + (x + 19) + ' 260L' + (x + 19) + ' 272'; }
   s += '<path d="' + teeth + 'Z" fill="' + P.brick2 + '"/>';
   if (snow) { var sn = ''; for (i = 0; i < 8; i++) { x = 4 + 19 * i; sn += 'M' + x + ' 272L' + (x + 19) + ' 260'; } s += '<path d="' + sn + '" stroke="' + P.snow + '" stroke-width="2.2" fill="none"/>'; }
   s += '<rect x="4" y="272" width="152" height="70" fill="' + P.brick + '"/><rect x="4" y="334" width="152" height="8" fill="' + P.brick2 + '"/>';
-  for (var r2 = 0; r2 < 2; r2++) for (i = 0; i < 6; i++) {
-    x = 16 + i * 24; y = 280 + r2 * 26;
-    var lit = nightish && rnd() < 0.5;
+  for (var r2w = 0; r2w < 2; r2w++) for (i = 0; i < 6; i++) {
+    x = 16 + i * 24; y = 280 + r2w * 26;
+    var lit = nightish && rnd() < 0.5 * busy;
     s += '<path d="M' + x + ' ' + (y + 20) + 'V' + (y + 6.5) + 'A6.5 6.5 0 0 1 ' + (x + 13) + ' ' + (y + 6.5) + 'V' + (y + 20) + 'Z" fill="' + (lit ? P.lit : P.bwin) + '"' + (lit ? ' opacity=".82"' : '') + '/>';
   }
   // newer office block
   s += '<rect x="162" y="254" width="88" height="88" fill="' + P.mod + '"/><rect x="162" y="254" width="5" height="88" fill="' + P.mod2 + '"/>';
   if (snow) s += '<rect x="161" y="252" width="90" height="3" rx="1.5" fill="' + P.snow + '"/>';
-  for (var r3 = 0; r3 < 7; r3++) for (i = 0; i < 5; i++) {
-    var l3 = nightish && rnd() < 0.36;
-    s += '<rect x="' + (172 + i * 15.5) + '" y="' + (261 + r3 * 11) + '" width="10" height="6" fill="' + (l3 ? P.lit : P.mwin) + '"' + (l3 ? ' opacity=".85"' : '') + '/>';
+  for (var r3w = 0; r3w < 7; r3w++) for (i = 0; i < 5; i++) {
+    var l3 = nightish && rnd() < 0.36 * busy;
+    s += '<rect x="' + (172 + i * 15.5) + '" y="' + (261 + r3w * 11) + '" width="10" height="6" fill="' + (l3 ? P.lit : P.mwin) + '"' + (l3 ? ' opacity=".85"' : '') + '/>';
   }
   // the tower = the meter: one lit floor per tenth of the target
   s += '<rect x="262" y="186" width="72" height="156" fill="' + P.glass + '"/><rect x="262" y="186" width="6" height="156" fill="' + P.glass2 + '" opacity=".7"/>';
@@ -880,11 +1004,12 @@ function scene(o) {
   // right-hand building
   s += '<rect x="338" y="262" width="62" height="80" fill="' + P.mod2 + '"/>';
   for (var r4 = 0; r4 < 6; r4++) for (i = 0; i < 6; i++) {
-    var l4 = nightish && rnd() < 0.3;
+    var l4 = nightish && rnd() < 0.3 * busy;
     s += '<rect x="' + (343 + i * 9.4) + '" y="' + (270 + r4 * 12) + '" width="7" height="5" fill="' + (l4 ? P.lit : P.mwin) + '"' + (l4 ? ' opacity=".8"' : '') + '/>';
   }
-  // street, overhead wire, rails
-  s += '<rect x="0" y="342" width="400" height="8" fill="' + (snow ? P.snow : P.side) + '"/><rect x="0" y="350" width="400" height="30" fill="' + P.road + '"/>';
+  // street, overhead wire, rails (a wet street shines)
+  s += '<rect x="0" y="342" width="400" height="8" fill="' + (snow ? P.snow : wet ? wxMix(P.side, P.road, .45) : P.side) + '"/><rect x="0" y="350" width="400" height="30" fill="' + P.road + '"/>';
+  if (wet) { s += '<g fill="' + (nightish ? P.lit : '#FFFFFF') + '" opacity="' + (nightish ? .3 : .2) + '">'; for (i = 0; i < 16; i++) s += '<rect x="' + f1(r2() * 400) + '" y="' + f1(352 + r2() * 26) + '" width="' + f1(5 + r2() * 20) + '" height=".9" rx=".45"/>'; s += '</g>'; }
   s += '<path d="M0 364.5H400M0 372H400" stroke="' + P.rail + '" stroke-width="1.2"/>';
   s += '<path d="M0 318H400" stroke="' + P.wire + '" stroke-width=".9" opacity=".85"/>';
   // birch trees
@@ -904,7 +1029,12 @@ function scene(o) {
   for (i = 0; i < 5; i++) s += '<rect x="' + (8 + i * 20) + '" y="4" width="15" height="10" rx="2" fill="' + P.twin + '"' + (nightish ? ' opacity=".92"' : '') + '/>';
   s += '<path d="M110 4H118Q121 4 121 8V14H110Z" fill="' + P.twin + '"/>';
   s += '<g fill="#151B24"><circle cx="16" cy="31.5" r="3"/><circle cx="28" cy="31.5" r="3"/><circle cx="94" cy="31.5" r="3"/><circle cx="106" cy="31.5" r="3"/></g>';
-  s += '</g></svg>';
+  s += '</g>';
+  // weather in front: fog banks, the near rain or snow, lightning
+  if (fog) s += '<rect class="wx-drift" style="animation-duration:52s;animation-delay:-20s" x="-40" y="262" width="480" height="76" fill="url(#fogG' + X + ')" opacity=".75"/><rect class="wx-drift" style="animation-duration:46s;animation-delay:-9s" x="-40" y="318" width="480" height="62" fill="url(#fogG' + X + ')" opacity=".55"/>';
+  if (W && W.fall) s += wxFall(W, o.phase, r2, true);
+  if (W && W.storm) { var bx = f1(70 + r2() * 190); s += '<rect class="wx-flash" width="400" height="380" fill="#DCE5FF" fill-opacity=".38"/><path class="wx-flash" d="M' + bx + ' 46l-11 33h9l-13 37 25-45h-10l9-25z" fill="#FFF3BF"/>'; }
+  s += '</svg>';
   return s;
 }
 
@@ -1047,6 +1177,7 @@ function recheck() { if (loc.pos) onPos({ coords: { latitude: loc.pos.lat, longi
 function stopWatch() { if (watchId !== null) { try { navigator.geolocation.clearWatch(watchId); } catch (e) {} watchId = null; } }
 function onPos(p) {
   var c = p.coords, best = Infinity;
+  wxOnPos(c);
   if (!S().spots.length) {
     loc.dist = null; loc.acc = c.accuracy; loc.at = new Date(); loc.pos = { lat: c.latitude, lng: c.longitude, acc: c.accuracy };
     loc.state = 'nospot'; if (!S().autoLoc) { S().autoLoc = true; save(); }
@@ -1094,7 +1225,285 @@ document.addEventListener('visibilitychange', function () {
   renderAll();
   syncRemote();
   if (GEO_OK && loc.state !== 'denied' && (S().autoLoc || perm === 'granted')) startWatch();
+  wxTick();
 });
+
+/* ============ weather: what it's like outside, right where you are ============ */
+// Live data from MET Nordic (1 km, corrected every hour with stations, radar and home weather
+// stations) through Open-Meteo: free, no key, works straight from the browser.
+var WX_KEY = 'officeDays.wx.v1', WX_FRESH = 10 * 6e4, WX_MAX = 3 * 3600e3;
+var WX_OK = !FRAMED && typeof fetch === 'function';
+var WX_VARS = 'temperature_2m,apparent_temperature,weather_code,cloud_cover,precipitation,rain,showers,snowfall,snow_depth,wind_speed_10m,wind_direction_10m,wind_gusts_10m';
+var WX_BASIC = 'temperature_2m,apparent_temperature,weather_code,cloud_cover,precipitation,rain,snowfall,wind_speed_10m,wind_direction_10m,wind_gusts_10m';
+var wx = { d: null, at: 0, lat: null, lng: null, src: '', pin: null, pinSaved: 0, depth: null, depthAt: 0, dLat: null, dLng: null, busy: null, fail: 0, lastTry: 0, denied: false };
+function isNum(v) { return typeof v === 'number' && isFinite(v); }
+function numOr(v) { return isNum(v) ? v : null; }
+function r3(n) { return Math.round(n * 1000) / 1000; }   // about 100 m: plenty for a 1 km weather grid
+(function () {
+  try {
+    var o = JSON.parse(localStorage.getItem(WX_KEY) || 'null');
+    if (!o || o.v !== 1) return;
+    if (o.d && isNum(o.d.temp) && isNum(o.d.code) && isNum(o.lat) && isNum(o.lng)) { wx.d = o.d; wx.at = +o.at || 0; wx.lat = o.lat; wx.lng = o.lng; wx.src = String(o.src || ''); }
+    if (o.pin && isNum(o.pin.lat) && isNum(o.pin.lng)) wx.pin = { lat: o.pin.lat, lng: o.pin.lng, at: +o.pin.at || 0 };
+    if (isNum(o.dLat) && isNum(o.dLng)) { wx.depth = numOr(o.depth); wx.depthAt = +o.depthAt || 0; wx.dLat = o.dLat; wx.dLng = o.dLng; }
+  } catch (e) {}
+})();
+function wxStore() {
+  try { localStorage.setItem(WX_KEY, JSON.stringify({ v: 1, d: wx.d, at: wx.at, lat: wx.lat, lng: wx.lng, src: wx.src, pin: wx.pin, depth: wx.depth, depthAt: wx.depthAt, dLat: wx.dLat, dLng: wx.dLng })); } catch (e) {}
+}
+function wxCur() { return wx.d && Math.abs(Date.now() - wx.at) < WX_MAX ? wx.d : null; }
+function wxSetPin(lat, lng, acc) {
+  if (!isNum(lat) || !isNum(lng) || !(acc <= 5000)) return false;
+  var la = r3(lat), ln = r3(lng), now = Date.now(), moved = !wx.pin || wx.pin.lat !== la || wx.pin.lng !== ln;
+  wx.pin = { lat: la, lng: ln, at: now };
+  if (moved || Math.abs(now - wx.pinSaved) > 6e4) { wx.pinSaved = now; wxStore(); }
+  return true;
+}
+function wxPlace() {   // the best place we know right now, without waiting
+  var now = Date.now(), sp = S().spots[0];
+  if (loc.pos && loc.at && Math.abs(now - loc.at) < 15 * 6e4 && loc.pos.acc <= 5000) return { lat: r3(loc.pos.lat), lng: r3(loc.pos.lng), src: 'gps' };
+  if (wx.pin && Math.abs(now - wx.pin.at) < 15 * 6e4) return { lat: wx.pin.lat, lng: wx.pin.lng, src: 'gps' };
+  if (wx.pin && Math.abs(now - wx.pin.at) < 14 * 864e5) return { lat: wx.pin.lat, lng: wx.pin.lng, src: 'saved' };
+  if (sp) return { lat: r3(sp.lat), lng: r3(sp.lng), src: 'office' };
+  return { lat: 60.17, lng: 24.94, src: 'city' };
+}
+function geoPerm() {
+  if (perm) return Promise.resolve(perm);
+  try {
+    if (navigator.permissions && navigator.permissions.query) return navigator.permissions.query({ name: 'geolocation' }).then(function (q) { return q.state; }, function () { return ''; });
+  } catch (e) {}
+  return Promise.resolve('');
+}
+function geoOnce(ms, maxAge) {
+  return new Promise(function (res) {
+    var done = false, t = null;
+    var fin = function (v) { if (done) return; done = true; clearTimeout(t); res(v); };
+    t = setTimeout(function () { fin(null); }, ms + 1500);
+    try {
+      navigator.geolocation.getCurrentPosition(fin, function (err) { if (err && err.code === 1) wx.denied = true; fin(null); }, { enableHighAccuracy: false, timeout: ms, maximumAge: maxAge });
+    } catch (e) { fin(null); }
+  });
+}
+function wxWaitFix(ms) {
+  return new Promise(function (res) {
+    var n = 0;
+    (function poll() {
+      var p = wxPlace();
+      if (p.src === 'gps') return res(p);
+      if (++n * 250 >= ms || watchId === null) return res(null);
+      setTimeout(poll, 250);
+    })();
+  });
+}
+// Live location only if the user already said yes to location; otherwise the last known place or the office.
+function wxLocate(ask) {
+  var p = wxPlace();
+  if (!GEO_OK || (p.src === 'gps' && !ask)) return Promise.resolve(p);
+  return geoPerm().then(function (ps) {
+    if (!ask && (ps === 'denied' || !(ps === 'granted' || S().autoLoc || state.ui.wxGps))) return p;
+    if (!ask && watchId !== null) return wxWaitFix(7000).then(function (q) { return q || wxPlace(); });
+    return geoOnce(ask ? 15000 : 9000, ask ? 6e4 : WX_FRESH).then(function (pos) {
+      if (pos) wxSetPin(pos.coords.latitude, pos.coords.longitude, pos.coords.accuracy);
+      return wxPlace();
+    });
+  });
+}
+function wxGet(url) {
+  var ctl = typeof AbortController === 'function' ? new AbortController() : null, opt = { cache: 'no-store', credentials: 'omit' };
+  if (ctl) opt.signal = ctl.signal;
+  var t = setTimeout(function () { if (ctl) ctl.abort(); }, 12000);
+  return fetch(url, opt).then(function (r) { clearTimeout(t); if (!r.ok) { var er = new Error('HTTP ' + r.status); er.status = r.status; throw er; } return r.json(); }, function (e) { clearTimeout(t); throw e; });
+}
+function wxUrl(lat, lng, vars, model) {
+  return 'https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lng + '&current=' + vars + '&wind_speed_unit=ms&timeformat=unixtime' + (model ? '&models=' + model : '');
+}
+function inNordic(lat, lng) { return lat >= 54.4 && lat <= 71.6 && lng >= 4 && lng <= 32; }
+function wxParse(j, model) {
+  var c = j && j.current;
+  if (!c || !isNum(c.temperature_2m) || !isNum(c.weather_code)) return null;
+  return { t: (numOr(c.time) || 0) * 1000, temp: c.temperature_2m, feels: numOr(c.apparent_temperature), code: Math.round(c.weather_code),
+    cloud: numOr(c.cloud_cover), precip: numOr(c.precipitation), rain: (numOr(c.rain) || 0) + (numOr(c.showers) || 0), snowfall: numOr(c.snowfall),
+    depth: numOr(c.snow_depth), wind: numOr(c.wind_speed_10m), dir: numOr(c.wind_direction_10m), gust: numOr(c.wind_gusts_10m), m: model };
+}
+// In the Nordics use the 1 km Nordic model; elsewhere (or if it fails) Open-Meteo's best local model.
+function wxFetch(lat, lng) {
+  var tries = inNordic(lat, lng) ? [['metno_seamless', WX_VARS], ['metno_seamless', WX_BASIC], ['', WX_VARS]] : [['', WX_VARS]], i = 0;
+  var go = function () {
+    var m = tries[i][0];
+    return wxGet(wxUrl(lat, lng, tries[i][1], m)).then(function (j) {
+      var d = wxParse(j, m ? 'nordic' : 'best');
+      if (!d) throw new Error('no data');
+      if (d.depth === undefined) d.depth = null;
+      return d;
+    }).catch(function (e) {
+      i++;
+      if (i === 1 && tries.length === 3 && !(e && e.status === 400)) i = 2;   // the shorter list only helps if the long one was refused
+      if (i < tries.length) return go();
+      throw e;
+    });
+  };
+  return go();
+}
+// Snow lying on the ground isn't in the Nordic data, so ask the general model now and then.
+function wxDepth(d, p) {
+  var mo = new Date().getMonth();
+  if (d.depth !== null || d.m !== 'nordic' || (mo >= 4 && mo <= 8)) return Promise.resolve(d);
+  if (wx.depthAt && Math.abs(Date.now() - wx.depthAt) < 3 * 3600e3 && isNum(wx.dLat) && haversine(wx.dLat, wx.dLng, p.lat, p.lng) < 5000) { d.depth = wx.depth; return Promise.resolve(d); }
+  return wxGet(wxUrl(p.lat, p.lng, 'snow_depth', '')).then(function (j) {
+    var v = j && j.current ? numOr(j.current.snow_depth) : null;
+    wx.depth = v; wx.depthAt = Date.now(); wx.dLat = p.lat; wx.dLng = p.lng; d.depth = v;   // also remember "unknown" for a while
+    return d;
+  }, function () { return d; });
+}
+function wxRefresh(opt) {
+  opt = opt || {};
+  if (!WX_OK) return Promise.resolve(false);
+  if (wx.busy) return wx.busy;
+  if (!opt.force && !opt.ask && wx.fail && Math.abs(Date.now() - wx.lastTry) < 6e4) return Promise.resolve(false);   // just failed: wait a bit
+  wx.lastTry = Date.now();
+  if (opt.ask) wx.denied = false;
+  wx.busy = wxLocate(!!opt.ask).then(function (p) {
+    var same = isNum(wx.lat) && haversine(wx.lat, wx.lng, p.lat, p.lng) <= 1500;
+    if (!opt.force && wx.d && same && Math.abs(Date.now() - wx.at) < WX_FRESH) {
+      if (p.src === 'gps' && wx.src !== 'gps') { wx.src = 'gps'; wxStore(); }
+      return false;
+    }
+    return wxFetch(p.lat, p.lng).then(function (d) { return wxDepth(d, p); }).then(function (d) {
+      wx.d = d; wx.at = Date.now(); wx.lat = p.lat; wx.lng = p.lng; wx.src = p.src; wx.fail = 0; wxStore();
+      return true;
+    });
+  }).catch(function () { wx.fail++; return false; }).then(function (r) { wx.busy = null; wxShow(); return r; });
+  return wx.busy;
+}
+function wxShow() {
+  var now = new Date();
+  renderHero(computeStats(viewPeriod(), now), now);
+  if (sheetKind === 'weather') openWeather();
+}
+function wxOnPos(c) {
+  if (!WX_OK || !wxSetPin(c.latitude, c.longitude, c.accuracy) || wx.busy) return;
+  var moved = !isNum(wx.lat) || haversine(wx.lat, wx.lng, wx.pin.lat, wx.pin.lng) > 1500;
+  if ((moved || !wx.d || Math.abs(Date.now() - wx.at) >= WX_FRESH) && Math.abs(Date.now() - wx.lastTry) > 45e3) wxRefresh();
+  else if (!moved && wx.d && wx.src !== 'gps') { wx.src = 'gps'; wxStore(); if (sheetKind === 'weather') openWeather(); }
+}
+function wxTick() {
+  if (!WX_OK || wx.busy || document.hidden) return;
+  var p = wxPlace(), moved = p.src === 'gps' && isNum(wx.lat) && haversine(wx.lat, wx.lng, p.lat, p.lng) > 1500;
+  if ((Math.abs(Date.now() - wx.at) >= WX_FRESH || moved) && Math.abs(Date.now() - wx.lastTry) >= (wx.fail ? 5 * 6e4 : 45e3)) wxRefresh();
+}
+function wxForget() {   // "Erase all data" also forgets places
+  wx.d = null; wx.at = 0; wx.lat = null; wx.lng = null; wx.src = ''; wx.pin = null; wx.depth = null; wx.depthAt = 0; wx.dLat = null; wx.dLng = null;
+  try { localStorage.removeItem(WX_KEY); } catch (e) {}
+}
+function wxAsk() {
+  if (!GEO_OK) { toast('Location isn’t available here.'); return; }
+  state.ui.wxGps = true; save();
+  toast('Finding your location…');
+  wxRefresh({ force: true, ask: true }).then(function () {
+    toast(wx.src === 'gps' ? 'Now showing the weather where you are.' : wx.denied ? 'Location is blocked. See Help.' : 'Couldn’t get your location.');
+  });
+}
+// WMO weather codes -> what to draw and say
+function wxInterp(d, day) {
+  var c = d.code, k = 'cloudy', n = 1, fz = false;
+  if (c === 0) k = 'clear';
+  else if (c === 1 || c === 2) k = 'partly';
+  else if (c === 3) k = 'cloudy';
+  else if (c === 45 || c === 48) k = 'fog';
+  else if (c >= 51 && c <= 57) { k = 'drizzle'; n = (c === 55 || c === 57) ? 2 : 1; fz = c >= 56; }
+  else if (c >= 61 && c <= 67) { k = 'rain'; n = (c === 65 || c === 67) ? 3 : c === 63 ? 2 : 1; fz = c >= 66; }
+  else if (c >= 71 && c <= 77) { k = 'snow'; n = c === 75 ? 3 : c === 73 ? 2 : 1; }
+  else if (c >= 80 && c <= 82) { k = 'rain'; n = c - 79; }
+  else if (c === 85 || c === 86) { k = 'snow'; n = c === 86 ? 3 : 1; }
+  else if (c >= 95) { k = 'storm'; n = 3; }
+  if ((k === 'rain' || k === 'drizzle' || k === 'snow') && !fz && (d.rain || 0) >= 0.05 && (d.snowfall || 0) >= 0.05) k = 'sleet';   // räntä
+  var cl = d.cloud !== null ? clamp(d.cloud / 100, 0, 1) : ({ clear: .05, partly: .45 }[k] || .95);
+  if (k !== 'clear' && k !== 'partly' && k !== 'cloudy') cl = Math.max(cl, .9);
+  var label = {
+    clear: day ? 'Sunny' : 'Clear',
+    partly: c === 1 ? (day ? 'Mostly sunny' : 'Mostly clear') : 'Partly cloudy',
+    cloudy: 'Cloudy', fog: 'Fog',
+    drizzle: fz ? 'Freezing drizzle' : 'Drizzle',
+    rain: fz ? 'Freezing rain' : ['', 'Light rain', 'Rain', 'Heavy rain'][n],
+    sleet: 'Sleet', snow: ['', 'Light snow', 'Snow', 'Heavy snow'][n], storm: 'Thunderstorm'
+  }[k];
+  var icon = k === 'clear' ? (day ? 'sun' : 'moon') : k === 'partly' ? (day ? 'psun' : 'pmoon') : k;
+  return { kind: k, int: n, cloud: cl, label: label, icon: icon };
+}
+function wxScene(d, phase) {
+  var w = wxInterp(d, phase === 'day'), k = w.kind, n = w.int, c = w.cloud;
+  var W = { kind: k, int: n, cloud: c, tone: 'cloud', grey: 0, haze: 0, haze2: 0, stars: 1, sky: 1, fall: '', wet: false, ground: null, u: 0, wind: d.wind || 0, storm: k === 'storm' };
+  if (k === 'clear' || k === 'partly' || k === 'cloudy') {
+    W.grey = c <= .3 ? 0 : c <= .75 ? (c - .3) / .45 * .45 : .45 + (c - .75) / .25 * .5;
+    W.haze = W.grey * .3;
+  } else if (k === 'fog') { W.tone = 'fog'; W.grey = .9; W.haze = .7; W.haze2 = .3; }
+  else if (k === 'snow') { W.tone = 'snow'; W.grey = .84 + n * .05; W.haze = .3 + n * .1; W.fall = 'snow'; }
+  else { W.tone = 'wet'; W.grey = k === 'drizzle' ? .82 : Math.min(1, .86 + n * .05); W.haze = .22 + n * .08; W.fall = k === 'sleet' ? 'sleet' : 'rain'; W.wet = true; }
+  W.stars = W.fall || k === 'fog' ? 0 : clamp(1 - (c - .15) / .55, 0, 1);
+  W.sky = W.fall || k === 'fog' ? 0 : clamp(1 - (c - .45) / .4, 0, 1);
+  // snow lying on roofs and the street
+  if (d.depth !== null) W.ground = d.depth >= 0.01 || (k === 'snow' && d.temp <= 0.5);
+  else if (k === 'snow' && d.temp <= 0.5) W.ground = true;
+  else if (d.temp >= 4) W.ground = false;
+  if (d.wind !== null && d.dir !== null) W.u = -d.wind * Math.sin(d.dir * Math.PI / 180);   // east-west part of the wind
+  return W;
+}
+function wxSig(W) { return [W.kind, W.int, Math.round(W.cloud * 5), W.ground === null ? 'n' : W.ground ? 1 : 0, clamp(Math.round(W.u / 3), -3, 3)].join(','); }
+function wxSceneNow(phase) { var d = wxCur(); return d ? wxScene(d, phase) : null; }
+function skyCls(phase, W) { return phase === 'day' && W && W.tone === 'wet' ? 'wet' : phase; }   // dark rain sky: white text
+function fmtT(t) { var r = Math.round(t); return (r < 0 ? '−' : '') + Math.abs(r) + '°'; }
+function sayT(t) { var r = Math.round(t); return (r < 0 ? 'minus ' : '') + Math.abs(r) + (Math.abs(r) === 1 ? ' degree' : ' degrees'); }
+function wxDirWord(deg) { return ['north', 'northeast', 'east', 'southeast', 'south', 'southwest', 'west', 'northwest'][Math.round((((deg % 360) + 360) % 360) / 45) % 8]; }
+var WX_CL = 'M7.2 18h10.3a3.7 3.7 0 0 0 .3-7.4 5.3 5.3 0 0 0-10.2 1.3A3.1 3.1 0 0 0 7.2 18z';
+function wxIcon(name, px) {
+  var up = '<path d="' + WX_CL + '" transform="translate(0 -3.2)"/>', side = '<path d="' + WX_CL + '" transform="translate(1.4 1.6)"/>', b = '';
+  switch (name) {
+    case 'sun': b = '<circle cx="12" cy="12" r="4"/><path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M5.6 18.4l1.6-1.6M16.8 7.2l1.6-1.6"/>'; break;
+    case 'moon': b = '<path d="M19.2 14.6A7.6 7.6 0 0 1 9.4 4.8a7.6 7.6 0 1 0 9.8 9.8z"/>'; break;
+    case 'psun': b = '<path d="M8.6 2.6v1.5M3.4 7.8h1.5M4.9 4.1l1 1M12.3 4.1l-1 1"/><path d="M5.5 11a3.2 3.2 0 0 1 6-2.3"/>' + side; break;
+    case 'pmoon': b = '<path d="M12.6 8.2a4.2 4.2 0 0 1-5.3-5.3 4.4 4.4 0 0 0-1.7 7.8"/>' + side; break;
+    case 'fog': b = up + '<path d="M4.5 18.6h15M7 21.4h10"/>'; break;
+    case 'drizzle': b = up + '<path d="M8.6 18.6v.2M12.6 19.4v.2M16.4 18.6v.2M10.6 21.4v.2M14.6 21.4v.2"/>'; break;
+    case 'rain': b = up + '<path d="M8.8 18.2l-1.2 3M12.8 18.2l-1.2 3M16.8 18.2l-1.2 3"/>'; break;
+    case 'sleet': b = up + '<path d="M8.8 18.2l-1.2 3M16.8 18.2l-1.2 3"/><path d="M12.2 18.4v2.8M11 19.1l2.4 1.4M11 20.5l2.4-1.4"/>'; break;
+    case 'snow': b = up + '<path d="M8.4 18.4v2.8M7.2 19.1l2.4 1.4M7.2 20.5l2.4-1.4M15.8 18.4v2.8M14.6 19.1l2.4 1.4M14.6 20.5l2.4-1.4"/>'; break;
+    case 'storm': b = up + '<path d="M12.9 16.4l-2.3 3.2h2.8l-2 3.2"/>'; break;
+    default: b = '<path d="' + WX_CL + '"/>';
+  }
+  return '<svg viewBox="0 0 24 24" width="' + px + '" height="' + px + '" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + b + '</svg>';
+}
+var wxChipSig = '';
+function renderWxChip(now) {
+  var el = $('#wxChip'), d = wxCur();
+  if (!el) return;
+  if (!d) { if (wxChipSig) { el.innerHTML = ''; wxChipSig = ''; } return; }
+  var w = wxInterp(d, sunUp(now)), sig = w.icon + '|' + fmtT(d.temp) + '|' + w.label;
+  if (sig === wxChipSig) return;
+  wxChipSig = sig;
+  el.innerHTML = '<button class="wx-chip" data-act="weather" aria-label="' + esc('Weather: ' + w.label + ', ' + sayT(d.temp) + '. Show details') + '">' + wxIcon(w.icon, 20) + '<span>' + fmtT(d.temp) + '</span></button>';
+}
+function wxWhereText() {
+  if ((wx.src === 'gps' || wx.src === 'saved') && isNum(wx.lat)) {
+    var atWork = S().spots.some(function (sp) { return haversine(wx.lat, wx.lng, sp.lat, sp.lng) <= Math.max(400, S().radius + 200); });
+    if (atWork) return 'At your office';
+    return wx.src === 'gps' ? 'Right where you are' : 'Where you were last';
+  }
+  return wx.src === 'office' ? 'At your office' : 'Helsinki';
+}
+function openWeather() {
+  var d = wxCur(), now = new Date();
+  if (!d) { if (sheetKind === 'weather') closeSheet(); return; }
+  var w = wxInterp(d, sunUp(now)), h = head(esc(w.label), esc(wxWhereText()));
+  h += '<div class="wx-now"><span class="wx-ico">' + wxIcon(w.icon, 34) + '</span><div><div class="wx-temp">' + fmtT(d.temp) + '</div>' + (d.feels !== null ? '<div class="wx-feels">Feels like ' + fmtT(d.feels) + '</div>' : '') + '</div></div>';
+  if (d.wind !== null) h += '<div class="set-row"><span>Wind</span><span>' + Math.round(d.wind) + ' m/s' + (d.dir !== null && d.wind >= 1 ? ' from the ' + wxDirWord(d.dir) : '') + '</span></div>';
+  if (d.wind !== null && d.gust !== null && d.gust >= d.wind + 3) h += '<div class="set-row"><span>Gusts</span><span>up to ' + Math.round(d.gust) + ' m/s</span></div>';
+  if (d.depth !== null && d.depth >= 0.005) h += '<div class="set-row"><span>Snow on the ground</span><span>' + Math.max(1, Math.round(d.depth * 100)) + ' cm</span></div>';
+  h += '<p class="sheet-foot">Checked at ' + hhmm(new Date(wx.at)) + '. It updates every 10 minutes while the app is open.</p>';
+  if (GEO_OK && wx.src !== 'gps') h += '<button class="btn wide" data-act="wxLoc">' + ICON.pin + 'Use my exact location</button>';
+  h += '<p class="sheet-foot wx-src">' + (d.m === 'nordic' ? 'From MET Nordic, the same 1 km weather data that Yr uses. It’s corrected every hour with weather stations, rain radar and home weather stations.' : 'From the best local weather model for this area.') +
+    ' Data: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo.com</a>' + (d.m === 'nordic' ? ' and MET Norway' : '') + ' (CC BY 4.0).</p>';
+  openSheet('weather', h);
+}
 
 /* ============ rendering ============ */
 var now0 = new Date();
@@ -1124,19 +1533,19 @@ function renderAll() {
 }
 
 function renderHero(st, now) {
-  var hero = $('#hero'), phase = skyPhase(now), photo = getPhoto();
-  hero.className = 'hero ph-' + (photo ? 'photo' : phase);
+  var hero = $('#hero'), phase = skyPhase(now), photo = getPhoto(), W = photo ? null : wxSceneNow(phase);
+  hero.className = 'hero ph-' + (photo ? 'photo' : skyCls(phase, W));
   var lit = st.T ? Math.min(10, Math.floor(10 * st.D / st.T + 1e-9)) : 0;
-  var done = st.status === 'done';
-  var key = [photo ? 'photo' + photo.length : phase, now.getMonth(), lit, done, dayNum(now)].join('|');
+  var done = st.status === 'done', hr = now.getHours();
+  var key = [photo ? 'photo' + photo.length : phase, now.getMonth(), lit, done, dayNum(now), hr >= 23 || hr < 6 ? 0 : hr >= 19 ? 1 : 2, W ? wxSig(W) : '-'].join('|');
   if (key !== heroKey) {
     var animate = heroKey === '' ? 'load' : (lit > lastLit && lastLit >= 0 ? 'gain' : '');
     $('#heroBg').innerHTML = photo
       ? '<div class="hero-photo" style="background-image:url(\'' + photo + '\')"></div>'
-      : scene({ phase: phase, month: now.getMonth(), lit: lit, done: done, seed: dayNum(now), animate: animate, prevLit: Math.max(0, lastLit) });
+      : scene({ phase: phase, month: now.getMonth(), lit: lit, done: done, seed: dayNum(now), animate: animate, prevLit: Math.max(0, lastLit), wx: W, hour: hr });
     heroKey = key; lastLit = lit;
     var tc = document.querySelector('meta[name="theme-color"]');
-    if (tc) tc.setAttribute('content', photo ? '#0A1424' : PH[phase].sky[0]);
+    if (tc) tc.setAttribute('content', photo ? '#0A1424' : (W ? wxPal(phase, W) : PH[phase]).sky[0]);
   }
   var pin = pIn(st.p, now), pct = Math.round(st.pctNow * 100), num, label;
   switch (st.status) {
@@ -1147,6 +1556,7 @@ function renderHero(st, now) {
     default: num = String(st.R); label = 'more office ' + plural(st.R, 'day', 'days') + ' needed ' + pin;
   }
   $('#heroCopy').innerHTML = '<div class="hero-hi">' + esc(greeting(now)) + '</div><div class="hero-num">' + num + '</div><div class="hero-label">' + label + '</div>';
+  renderWxChip(now);
 }
 
 function renderStatus(st) {
@@ -1370,7 +1780,7 @@ function renderHolidays() {
 }
 function renderFoot() {
   var where = Cloud.ref && Cloud.ready ? 'Saved to your Claude account.' : FRAMED ? 'Saved in this browser.' : 'Your data stays on this phone.';
-  $('#foot').innerHTML = '<p>' + where + '</p><p>' + (FRAMED ? '' : '<button class="link" data-act="share">Share app</button>&ensp;&ensp;') + '<button class="link" data-act="settings">Backup</button></p>';
+  $('#foot').innerHTML = '<p>' + where + '</p><p>' + (FRAMED ? '' : '<button class="link" data-act="share">Share app</button>&ensp;&ensp;') + '<button class="link" data-act="settings">Backup</button></p><p class="ver">Version ' + APP_VERSION + '</p>';
 }
 function renderInstall() {
   var el = $('#installBanner');
@@ -1478,7 +1888,7 @@ function openSettings() {
   var photo = getPhoto();
   h += '<div class="set-group"><div class="set-label">Header picture</div><button class="btn wide" data-act="photoPick">' + (photo ? 'Change photo' : 'Use my own photo of the office') + '</button>' + (photo ? '<button class="btn wide" data-act="photoDel">Use the drawing again</button>' : '') + '</div>';
   h += '<div class="set-group"><div class="set-label">Backup</div><button class="btn wide" data-act="backupCopy">Copy backup</button><button class="btn wide" data-act="restoreShow">Restore from a backup</button><div id="restoreBox"></div></div>';
-  h += '<div class="set-group"><button class="btn wide danger" data-act="erase">Erase all data</button></div>';
+  h += '<div class="set-group"><button class="btn wide danger" data-act="erase">Erase all data</button></div><p class="sheet-foot" style="text-align:center">Office Days version ' + APP_VERSION + '</p>';
   openSheet('settings', h);
 }
 
@@ -1488,6 +1898,7 @@ function openHelp() {
   h += '<h4>Automatic check-in</h4><p>No web app can watch your location in the background, on any phone. So your phone’s own automation does it. When you arrive at the office, it opens your private check-in link. Office Days picks that up and counts the day, even if the app was closed.</p>';
   h += FRAMED ? '<p>This preview runs inside Claude, which blocks it. Put your own copy of the app online (GitHub Pages is free), open that link, and follow the start screens.</p>' : '<p><button class="btn" data-act="wizAuto">' + (S().link ? 'Show the setup steps' : 'Set it up') + '</button></p>';
   h += '<h4>When the app is open</h4><p>It also checks if you’re within ' + S().radius + ' m of your office and logs the day right away.</p>';
+  if (!FRAMED) h += '<h4>Weather</h4><p>The picture at the top shows the weather where you are right now: sun, clouds, rain, sleet, snow, fog, evening or night. Tap the temperature for details. Your location is rounded to about 100 m and only used to look up the weather.</p>';
   h += '<h4>Add days you missed</h4><p>Tap any day in the calendar and choose “I was in the office”. To fix many days at once, tap “Mark several days”, then tap each day.</p>';
   h += '<h4>Location is blocked or keeps asking</h4><p>iPhone: Settings › Privacy & Security › Location Services › Safari Websites › While Using the App, with Precise Location on. Android: allow location for Chrome.</p>';
   h += '<h4>How the target is counted</h4><p>Working days are Monday to Friday, minus Finnish public holidays' + (S().eves ? ', Midsummer Eve and Christmas Eve' : '') + ', minus your leave days. The target is ' + S().target + '% of them, rounded up.</p><p>After 5 pm, today no longer counts as a day left, unless you were in the office.</p>';
@@ -1651,7 +2062,57 @@ function finishWiz() {
   syncRemote();
 }
 function copyRow(text) { return '<div class="copyrow"><code>' + esc(text) + '</code><button data-act="copy" data-text="' + esc(text) + '">Copy</button></div>'; }
-function officeSearch() { return sameSpots(S().spots, DEFAULT_SPOTS) ? '<b>Satamaradankatu 5, Helsinki</b>' : 'your office address'; }
+function chip(t) { return '<button class="code-chip" data-act="copy" data-text="' + esc(t) + '" aria-label="Copy ' + esc(t) + '">' + esc(t) + '</button>'; }
+function officeTerm() { return sameSpots(S().spots, DEFAULT_SPOTS) ? chip('Satamaradankatu 5, Helsinki') : 'your office address'; }
+var REMIND_TEXT = 'You’re at the office 🏢 Open Office Days to log today.';
+// iPhone (iOS 26 wording; older iPhones say "New Blank Automation" instead of "Create New Shortcut")
+function iosArrive() {
+  return '<li>Open the <b>Shortcuts</b> app. Tap <b>Automation</b> at the bottom.</li>' +
+    '<li>Tap <b>+</b> at the top right. (No automations yet? Tap <b>New Automation</b> in the middle.)</li>' +
+    '<li>Scroll down and tap <b>Arrive</b>.</li>' +
+    '<li>Tap <b>Choose</b> next to Location. In the search field type ' + officeTerm() + ', tap the right address, then tap <b>Done</b>.</li>' +
+    '<li>Keep <b>Any Time</b>. Select <b>Run Immediately</b>. If you see <b>Notify When Run</b>, you can switch it off.</li>' +
+    '<li>Tap <b>Next</b> at the top right, then tap <b>Create New Shortcut</b>. (Older iPhones say <b>New Blank Automation</b>.)</li>';
+}
+function iosMorning() {
+  return '<li>Open the <b>Shortcuts</b> app. Tap <b>Automation</b> at the bottom, then <b>+</b> at the top right.</li>' +
+    '<li>Tap <b>Time of Day</b> and set the time to <b>8:00</b>.</li>' +
+    '<li>Under Repeat, tap <b>Weekly</b> and keep only <b>Monday to Friday</b> selected.</li>' +
+    '<li>Select <b>Run Immediately</b>. Tap <b>Next</b>, then tap <b>Create New Shortcut</b>.</li>';
+}
+function iosLinkActions(url, expect) {
+  return '<li>Tap <b>Search Actions</b> at the bottom. Type ' + chip('Get Contents of URL') + ' and tap it in the results.</li>' +
+    '<li>In the new action, tap the blue word <b>URL</b>. Paste this link exactly as it is, then tap outside the field:' + copyRow(url) + '</li>' +
+    '<li>Tap <b>Search Actions</b> again. Type ' + chip('Show Notification') + ' and tap it.</li>' +
+    '<li>Tap the text inside <b>Show notification</b> (it may say Hello World) and delete it. In the bar above the keyboard, tap <b>Contents of URL</b>.</li>' +
+    '<li>Tap <b>▶</b> at the bottom right to test. You should see ' + expect + '.</li>' +
+    '<li>Tap the blue <b>✓</b> at the top right to save. Done!</li>';
+}
+function iosNotifyActions() {
+  return '<li>Tap <b>Search Actions</b> at the bottom. Type ' + chip('Show Notification') + ' and tap it in the results.</li>' +
+    '<li>Tap the text inside <b>Show notification</b> (it may say Hello World) and delete it. Paste this text exactly as it is:' + copyRow(REMIND_TEXT) + '</li>' +
+    '<li>Tap <b>▶</b> at the bottom right to test. You should see the notification.</li>' +
+    '<li>Tap the blue <b>✓</b> at the top right to save. Done!</li>';
+}
+function androidArrive(notify, link) {
+  return '<ol class="steps">' +
+    '<li>Install <b>MacroDroid</b> from Google Play (free) and open it.</li>' +
+    '<li>Tap <b>Add Macro</b>.</li>' +
+    '<li>Under <b>Triggers</b>, tap <b>+</b> and search ' + chip('Geofence') + '. Pick <b>Geofence Trigger</b>, then <b>Area entered</b>.</li>' +
+    '<li>Add a zone at ' + (sameSpots(S().spots, DEFAULT_SPOTS) ? chip('Satamaradankatu 5, Helsinki') : 'your office') + ', about 200 m wide, and save it.</li>' +
+    (notify
+      ? '<li>Under <b>Actions</b>, tap <b>+</b> and search ' + chip('Notification') + '. Pick <b>Display Notification</b> and paste this as the text:' + copyRow(REMIND_TEXT) + '</li>'
+      : '<li>Under <b>Actions</b>, tap <b>+</b> and search ' + chip('HTTP Request') + '. Pick it, set the method to <b>GET</b>, and paste this link exactly as it is:' + copyRow(link + '?a=in') + '</li>' +
+        '<li>Tap <b>+</b> again, search ' + chip('Notification') + ', pick <b>Display Notification</b>, and paste this text:' + copyRow('Office day logged ✅') + '</li>') +
+    '<li>Name the macro and save it. When Android asks, allow location <b>All the time</b>.</li></ol>';
+}
+function androidMorning(link) {
+  return '<ol class="steps">' +
+    '<li>In MacroDroid, tap <b>Add Macro</b>.</li>' +
+    '<li>Under <b>Triggers</b>, tap <b>+</b>, search ' + chip('Day/Time') + ', and set <b>8:00</b>, Monday to Friday.</li>' +
+    '<li>Under <b>Actions</b>, tap <b>+</b>, search ' + chip('HTTP Request') + ', set <b>GET</b>, paste this link, and save the response in a new text variable:' + copyRow(link + '?a=today') + '</li>' +
+    '<li>Tap <b>+</b> again, search ' + chip('Notification') + ', pick <b>Display Notification</b>, and put that variable in the text. Save the macro.</li></ol>';
+}
 function osTabs() {
   return '<div class="seg" role="group" aria-label="Your phone"><button data-act="wizOs" data-v="ios" aria-pressed="' + (wiz.os === 'ios') + '">iPhone</button><button data-act="wizOs" data-v="android" aria-pressed="' + (wiz.os === 'android') + '">Android</button></div>';
 }
@@ -1662,8 +2123,9 @@ function renderWiz() {
   var back = '<button class="btn-back" data-act="wizBack">Back</button>';
   var next = function (label) { return '<button class="primary" data-act="wizNext">' + (label || 'Next') + '</button>'; };
   if (step === 'hello' || step === 'done') {
-    var art = scene({ phase: phase, month: new Date().getMonth(), lit: step === 'done' ? 10 : 4, done: step === 'done', seed: dayNum(new Date()) + 1, animate: 'load', prevLit: 0, sfx: 'w' });
-    html += '<div class="wiz-art ph-' + phase + '">' + art + '<div class="wiz-brand">' + document.querySelector('.brand svg').outerHTML + '<span>Office Days</span></div></div>';
+    var Ww = wxSceneNow(phase);
+    var art = scene({ phase: phase, month: new Date().getMonth(), lit: step === 'done' ? 10 : 4, done: step === 'done', seed: dayNum(new Date()) + 1, animate: 'load', prevLit: 0, sfx: 'w', wx: Ww, hour: new Date().getHours() });
+    html += '<div class="wiz-art ph-' + skyCls(phase, Ww) + '">' + art + '<div class="wiz-brand">' + document.querySelector('.brand svg').outerHTML + '<span>Office Days</span></div></div>';
   } else {
     var right = '';
     if (step === 'install' && (kind === 'android' || kind === 'ipad' || kind === 'iosother')) right = pointerHtml('up', kind === 'android' ? 'Tap ⋮ up here' : 'Tap Share up here');
@@ -1736,53 +2198,21 @@ function renderWiz() {
       foot = back + next();
       break;
     case 'phone':
-      if (wiz.mode === 'notify') {
-        var note = 'You’re at the office 🏢 Open Office Days to log today.';
-        body = '<h2 id="wizTitle">Get a notification at the office</h2><p class="wiz-lead">Your phone shows it when you arrive. Open the app for a few seconds and the day is logged.</p>' + osTabs();
-        body += wiz.os === 'ios'
-          ? '<ol class="steps">' +
-            '<li>Open the <b>Shortcuts</b> app. Go to <b>Automation</b> and tap <b>+</b>.</li>' +
-            '<li>Choose <b>Arrive</b>. Tap <b>Location</b>, search ' + officeSearch() + ', and tap <b>Done</b>.</li>' +
-            '<li>Pick <b>Run Immediately</b>. Tap <b>Next</b>, then <b>New Blank Automation</b>.</li>' +
-            '<li>Add the action <b>Show Notification</b> and paste this text:' + copyRow(note) + '</li>' +
-            '<li>Tap <b>Done</b>. If it doesn’t fire, check Settings › Privacy & Security › Location Services › Shortcuts.</li></ol>'
-          : '<ol class="steps">' +
-            '<li>Install <b>MacroDroid</b> from Google Play. It’s free.</li>' +
-            '<li>Tap <b>Add Macro</b>. Add the trigger <b>Location › Geofence Trigger › Area entered</b>, and make a zone around your office, about 200 m wide.</li>' +
-            '<li>Add the action <b>Display Notification</b> with this text:' + copyRow(note) + '</li>' +
-            '<li>Save the macro. When asked, allow location <b>All the time</b>.</li></ol>';
-        foot = back + next();
-        break;
-      }
-      body = '<h2 id="wizTitle">Let your phone check in</h2><p class="wiz-lead">Your phone opens your arrival link when you reach the office.</p>' + osTabs();
-      body += wiz.os === 'ios'
-        ? '<ol class="steps">' +
-          '<li>Open the <b>Shortcuts</b> app. Go to <b>Automation</b> and tap <b>+</b>.</li>' +
-          '<li>Choose <b>Arrive</b>. Tap <b>Location</b>, search ' + officeSearch() + ', and tap <b>Done</b>.</li>' +
-          '<li>Pick <b>Run Immediately</b>. Tap <b>Next</b>, then <b>New Blank Automation</b>.</li>' +
-          '<li>Add the action <b>Get Contents of URL</b> and paste your arrival link:' + copyRow(link + '?a=in') + '</li>' +
-          '<li>Add the action <b>Show Notification</b>. Tap its text and pick <b>Contents of URL</b>. That’s your “Office day logged” message.</li>' +
-          '<li>Tap <b>Done</b>. If it doesn’t fire, check Settings › Privacy & Security › Location Services › Shortcuts.</li></ol>'
-        : '<ol class="steps">' +
-          '<li>Install <b>MacroDroid</b> from Google Play. It’s free.</li>' +
-          '<li>Tap <b>Add Macro</b>. Add the trigger <b>Location › Geofence Trigger › Area entered</b>, and make a zone around your office, about 200 m wide.</li>' +
-          '<li>Add the action <b>HTTP Request</b>, method <b>GET</b>, with your arrival link:' + copyRow(link + '?a=in') + '</li>' +
-          '<li>Add the action <b>Display Notification</b> with the text “Office day logged”.</li>' +
-          '<li>Save the macro. When asked, allow location <b>All the time</b>.</li></ol>';
+      body = wiz.mode === 'notify'
+        ? '<h2 id="wizTitle">Get a notification at the office</h2><p class="wiz-lead">Your phone shows it when you arrive. Then open the app for a few seconds and the day is logged.</p>'
+        : '<h2 id="wizTitle">Let your phone check in</h2><p class="wiz-lead">When you arrive, your phone opens your private link, logs the day, and shows how many days are left.</p>';
+      body += osTabs() + '<p class="wiz-small" style="margin:6px 0 2px">Tap any grey word to copy it.</p>';
+      if (wiz.os === 'ios') {
+        body += '<ol class="steps">' + iosArrive() + (wiz.mode === 'notify' ? iosNotifyActions() : iosLinkActions(link + '?a=in', '“Office day logged ✅”')) + '</ol>';
+        if (wiz.mode !== 'notify') body += '<p class="wiz-small">A test at night doesn’t count as an office day. If you test in the daytime away from the office, tap today in the calendar afterwards and choose “I worked remotely”.</p>';
+        body += '<p class="wiz-small">Not firing? Check Settings › Privacy & Security › Location Services › Shortcuts, and keep Precise Location on.</p>';
+      } else body += androidArrive(wiz.mode === 'notify', link);
       foot = back + next();
       break;
     case 'remind':
-      body = '<h2 id="wizTitle">Get a morning reminder</h2><p class="wiz-lead">Optional. On workdays your phone tells you the plan, like: “Hi ' + esc(name || 'there') + '! Office day today 🏢 6 more to go in ' + MONTHS[new Date().getMonth()] + '.”</p>' + osTabs();
-      body += wiz.os === 'ios'
-        ? '<ol class="steps">' +
-          '<li>In <b>Shortcuts › Automation</b>, tap <b>+</b> and choose <b>Time of Day</b>.</li>' +
-          '<li>Pick <b>8:00</b>, <b>Weekly</b>, Monday to Friday, and <b>Run Immediately</b>. Tap <b>Next</b>, then <b>New Blank Automation</b>.</li>' +
-          '<li>Add <b>Get Contents of URL</b> with your reminder link:' + copyRow(link + '?a=today') + '</li>' +
-          '<li>Add <b>Show Notification</b>. Tap its text and pick <b>Contents of URL</b>. Tap <b>Done</b>.</li></ol>'
-        : '<ol class="steps">' +
-          '<li>In MacroDroid, add a macro with the trigger <b>Date/Time › Day/Time</b> at 8:00, Monday to Friday.</li>' +
-          '<li>Add the action <b>HTTP Request</b> (GET) with your reminder link, and save the response in a text variable:' + copyRow(link + '?a=today') + '</li>' +
-          '<li>Add the action <b>Display Notification</b> that shows that variable. Save.</li></ol>';
+      body = '<h2 id="wizTitle">Get a morning reminder</h2><p class="wiz-lead">Optional. On workdays your phone tells you the plan, like: “Hi ' + esc(name || 'there') + '! Office day today 🏢 6 more to go in ' + MONTHS[new Date().getMonth()] + '.”</p>' +
+        osTabs() + '<p class="wiz-small" style="margin:6px 0 2px">Tap any grey word to copy it.</p>';
+      body += wiz.os === 'ios' ? '<ol class="steps">' + iosMorning() + iosLinkActions(link + '?a=today', 'today’s plan') + '</ol>' : androidMorning(link);
       foot = back + next();
       break;
     case 'done':
@@ -1893,6 +2323,8 @@ document.addEventListener('click', function (e) {
   switch (act) {
     case 'close': closeSheet(); break;
     case 'help': openHelp(); break;
+    case 'weather': openWeather(); break;
+    case 'wxLoc': wxAsk(); break;
     case 'settings': openSettings(); break;
     case 'prevM': shiftMonth(-1); break;
     case 'nextM': shiftMonth(1); break;
@@ -1963,7 +2395,7 @@ document.addEventListener('click', function (e) {
       break;
     case 'erase':
       if (!armed) { armed = true; b.classList.add('armed'); b.textContent = 'Tap again to erase everything'; setTimeout(function () { armed = false; if (b.isConnected) { b.classList.remove('armed'); b.textContent = 'Erase all data'; } }, 4000); }
-      else { var keepUi = state.ui; state = defaults(); state.ui = keepUi; try { localStorage.removeItem(PHOTO_KEY); } catch (e4) {} heroKey = ''; save(); renderAll(); closeSheet(); toast('All data erased'); }
+      else { var keepUi = state.ui; state = defaults(); state.ui = keepUi; try { localStorage.removeItem(PHOTO_KEY); } catch (e4) {} wxForget(); heroKey = ''; save(); renderAll(); closeSheet(); toast('All data erased'); }
       break;
   }
 });
@@ -2002,10 +2434,11 @@ setInterval(function () {
   if (K(now) !== lastToday) { if (view.y === addD(now, -1).getFullYear() && view.m === addD(now, -1).getMonth()) view = { y: now.getFullYear(), m: now.getMonth() }; renderAll(); }
   else renderHero(computeStats(viewPeriod(), now), now);
   if (S().link && Date.now() - remote.at > 180000) syncRemote();
+  wxTick();
 }, 60000);
 
 // for tests
-window.__OD = { easter: easter, holidaysFor: holidaysFor, computeStats: computeStats, periodOf: periodOf, suggest: suggest, perWeekText: perWeekText, whatIf: whatIf, isoWeek: isoWeek, K: K, sunTimes: sunTimes, skyPhase: skyPhase, syncRemote: syncRemote, uploadPlan: uploadPlan, openWiz: openWiz, getState: function () { return state; } };
+window.__OD = { easter: easter, holidaysFor: holidaysFor, computeStats: computeStats, periodOf: periodOf, suggest: suggest, perWeekText: perWeekText, whatIf: whatIf, isoWeek: isoWeek, K: K, sunTimes: sunTimes, skyPhase: skyPhase, syncRemote: syncRemote, uploadPlan: uploadPlan, openWiz: openWiz, getState: function () { return state; }, wxInterp: wxInterp, wxScene: wxScene, wxRefresh: wxRefresh, wxPlace: wxPlace, getWx: function () { return wx; } };
 
 if (!FRAMED && (location.protocol === 'https:' || location.hostname === 'localhost')) {
   try { var ml = document.createElement('link'); ml.rel = 'manifest'; ml.href = 'manifest.webmanifest'; document.head.appendChild(ml); } catch (e) {}
@@ -2013,6 +2446,7 @@ if (!FRAMED && (location.protocol === 'https:' || location.hostname === 'localho
 }
 renderAll();
 initLocation();
+if (WX_OK) setTimeout(function () { wxRefresh(); }, 300);
 if (state.wiz < 2) setTimeout(function () { if (state.wiz < 2 && $('#wiz').hidden) openWiz('hello'); }, FRAMED ? 2500 : 150);
 syncRemote();
 (function tryCloud(n) {
