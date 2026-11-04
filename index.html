@@ -704,7 +704,7 @@ var MONTHS = ['January','February','March','April','May','June','July','August',
 var MON3 = MONTHS.map(function (m) { return m.slice(0, 3); });
 var WD_LONG = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
 var WD_1 = ['M','T','W','T','F','S','S'];
-var APP_VERSION = '1';
+var APP_VERSION = '1.1';
 var WIZ_STEPS = ['hello', 'install', 'opennow', 'name', 'office', 'target', 'auto', 'link', 'phone', 'fix', 'leave', 'remind', 'news', 'script', 'area', 'features', 'done'];
 var CUTOFF_HOUR = 17;          // after this, an unlogged today no longer counts as "left"
 var OFFICE_LAT = 60.1898, OFFICE_LNG = 24.9575;
@@ -887,6 +887,8 @@ function periodOf(d, type) {
   if (type === 'year') return { type: type, start: new Date(y, 0, 1), end: new Date(y, 11, 31), name: String(y) };
   return { type: 'month', start: new Date(y, m, 1), end: new Date(y, m + 1, 0), name: MONTHS[m] + ' ' + y };
 }
+// office days needed: the target share of working days, always rounded down (60% of 21 = 12.6 -> 12)
+function tgt(W) { return W ? Math.floor(W * S().target / 100 + 1e-9) : 0; }
 function computeStats(p, now) {
   var tK = K(now), cut = now.getHours() >= CUTOFF_HOUR;
   var past = K(p.end) < tK, future = K(p.start) > tK;
@@ -898,7 +900,7 @@ function computeStats(p, now) {
     if (i.office && i.k <= tK) { D++; continue; }
     if (i.k > tK || (i.k === tK && !cut)) left.push(i);
   }
-  var T = W ? Math.ceil(W * S().target / 100 - 1e-9) : 0;
+  var T = tgt(W);
   var R = Math.max(0, T - D), A = left.length, status;
   if (!W) status = 'none';
   else if (D >= T) status = 'done';
@@ -951,7 +953,7 @@ function perWeekText(need, avail) {
 }
 function whatIf(st, k, mode) {
   var A2 = st.A - k, W2 = st.W, T2 = st.T;
-  if (mode === 'leave') { W2 = st.W - k; T2 = W2 ? Math.ceil(W2 * S().target / 100 - 1e-9) : 0; }
+  if (mode === 'leave') { W2 = st.W - k; T2 = tgt(W2); }
   var R2 = Math.max(0, T2 - st.D);
   return { A2: A2, W2: W2, T2: T2, R2: R2, ok: A2 >= R2, free: Math.max(0, A2 - R2), short: Math.max(0, R2 - A2), maxPct: W2 ? (st.D + A2) / W2 : 0 };
 }
@@ -2125,7 +2127,7 @@ function openHelp() {
   if (!FRAMED) h += '<h4>Weather</h4><p>The picture at the top shows the weather where you are right now: sun, clouds, rain, sleet, snow, fog, evening or night. Tap the temperature for details. Your location is rounded to about 100 m and only used to look up the weather.</p>';
   h += '<h4>Add days you missed</h4><p>Tap any day in the calendar and choose “I was in the office”. To fix many days at once, tap “Mark several days”, then tap each day.</p>';
   h += '<h4>Location is blocked or keeps asking</h4><p>iPhone: Settings › Privacy & Security › Location Services › Safari Websites › While Using the App, with Precise Location on. Android: allow location for Chrome.</p>';
-  h += '<h4>How the target is counted</h4><p>Working days are Monday to Friday, minus Finnish public holidays' + (S().eves ? ', Midsummer Eve and Christmas Eve' : '') + ', minus your leave days. The target is ' + S().target + '% of them, rounded up.</p><p>After 5 pm, today no longer counts as a day left, unless you were in the office.</p>';
+  h += '<h4>How the target is counted</h4><p>Working days are Monday to Friday, minus Finnish public holidays' + (S().eves ? ', Midsummer Eve and Christmas Eve' : '') + ', minus your leave days. The target is ' + S().target + '% of them, rounded down to a whole day. For example, ' + S().target + '% of 21 days is ' + String(Math.round(21 * S().target / 10) / 10) + ', so you need ' + tgt(21) + '.</p><p>After 5 pm, today no longer counts as a day left, unless you were in the office.</p>';
   h += '<h4>Leave, sick days and vacations</h4><p>One day: tap it in the calendar and choose “Leave or sick day”. Several days, like a vacation: tap “Add leave” under the calendar and pick the first and the last day. Weekends and holidays are skipped.</p><p>Leave days don’t count as working days, so you need fewer office days.</p>';
   if (needInstall() || deferredPrompt) h += '<h4>Add it to your Home Screen</h4><p>It then opens like a normal app.</p><p><button class="btn" data-act="install">' + ICON.download + 'Show me how</button></p>';
   h += '<h4>Only a reminder</h4><p>Prefer to count days yourself? In the setup, pick “Just remind me”. You get one notification when you arrive. Open the app and it marks today by itself.</p>';
@@ -2283,7 +2285,7 @@ function lvEffect(a, b) {
   var now = new Date(), p = periodOf(now, S().period), pa = K(p.start), pb = K(p.end), n = 0;
   if (b < pa || a > pb) return '';
   for (var d = fromK(a > pa ? a : pa); K(d) <= (b < pb ? b : pb); d = addD(d, 1)) { var i = info(d); if (i.working && !i.office) n++; }
-  var st = computeStats(p, now), W2 = st.W - n, T2 = W2 ? Math.ceil(W2 * S().target / 100 - 1e-9) : 0;
+  var st = computeStats(p, now), W2 = st.W - n, T2 = tgt(W2);
   return n && T2 < st.T ? ' Your target ' + pIn(p, now) + ' goes from ' + st.T + ' to ' + T2 + ' office days.' : '';
 }
 // leave days that belong together: only weekends, holidays or office days you kept between them
